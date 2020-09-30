@@ -6,7 +6,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 <!--        Set statusbar-->
-        <item name="android:statusBarColor">@color/colorAqua4</item>
+        <item name="android:statusBarColor">@color/colorStatusBar</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>
