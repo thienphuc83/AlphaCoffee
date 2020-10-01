@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import com.example.alphacoffee.R;
 import com.example.alphacoffee.fragment.FragmentAccount;
 import com.example.alphacoffee.fragment.FragmentNewspaper;
-import com.example.alphacoffee.fragment.FragmentOrder;
 import com.example.alphacoffee.fragment.FragmentStore;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -20,7 +19,7 @@ import java.util.Deque;
 public class HomeActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
-    Deque<Integer> integerDeque = new ArrayDeque<>(4);
+    Deque<Integer> integerDeque = new ArrayDeque<>(3);
     boolean flag = true;
 
     @Override
