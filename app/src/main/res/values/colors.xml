@@ -1,18 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#00CCFF</color>
-    <color name="colorPrimaryDark">#00CCFF</color>
-    <color name="colorAccent">#00CCFF</color>
-    <color name="colorMain">#00CCFF</color>
-    <color name="colorMain1">#BF00CCFF</color>
-    <color name="colorMain2">#8000CCFF</color>
-    <color name="colorStatusBar">#2600CCFF</color>
-    <color name="colorBlue">#0000FF</color>
-    <color name="colorBlue1">#BF0000FF</color>
-    <color name="colorBlue2">#800000FF</color>
+    <color name="colorPrimary">#23A7D8</color>
+    <color name="colorPrimaryDark">#23A7D8</color>
+    <color name="colorAccent">#FFFFFF</color>
+
+    <color name="colorTheme">#23A7D8</color>
+    <color name="colorTheme1">#BF23A8D9</color>
+    <color name="colorTheme2">#8023A8D9</color>
+    <color name="colorTheme3">#4023A8D9</color>
+    <color name="colorTheme4">#2623A8D9</color>
+    <color name="colorTheme5">#0D23A8D9</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="theme">#0f1837</color>
+    <color name="theme1">#BF0F1838</color>
+    <color name="theme2">#800F1838</color>
+    <color name="theme3">#400F1838</color>
+    <color name="theme4">#260F1838</color>
+    <color name="theme5">#0D0F1838</color>
+
     <color name="colorAqua">#00FFFF</color>
     <color name="colorAqua1">#BF00FFFF</color>
     <color name="colorAqua2">#8000FFFF</color>
+    <color name="colorAqua3">#4000FFFF</color>
+    <color name="colorAqua4">#2600FFFF</color>
+    <color name="colorBlue">#0000FF</color>
+    <color name="colorBlue1">#BF0000FF</color>
+    <color name="colorBlue2">#800000FF</color>
     <color name="colorLime">#00FF00</color>
     <color name="colorLime1">#BF00FF00</color>
     <color name="colorLime2">#8000FF00</color>
@@ -22,14 +37,13 @@
     <color name="colorSilver">#C0C0C0</color>
     <color name="colorSilver1">#BFC0C0C0</color>
     <color name="colorSilver2">#80C0C0C0</color>
-    <color name="colorSilver3">#26BFBFBF</color>
     <color name="colorBlack">#000000</color>
-    <color name="colorWhite">#FFFFFF</color>
     <color name="colorGray">#808080</color>
     <color name="colorRed">#FF0000</color>
     <color name="colorYellow">#FFFF00</color>
     <color name="colorGreen">#008000</color>
     <color name="colorFuchsia">#FF00FF</color>
     <color name="colorOrgan">#FFC300</color>
+    <color name="colorWhite">#FFFFFF</color>
 
 </resources>
