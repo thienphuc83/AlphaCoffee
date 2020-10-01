@@ -30,11 +30,11 @@ public class HomeActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         // add account fragment
-        integerDeque.push(R.id.menu_newspaper);
+        integerDeque.push(R.id.menu_store);
         //load fragment
-        LoadFragment(new FragmentNewspaper());
+        LoadFragment(new FragmentStore());
         // set account as default fragment
-        bottomNavigationView.setSelectedItemId(R.id.menu_newspaper);
+        bottomNavigationView.setSelectedItemId(R.id.menu_store);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -45,7 +45,7 @@ public class HomeActivity extends AppCompatActivity {
                 if (integerDeque.contains(id)){
                     // when deque list contains selected id
                     // check condition
-                    if (id == R.id.menu_newspaper){
+                    if (id == R.id.menu_store){
                         //when selected id is equal to home fragment id
                         // check condition
                         if (integerDeque.size()!=1){
@@ -54,7 +54,7 @@ public class HomeActivity extends AppCompatActivity {
                             if (flag){
                                 // when flag value is true
                                 // add home fragment in deque list
-                                integerDeque.addFirst(R.id.menu_newspaper);
+                                integerDeque.addFirst(R.id.menu_store);
                                 // set flag = false
                                 flag = false;
                             }
@@ -76,11 +76,11 @@ public class HomeActivity extends AppCompatActivity {
 
     private Fragment getFragment(int itemId) {
         switch (itemId){
-            case R.id.menu_newspaper:
+            case R.id.menu_store:
                 //set checked order fragment
                 bottomNavigationView.getMenu().getItem(0).setChecked(true);
                 //return order fragment
-                return new FragmentNewspaper();
+                return new FragmentStore();
 
             case R.id.menu_order:
                 //set checked order fragment
@@ -88,11 +88,11 @@ public class HomeActivity extends AppCompatActivity {
                 //return order fragment
                 return new FragmentOrder();
 
-            case R.id.menu_store:
+            case R.id.menu_newspaper:
                 //set checked order fragment
                 bottomNavigationView.getMenu().getItem(2).setChecked(true);
                 //return order fragment
-                return new FragmentStore();
+                return new FragmentNewspaper();
 
             case R.id.menu_account:
                 //set checked order fragment
