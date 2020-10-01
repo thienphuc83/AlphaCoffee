@@ -82,21 +82,15 @@ public class HomeActivity extends AppCompatActivity {
                 //return order fragment
                 return new FragmentStore();
 
-            case R.id.menu_order:
-                //set checked order fragment
-                bottomNavigationView.getMenu().getItem(1).setChecked(true);
-                //return order fragment
-                return new FragmentOrder();
-
             case R.id.menu_newspaper:
                 //set checked order fragment
-                bottomNavigationView.getMenu().getItem(2).setChecked(true);
+                bottomNavigationView.getMenu().getItem(1).setChecked(true);
                 //return order fragment
                 return new FragmentNewspaper();
 
             case R.id.menu_account:
                 //set checked order fragment
-                bottomNavigationView.getMenu().getItem(3).setChecked(true);
+                bottomNavigationView.getMenu().getItem(2).setChecked(true);
                 //return order fragment
                 return new FragmentAccount();
 
