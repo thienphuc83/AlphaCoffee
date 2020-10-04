@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         rellay1 = (RelativeLayout) findViewById(R.id.rellay1);
         rellay2 = (RelativeLayout) findViewById(R.id.rellay2);
 
-        handler.postDelayed(runnable, 5000); //2000 is the timeout for the splash
+        handler.postDelayed(runnable, 3000); //2000 is the timeout for the splash
 
         btRegister=findViewById(R.id.btregister);
         btRegister.setOnClickListener(new View.OnClickListener() {
