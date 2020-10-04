@@ -2,15 +2,20 @@ package com.example.alphacoffee.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import com.example.alphacoffee.R;
 
 public class LoginActivity extends AppCompatActivity {
     RelativeLayout rellay1, rellay2;
+    public Button btLogin;
+    public Button btRegister;
+    public Button btForgot;
 
     Handler handler = new Handler();
     Runnable runnable = new Runnable() {
@@ -29,5 +34,16 @@ public class LoginActivity extends AppCompatActivity {
         rellay2 = (RelativeLayout) findViewById(R.id.rellay2);
 
         handler.postDelayed(runnable, 5000); //2000 is the timeout for the splash
+        btRegister=findViewById(R.id.btregister);
+        btRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RegisterActivity();
+            }
+        });
+    }
+    public void RegisterActivity(){
+        Intent intent=new Intent(this,RegisterActivity.class);
+        startActivity(intent);
     }
 }

@@ -38,7 +38,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="Login"
+                android:text="Đăng Nhập"
                 android:textColor="@color/colorWhite"
                 android:textSize="30sp" />
 
@@ -59,7 +59,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="Username"
+                        android:text="Tài khoản"
                         android:textAllCaps="true"
                         android:textColor="@color/colorWhite"
                         android:textSize="15sp" />
@@ -74,7 +74,10 @@
                         android:paddingRight="15dp"
                         android:textColor="@color/colorWhite"
                         android:textSize="15sp"
-                        android:inputType="text"/>
+                        android:inputType="text"
+                        android:hint="Tài Khoản"
+                        android:textColorHint="@color/colorAqua"
+                        />
 
                 </LinearLayout>
 
@@ -88,7 +91,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="Password"
+                        android:text="Mật Khẩu"
                         android:textAllCaps="true"
                         android:textColor="@color/colorWhite"
                         android:textSize="15sp" />
@@ -103,13 +106,17 @@
                         android:paddingRight="15dp"
                         android:textColor="@color/colorWhite"
                         android:textSize="15sp"
-                        android:inputType="textPassword"/>
+                        android:inputType="textPassword"
+                        android:hint="Mật Khẩu"
+                        android:textColorHint="@color/colorAqua"
+                        />
 
                 </LinearLayout>
 
             </LinearLayout>
 
             <Button
+                android:id="@+id/btlogin"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_below="@+id/linlay1"
@@ -119,7 +126,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:paddingLeft="70dp"
                 android:paddingRight="70dp"
-                android:text="Login Now"
+                android:text="Đăng Nhập"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"
                 android:textSize="16sp" />
@@ -138,21 +145,23 @@
         android:visibility="gone">
 
         <Button
+            android:id="@+id/btregister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/transparent"
             android:fontFamily="sans-serif"
-            android:text="Signup Now"
+            android:text="Đăng Ký"
             android:textAllCaps="true"
             android:textColor="@color/colorWhite" />
 
         <Button
+            android:id="@+id/btforgot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:background="@color/transparent"
             android:fontFamily="sans-serif"
-            android:text="Forgot Password?"
+            android:text="Quên Mật Khẩu?"
             android:textAllCaps="true"
             android:textColor="@color/colorWhite" />
 
