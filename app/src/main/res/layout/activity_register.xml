@@ -7,11 +7,14 @@
     android:animateLayoutChanges="true"
     android:background="@color/theme"
     tools:context=".activity.RegisterActivity">
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="40dp">
 
         <ImageView
@@ -62,20 +65,20 @@
                     android:layout_marginTop="5dp"
                     android:background="@drawable/et_bg"
                     android:fontFamily="sans-serif-light"
+                    android:hint="Tài Khoản"
+                    android:inputType="text"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:textColor="@color/colorWhite"
-                    android:textSize="15sp"
-                    android:inputType="text"
-                    android:hint="Tài Khoản"
-                    android:textColorHint="@color/colorAqua"/>
+                    android:textColorHint="@color/colorAqua"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -93,19 +96,20 @@
                     android:layout_marginTop="5dp"
                     android:background="@drawable/et_bg"
                     android:fontFamily="sans-serif-light"
+                    android:hint="Mật Khẩu"
+                    android:inputType="textPassword"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:textColor="@color/colorWhite"
-                    android:textSize="15sp"
-                    android:inputType="textPassword"
-                    android:hint="Mật Khẩu"
-                    android:textColorHint="@color/colorAqua"/>
+                    android:textColorHint="@color/colorAqua"
+                    android:textSize="15sp" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -123,19 +127,20 @@
                     android:layout_marginTop="5dp"
                     android:background="@drawable/et_bg"
                     android:fontFamily="sans-serif-light"
+                    android:hint="Nhập Lại Mật Khẩu"
+                    android:inputType="textPassword"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:textColor="@color/colorWhite"
-                    android:textSize="15sp"
-                    android:inputType="textPassword"
-                    android:hint="Nhập Lại Mật Khẩu"
-                    android:textColorHint="@color/colorAqua"/>
+                    android:textColorHint="@color/colorAqua"
+                    android:textSize="15sp" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -145,8 +150,7 @@
                     android:text="Só Điện Thoại"
                     android:textAllCaps="true"
                     android:textColor="@color/colorWhite"
-                    android:textSize="15sp"
-                    />
+                    android:textSize="15sp" />
 
                 <EditText
                     android:layout_width="match_parent"
@@ -154,20 +158,20 @@
                     android:layout_marginTop="5dp"
                     android:background="@drawable/et_bg"
                     android:fontFamily="sans-serif-light"
+                    android:hint="Số Điện Thoại"
+                    android:inputType="phone"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:textColor="@color/colorWhite"
-                    android:textSize="15sp"
-                    android:inputType="phone"
-                    android:hint="Số Điện Thoại"
-                    android:textColorHint="@color/colorAqua"/>
+                    android:textColorHint="@color/colorAqua"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -177,8 +181,7 @@
                     android:text="E-Mail"
                     android:textAllCaps="true"
                     android:textColor="@color/colorWhite"
-                    android:textSize="15sp"
-                    />
+                    android:textSize="15sp" />
 
                 <EditText
                     android:layout_width="match_parent"
@@ -186,13 +189,13 @@
                     android:layout_marginTop="5dp"
                     android:background="@drawable/et_bg"
                     android:fontFamily="sans-serif-light"
+                    android:hint="E-Mail"
+                    android:inputType="textEmailAddress"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:textColor="@color/colorWhite"
-                    android:textSize="15sp"
-                    android:inputType="textEmailAddress"
-                    android:hint="E-Mail"
-                    android:textColorHint="@color/colorAqua"/>
+                    android:textColorHint="@color/colorAqua"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -204,7 +207,7 @@
             android:layout_height="40dp"
             android:layout_below="@+id/linlay1"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/click_btn_bg"
             android:fontFamily="sans-serif-medium"
             android:paddingLeft="70dp"
@@ -213,6 +216,7 @@
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
             android:textSize="16sp" />
+
         <Button
             android:id="@+id/Reset"
             android:layout_width="220dp"
@@ -242,6 +246,7 @@
         >
 
         <Button
+            android:id="@+id/btback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/transparent"
@@ -251,6 +256,7 @@
             android:textColor="@color/colorWhite" />
 
         <Button
+            android:id="@+id/btforgot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

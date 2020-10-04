@@ -13,9 +13,7 @@ import com.example.alphacoffee.R;
 
 public class LoginActivity extends AppCompatActivity {
     RelativeLayout rellay1, rellay2;
-    public Button btLogin;
-    public Button btRegister;
-    public Button btForgot;
+    public Button btLogin,btRegister,btForgot;
 
     Handler handler = new Handler();
     Runnable runnable = new Runnable() {
@@ -34,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         rellay2 = (RelativeLayout) findViewById(R.id.rellay2);
 
         handler.postDelayed(runnable, 5000); //2000 is the timeout for the splash
+
         btRegister=findViewById(R.id.btregister);
         btRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,9 +40,23 @@ public class LoginActivity extends AppCompatActivity {
                 RegisterActivity();
             }
         });
+
+        btForgot=findViewById(R.id.btforgot);
+        btForgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ForgotActivity();
+            }
+        });
     }
     public void RegisterActivity(){
         Intent intent=new Intent(this,RegisterActivity.class);
         startActivity(intent);
     }
+    public void ForgotActivity(){
+        Intent intent=new Intent(this,ForgotActivity.class);
+        startActivity(intent);
+    }
+
+
 }
