@@ -66,9 +66,12 @@
                     android:paddingRight="15dp"
                     android:textColor="@color/colorWhite"
                     android:textSize="15sp"
-                    android:inputType="text"/>
+                    android:inputType="text"
+                    android:hint="Tài Khoản"
+                    android:textColorHint="@color/colorAqua"/>
 
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -80,10 +83,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="Password"
+                    android:text="E-Mail"
                     android:textAllCaps="true"
                     android:textColor="@color/colorWhite"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    />
 
                 <EditText
                     android:layout_width="match_parent"
@@ -95,35 +99,9 @@
                     android:paddingRight="15dp"
                     android:textColor="@color/colorWhite"
                     android:textSize="15sp"
-                    android:inputType="textPassword"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text="Retype password"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/et_bg"
-                    android:fontFamily="sans-serif-light"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="15sp"
-                    android:inputType="textPassword"/>
+                    android:inputType="textEmailAddress"
+                    android:hint="E-Mail"
+                    android:textColorHint="@color/colorAqua"/>
 
             </LinearLayout>
             <LinearLayout
@@ -151,14 +129,16 @@
                     android:paddingRight="15dp"
                     android:textColor="@color/colorWhite"
                     android:textSize="15sp"
-                    android:inputType="phone"/>
+                    android:inputType="phone"
+                    android:hint="Số Điện Thoại"
+                    android:textColorHint="@color/colorAqua"/>
 
             </LinearLayout>
 
         </LinearLayout>
 
         <Button
-            android:id="@+id/Register"
+            android:id="@+id/btforgot"
             android:layout_width="220dp"
             android:layout_height="40dp"
             android:layout_below="@+id/linlay1"
@@ -168,7 +148,7 @@
             android:fontFamily="sans-serif-medium"
             android:paddingLeft="70dp"
             android:paddingRight="70dp"
-            android:text="Register"
+            android:text="Xác Nhận"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
             android:textSize="16sp" />
@@ -176,14 +156,14 @@
             android:id="@+id/Reset"
             android:layout_width="220dp"
             android:layout_height="40dp"
-            android:layout_below="@+id/Register"
+            android:layout_below="@+id/btforgot"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:background="@drawable/click_btn_bg"
             android:fontFamily="sans-serif-medium"
             android:paddingLeft="70dp"
             android:paddingRight="70dp"
-            android:text="Reset"
+            android:text="Nhập Lại"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
             android:textSize="16sp" />
@@ -205,17 +185,18 @@
             android:layout_height="wrap_content"
             android:background="@color/transparent"
             android:fontFamily="sans-serif"
-            android:text="BACK"
+            android:text="Trở lại"
             android:textAllCaps="true"
             android:textColor="@color/colorWhite" />
 
         <Button
+            android:id="@+id/btregister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:background="@color/transparent"
             android:fontFamily="sans-serif"
-            android:text="Forgot Password?"
+            android:text="Đăng Ký"
             android:textAllCaps="true"
             android:textColor="@color/colorWhite" />
 
