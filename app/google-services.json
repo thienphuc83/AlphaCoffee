@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "218973276516",
+    "firebase_url": "https://alphacoffee-c5245.firebaseio.com",
+    "project_id": "alphacoffee-c5245",
+    "storage_bucket": "alphacoffee-c5245.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:218973276516:android:0c75a115bf63c9c6759271",
+        "android_client_info": {
+          "package_name": "com.example.alphacoffee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "218973276516-bqjkv0v8f0s919a6oraobcglvqh84f12.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alphacoffee",
+            "certificate_hash": "ec4a79e4662eee364ca4b9ec78633b51e1522b93"
+          }
+        },
+        {
+          "client_id": "218973276516-0l7k85suu8hsd7ds706nu01cu2p1fh1b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEZb67oSrPWLro0M7qPvN3bFKP_lnPsh8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "218973276516-0l7k85suu8hsd7ds706nu01cu2p1fh1b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

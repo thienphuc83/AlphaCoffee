@@ -17,7 +17,6 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:text="Tin tức mới"
-            android:fontFamily="sans-serif-medium"
             android:textColor="@color/colorBlack"
             android:textSize="20sp"
             android:textStyle="bold" />
