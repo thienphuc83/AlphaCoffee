@@ -1,10 +1,12 @@
 package com.example.alphacoffee.fragment;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,7 +28,8 @@ import java.util.ArrayList;
 public class FragmentStore extends Fragment {
 
     View view;
-    RecyclerView rvCuaHang;
+    private TextView tvCuaHang;
+    private RecyclerView rvCuaHang;
     CuaHangAdapter cuaHangAdapter;
     ArrayList<CuaHang> mangCuaHang;
 
@@ -59,12 +62,17 @@ public class FragmentStore extends Fragment {
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 CuaHang cuaHang = snapshot.getValue(CuaHang.class);
 //                Log.d("AAA", cuaHang.getTenCuaHang());
-                mangCuaHang.add(new CuaHang(cuaHang.getTenCuaHang(),
-                        cuaHang.getSoDienThoai(),
-                        cuaHang.getDiaChi(),
-                        cuaHang.getGioMoCua(),
-                        cuaHang.getHinhAnh()));
-                cuaHangAdapter.notifyDataSetChanged();
+
+                //code lấy hóa đơn của khách hàng
+//                String email = cuaHang.getEmail();
+//                if (email.equals("thanh@gmail.com")){
+                    mangCuaHang.add(new CuaHang(cuaHang.getTenCuaHang(),
+                            cuaHang.getSoDienThoai(),
+                            cuaHang.getDiaChi(),
+                            cuaHang.getGioMoCua(),
+                            cuaHang.getHinhAnh()));
+
+                    cuaHangAdapter.notifyDataSetChanged();
 
             }
 
@@ -94,6 +102,10 @@ public class FragmentStore extends Fragment {
 
     private void AnhXa() {
         rvCuaHang = view.findViewById(R.id.rvcuahang);
+        tvCuaHang = view.findViewById(R.id.tvcuahang);
+        //set font tvlogan
+        Typeface typeface= Typeface.createFromAsset(getResources().getAssets(),"fonts/NABILA.TTF");
+        tvCuaHang.setTypeface(typeface);
 
     }
 }

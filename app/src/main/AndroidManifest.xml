@@ -3,6 +3,8 @@
     package="com.example.alphacoffee">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,20 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeAPI23"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.ForgotActivity"></activity>
+        <activity android:name=".activity.InfoAccountActivity"></activity>
+        <activity android:name=".activity.ForgotActivity">
+        </activity>
         <activity android:name=".activity.RegisterActivity"></activity>
         <activity android:name=".activity.LoginActivity">
-
         </activity>
-        <activity android:name=".activity.HomeActivity">
+        <activity android:name=".activity.HomeActivity"></activity>
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".activity.MainActivity" >
-
         </activity>
     </application>
 

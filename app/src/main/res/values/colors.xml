@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#23A7D8</color>
     <color name="colorPrimaryDark">#23A7D8</color>
-    <color name="colorAccent">#FFFFFF</color>
+    <color name="colorAccent">#23A7D8</color>
 
     <color name="colorTheme">#23A7D8</color>
     <color name="colorTheme1">#BF23A8D9</color>
@@ -37,6 +37,7 @@
     <color name="colorSilver">#C0C0C0</color>
     <color name="colorSilver1">#BFC0C0C0</color>
     <color name="colorSilver2">#80C0C0C0</color>
+    <color name="colorSilver3">#26BFBFBF</color>
     <color name="colorBlack">#000000</color>
     <color name="colorGray">#808080</color>
     <color name="colorRed">#FF0000</color>

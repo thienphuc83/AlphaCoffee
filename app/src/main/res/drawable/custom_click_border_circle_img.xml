@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true">
+        <shape android:shape="oval">
+            <corners android:radius="40dp"/>
+            <stroke android:color="@color/colorBlack"
+                android:width="2dp"/>
+            <solid android:color="@color/colorTheme"/>
+        </shape>
+    </item>
+    <item android:drawable="@drawable/custom_border_circle_img"/>
+</selector>

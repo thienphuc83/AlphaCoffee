@@ -48,7 +48,7 @@
                         android:maxLines="1"
                         android:text="Alpha Coffee 1"
                         android:textColor="@color/colorWhite"
-                        android:textSize="18sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -56,8 +56,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0987654321"
+                        android:textStyle="bold"
                         android:textColor="@color/colorWhite"
-                        android:textSize="15sp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -73,8 +74,9 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text="6h - 22h"
+                        android:textStyle="bold"
                         android:textColor="@color/colorWhite"
-                        android:textSize="15sp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
 
 
@@ -99,7 +101,7 @@
                 android:maxLines="1"
                 android:text="12 Lê Duẫn, Quận 1, TP Hồ Chí Minh"
                 android:textColor="@color/colorBlack"
-                android:textSize="18sp" />
+                android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
 

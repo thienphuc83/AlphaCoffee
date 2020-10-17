@@ -18,7 +18,7 @@ import java.util.Deque;
 
 public class HomeActivity extends AppCompatActivity {
 
-    BottomNavigationView bottomNavigationView;
+    private BottomNavigationView bottomNavigationView;
     Deque<Integer> integerDeque = new ArrayDeque<>(3);
     boolean flag = true;
 

@@ -1,61 +1,106 @@
 package com.example.alphacoffee.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.alphacoffee.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
+import org.w3c.dom.Text;
 
 public class LoginActivity extends AppCompatActivity {
-    RelativeLayout rellay1, rellay2;
-    public Button btLogin,btRegister,btForgot;
 
-    Handler handler = new Handler();
-    Runnable runnable = new Runnable() {
-        @Override
-        public void run() {
-            rellay1.setVisibility(View.VISIBLE);
-            rellay2.setVisibility(View.VISIBLE);
-        }
-    };
+    private TextView tvDangNhap, tvQuenMatKhau, tvDangKyNgay;
+    private EditText edtEmail,edtPass;
+    private Button btnDangNhap;
+    private ProgressBar progressBarDangNhap;
+
+    FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        rellay1 = (RelativeLayout) findViewById(R.id.rellay1);
-        rellay2 = (RelativeLayout) findViewById(R.id.rellay2);
+        AnhXa();
 
-        handler.postDelayed(runnable, 3000); //2000 is the timeout for the splash
+        auth = FirebaseAuth.getInstance();
 
-        btRegister=findViewById(R.id.btregister);
-        btRegister.setOnClickListener(new View.OnClickListener() {
+        btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                RegisterActivity();
+            public void onClick(View v) {
+                String email = edtEmail.getText().toString();
+                String pass = edtPass.getText().toString();
+                if (TextUtils.isEmpty(email)|| TextUtils.isEmpty(pass)){
+                    Toast.makeText(LoginActivity.this, "Điền đủ thông tin!", Toast.LENGTH_SHORT).show();
+                }else{
+                    DangNhap(email,pass);
+                }
             }
         });
 
-        btForgot=findViewById(R.id.btforgot);
-        btForgot.setOnClickListener(new View.OnClickListener() {
+
+    }
+
+    private void DangNhap(String email, String pass) {
+        progressBarDangNhap.setVisibility(View.VISIBLE);
+        auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
-            public void onClick(View view) {
-                ForgotActivity();
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+                    Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+
+                }else {
+                    Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
     }
-    public void RegisterActivity(){
-        Intent intent=new Intent(this,RegisterActivity.class);
-        startActivity(intent);
-    }
-    public void ForgotActivity(){
-        Intent intent=new Intent(this,ForgotActivity.class);
-        startActivity(intent);
+
+    private void AnhXa() {
+        tvDangNhap = findViewById(R.id.tvdangnhap);
+        tvDangKyNgay = findViewById(R.id.tvdangkyngay);
+        tvQuenMatKhau = findViewById(R.id.tvquamanhinhquenmatkhau);
+        edtEmail = findViewById(R.id.edtemaildangnhap);
+        edtPass = findViewById(R.id.edtmatkhaudangnhap);
+        btnDangNhap = findViewById(R.id.btndangnhap);
+        progressBarDangNhap = findViewById(R.id.progressbardangnhap);
+
+        Typeface typeface= Typeface.createFromAsset(getAssets(),"fonts/NABILA.TTF");
+        tvDangNhap.setTypeface(typeface);
+
+        tvDangKyNgay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+            }
+        });
+        tvQuenMatKhau.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, ForgotActivity.class));
+            }
+        });
     }
 
 

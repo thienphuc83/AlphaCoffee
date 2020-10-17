@@ -42,10 +42,9 @@
             android:layout_below="@+id/tvtenkhachhang"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:fontFamily="sans-serif-medium"
             android:text="Khách hàng mới"
             android:textColor="@color/colorBlack"
-            android:textSize="15sp" />
+            android:textSize="12sp" />
 
 
         <ImageView
@@ -60,10 +59,11 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/layoutthealphacoffee"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
-        android:background="@color/colorWhite"
+        android:background="@drawable/custom_click_item_account"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -76,7 +76,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="The Alpha Coffee Reward"
+            android:text="Thành viên Alpha Coffee"
             android:textColor="@color/colorBlack"
             android:textSize="15sp" />
     </LinearLayout>
@@ -85,15 +85,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@color/colorWhite"
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/layoutthongtintaikhoan"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/colorWhite"
             android:gravity="center_vertical"
+            android:background="@drawable/custom_click_item_account"
             android:orientation="horizontal">
 
             <ImageView
@@ -109,12 +108,15 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
         </LinearLayout>
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorSilver"/>
         <LinearLayout
+            android:id="@+id/layoutlichsu"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/colorWhite"
+            android:background="@drawable/custom_click_item_account"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -132,11 +134,15 @@
                 android:textSize="15sp" />
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorSilver"/>
         <LinearLayout
+            android:id="@+id/layoutgiupdo"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/colorWhite"
+            android:background="@drawable/custom_click_item_account"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -156,10 +162,11 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layoutdangxuat"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
-        android:background="@color/colorWhite"
+        android:background="@drawable/custom_click_item_account"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 

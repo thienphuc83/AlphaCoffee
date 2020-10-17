@@ -1,6 +1,7 @@
 package com.example.alphacoffee.adapter;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,10 @@ public class CuaHangAdapter extends RecyclerView.Adapter<CuaHangAdapter.ViewHold
             tvGioMoCua = itemView.findViewById(R.id.tvgiomocua);
             tvDiaChi = itemView.findViewById(R.id.tvdiachicuahang);
             imgAnhCuaHang = itemView.findViewById(R.id.imgcuahang);
+
+            //set font tvlogan
+            Typeface typeface= Typeface.createFromAsset(itemView.getContext().getAssets(),"fonts/NABILA.TTF");
+            tvTenCuaHang.setTypeface(typeface);
 
         }
     }

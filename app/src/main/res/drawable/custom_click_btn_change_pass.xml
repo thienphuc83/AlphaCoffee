@@ -11,11 +11,11 @@
 
             <stroke
                 android:width="2dp"
-                android:color="@color/colorWhite" />
+                android:color="@color/colorBlack" />
             <gradient android:angle="45"
                 android:startColor="@color/colorTheme"
                 android:endColor="@color/colorXanhNgoc"/>
         </shape>
     </item>
-    <item android:drawable="@drawable/btn_bg"/>
+    <item android:drawable="@drawable/custom_btn_change_pass"/>
 </selector>
