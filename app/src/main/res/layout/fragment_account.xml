@@ -37,22 +37,26 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tvloainguoidung"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvtenkhachhang"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:text="Khách hàng mới"
+            android:visibility="gone"
             android:textColor="@color/colorBlack"
             android:textSize="12sp" />
 
 
         <ImageView
+            android:id="@+id/imgiconlevel"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:padding="10dp"
+            android:visibility="gone"
             android:src="@drawable/ic_icon_level_alpha"
 
             />

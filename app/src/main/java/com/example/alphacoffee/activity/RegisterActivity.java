@@ -39,6 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button btnDangKy;
     private ProgressBar progressBarDangKy;
     private RadioGroup radioGroupDangKy;
+    private RadioGroup radioGroupCheck;
 
     FirebaseAuth auth;
     DatabaseReference databaseReference;
@@ -55,69 +56,75 @@ public class RegisterActivity extends AppCompatActivity {
         btnDangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String name =edtTenDangKy.getText().toString();
-                final String email =edtEmailDangKy.getText().toString();
-                final String pass =edtMatKhauDangKy.getText().toString();
-                final String phone =edtSDTDangKy.getText().toString();
+                final String name = edtTenDangKy.getText().toString();
+                final String email = edtEmailDangKy.getText().toString();
+                final String pass = edtMatKhauDangKy.getText().toString();
+                final String phone = edtSDTDangKy.getText().toString();
                 int checkedId = radioGroupDangKy.getCheckedRadioButtonId();
+                int checkedId1 = radioGroupCheck.getCheckedRadioButtonId();
                 RadioButton select_gender = radioGroupDangKy.findViewById(checkedId);
-                if (select_gender == null){
+                RadioButton select_nguoidung = radioGroupCheck.findViewById(checkedId1);
+                if (select_gender == null) {
                     Toast.makeText(RegisterActivity.this, "Vui lòng chọn giới tính!", Toast.LENGTH_SHORT).show();
-                }else {
+                } else if (select_nguoidung == null) {
+                    Toast.makeText(RegisterActivity.this, "Vui lòng chọn người dùng!", Toast.LENGTH_SHORT).show();
+                } else {
                     final String gender = select_gender.getText().toString();
-                    if (TextUtils.isEmpty(name)||TextUtils.isEmpty(pass)|| TextUtils.isEmpty(email)||TextUtils.isEmpty(phone)){
+                    final String nguoidung = select_nguoidung.getText().toString();
+                    if (TextUtils.isEmpty(name) || TextUtils.isEmpty(pass) || TextUtils.isEmpty(email) || TextUtils.isEmpty(phone)) {
                         Toast.makeText(RegisterActivity.this, "Điền đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
-                    }else{
-                        DangKy(name,email,pass,phone,gender);
+                    } else {
+                        DangKy(name, email, pass, phone, gender, nguoidung);
                     }
-
                 }
             }
         });
 
     }
 
-    private void DangKy(final String name, final String email, String pass, final String phone, final String gender) {
+    private void DangKy(final String name, final String email, String pass, final String phone, final String gender, final  String nguoidung) {
         progressBarDangKy.setVisibility(View.VISIBLE);
 
-        auth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     FirebaseUser user = auth.getCurrentUser();
                     String userId = user.getUid();
 
                     databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userId);
 
                     HashMap<String, String> hashMap = new HashMap<>();
-                    hashMap.put("userId",userId);
-                    hashMap.put("name",name);
-                    hashMap.put("email",email);
-                    hashMap.put("phone",phone);
-                    hashMap.put("gender",gender);
-                    hashMap.put("birthday","default");
-                    hashMap.put("point","default");
-                    hashMap.put("imageURL","default");
+                    hashMap.put("userId", userId);
+                    hashMap.put("name", name);
+                    hashMap.put("email", email);
+                    hashMap.put("phone", phone);
+                    hashMap.put("gender", gender);
+                    hashMap.put("type", nguoidung);
+                    hashMap.put("birthday", "default");
+                    hashMap.put("point", "default");
+                    hashMap.put("note", "default");
+                    hashMap.put("imageURL", "default");
 
                     databaseReference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             progressBarDangKy.setVisibility(View.GONE);
-                            if (task.isSuccessful()){
+                            if (task.isSuccessful()) {
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                 // xóa hết ngăn sếp, chặn quay lại activity trước đó.
-                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
-                            }else {
+                            } else {
                                 Toast.makeText(RegisterActivity.this, Objects.requireNonNull(task.getException().getMessage()), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
 
-                }else {
+                } else {
                     progressBarDangKy.setVisibility(View.GONE);
                     Toast.makeText(RegisterActivity.this, Objects.requireNonNull(task.getException().getMessage()), Toast.LENGTH_SHORT).show();
                 }
@@ -136,9 +143,10 @@ public class RegisterActivity extends AppCompatActivity {
         btnDangKy = findViewById(R.id.btndangky);
         progressBarDangKy = findViewById(R.id.progressbardangky);
         radioGroupDangKy = findViewById(R.id.radiobuttondangky);
+        radioGroupCheck = findViewById(R.id.radioCheck);
 
         //set font tvlogan
-        Typeface typeface= Typeface.createFromAsset(getAssets(),"fonts/NABILA.TTF");
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/NABILA.TTF");
         tvDangKy.setTypeface(typeface);
 
     }

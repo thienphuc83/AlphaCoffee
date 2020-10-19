@@ -6,21 +6,25 @@ public class User {
     private String email;
     private String phone;
     private String gender;
+    private String type;
     private String birthday;
     private String point;
+    private String note;
     private String imageURL;
 
     public User() {
     }
 
-    public User(String userId, String name, String email, String phone, String gender, String birthday, String point, String imageURL) {
+    public User(String userId, String name, String email, String phone, String gender, String type, String birthday, String point, String note, String imageURL) {
         this.userId = userId;
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.gender = gender;
+        this.type = type;
         this.birthday = birthday;
         this.point = point;
+        this.note = note;
         this.imageURL = imageURL;
     }
 
@@ -64,6 +68,14 @@ public class User {
         this.gender = gender;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public String getBirthday() {
         return birthday;
     }
@@ -78,6 +90,14 @@ public class User {
 
     public void setPoint(String point) {
         this.point = point;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public String getImageURL() {

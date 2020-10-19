@@ -68,13 +68,17 @@
                     android:textStyle="bold"
                     android:textSize="20sp"/>
                 <TextView
+                    android:id="@+id/tvloainguoidunginfoaccount"
                     android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Khách hàng mới"
                     android:textColor="@color/colorBlack"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp"
+                    />
                 <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/layoutdiemlevel"
                     android:gravity="center_vertical"
                     android:layout_marginTop="5dp"
                     android:orientation="horizontal"
@@ -136,7 +140,6 @@
         android:background="@color/colorWhite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <LinearLayout
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
@@ -245,15 +248,46 @@
                 android:textSize="15sp"
                 />
         </LinearLayout>
+        <View
+            android:visibility="gone"
+            android:id="@+id/viewkengang"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorSilver"/>
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/layoutmotanhanvieninfo"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mô tả"
+                android:textColor="@color/colorSilver"
+                android:textSize="12sp"
+                />
+            <TextView
+                android:id="@+id/tvmotanhanvieninfo"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full-time"
+                android:textColor="@color/colorBlack"
+                android:textSize="15sp"
+                />
+        </LinearLayout>
 
     </LinearLayout>
-
 
     <LinearLayout
             android:id="@+id/layoutdoimatkhau"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
+        android:layout_marginTop="10dp"
             android:background="@drawable/custom_click_item_account"
             android:gravity="center_vertical"
             android:orientation="horizontal">
@@ -267,4 +301,5 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
         </LinearLayout>
+
 </LinearLayout>

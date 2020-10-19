@@ -135,6 +135,34 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="12sp" />
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layoutmotanhanvieneditaccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mô tả"
+                android:textColor="@color/colorBlack"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/edtmotaeditaccount"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/custom_border_edittext_change_pass"
+                android:inputType="text"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/colorBlack"
+                android:textSize="12sp" />
+        </LinearLayout>
+
         <ProgressBar
             android:id="@+id/progressbareditaccount"
             android:layout_width="30dp"

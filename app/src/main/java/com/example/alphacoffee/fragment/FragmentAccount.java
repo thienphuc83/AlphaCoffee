@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -35,8 +36,9 @@ public class FragmentAccount extends Fragment {
 
     View view;
     private LinearLayout layoutThanhVien, layoutThongTinTaiKhoan, layoutLichSu, layoutGiupDo, layoutDangXuat;
-    private TextView tvTenTaiKhoan;
+    private TextView tvTenTaiKhoan, tvLoaiNguoiDung;
     private CircleImageView imgKhachHang;
+    private ImageView imgIconLevel;
 
     FirebaseUser firebaseUser;
     FirebaseAuth firebaseAuth;
@@ -72,7 +74,11 @@ public class FragmentAccount extends Fragment {
                 }else {
                     Picasso.with(getContext()).load(user.getImageURL()).into(imgKhachHang);
                 }
-
+                String loainguoidung = user.getType();
+                if (loainguoidung.equals("Khách hàng")){
+                    tvLoaiNguoiDung.setVisibility(View.VISIBLE);
+                    imgIconLevel.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
@@ -84,7 +90,9 @@ public class FragmentAccount extends Fragment {
 
     private void AnhXa() {
         tvTenTaiKhoan = view.findViewById(R.id.tvtenkhachhang);
+        tvLoaiNguoiDung = view.findViewById(R.id.tvloainguoidung);
         imgKhachHang = view.findViewById(R.id.imganhkhachhang);
+        imgIconLevel = view.findViewById(R.id.imgiconlevel);
         layoutThanhVien= view.findViewById(R.id.layoutthealphacoffee);
         layoutThongTinTaiKhoan= view.findViewById(R.id.layoutthongtintaikhoan);
         layoutLichSu= view.findViewById(R.id.layoutlichsu);

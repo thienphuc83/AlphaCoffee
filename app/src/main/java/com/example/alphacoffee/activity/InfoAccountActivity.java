@@ -59,9 +59,9 @@ public class InfoAccountActivity extends AppCompatActivity {
 
     private ImageView imgClose,imgEdit;
     private CircleImageView imgKhachHang;
-    private TextView tvTenKHChinh, tvTenKHPhu, tvSDT, tvGioiTinh, tvSinhNhat, tvEditAccount;
-    private LinearLayout layoutDoiMatKhau;
-
+    private TextView tvTenKHChinh, tvTenKHPhu, tvSDT, tvGioiTinh, tvSinhNhat, tvEditAccount, tvLoaiNguoiDung, tvMota;
+    private LinearLayout layoutDoiMatKhau, layoutDiemLevel, layoutMotaNhanVien;
+    private View viewKeNgangMotaNhanVien;
     private ProgressBar progressBarDoiMatKhau, progressBarEditAccount;
 
     private ImageView imgaccount;
@@ -97,6 +97,20 @@ public class InfoAccountActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 user = dataSnapshot.getValue(User.class);
                 assert user != null;
+
+                String loainguoidung= user.getType();
+                if (loainguoidung.equals("Khách hàng")){
+                    layoutDiemLevel.setVisibility(View.VISIBLE);
+                }else {
+                    tvLoaiNguoiDung.setText("Nhân viên");
+                    viewKeNgangMotaNhanVien.setVisibility(View.VISIBLE);
+                    layoutMotaNhanVien.setVisibility(View.VISIBLE);
+                    if (user.getNote().equals("default")){
+                        tvMota.setText("Fulltime");
+                    }else {
+                        tvMota.setText(user.getNote());
+                    }
+                }
                 tvTenKHChinh.setText(user.getName());
                 tvTenKHPhu.setText(user.getName());
                 tvGioiTinh.setText(user.getGender());
@@ -111,6 +125,7 @@ public class InfoAccountActivity extends AppCompatActivity {
                 }else {
                     tvSinhNhat.setText(user.getBirthday());
                 }
+
             }
 
             @Override
@@ -275,6 +290,8 @@ public class InfoAccountActivity extends AppCompatActivity {
                 final EditText edtGioiTinhEditAccount = view.findViewById(R.id.edtgioitinheditaccount);
                 final EditText edtSDTEditAccount = view.findViewById(R.id.edtsdteditaccount);
                 final EditText edtSinhNhatEditAccount = view.findViewById(R.id.edtsinhnhateditaccount);
+                final EditText edtMotaEditAccount = view.findViewById(R.id.edtmotaeditaccount);
+                LinearLayout layoutMotaEditAccount = view.findViewById(R.id.layoutmotanhanvieneditaccount);
                 progressBarEditAccount = view.findViewById(R.id.progressbareditaccount);
                 Button btnEditAccount = view.findViewById(R.id.btneditaccount);
                 //mở dialog
@@ -284,6 +301,16 @@ public class InfoAccountActivity extends AppCompatActivity {
 
                 //gán dữ liệu để sửa
                 assert user != null;
+                if (user.getType().equals("Nhân viên")){
+                    layoutMotaEditAccount.setVisibility(View.VISIBLE);
+                    if (user.getNote().equals("default")){
+                        edtMotaEditAccount.setText("Fulltime");
+                    }else {
+                        edtMotaEditAccount.setText(user.getNote());
+                    }
+                }else {
+                    edtMotaEditAccount.setText("No");
+                }
                 edtTenEditAccount.setText(user.getName());
                 edtGioiTinhEditAccount.setText(user.getGender());
                 edtSDTEditAccount.setText(user.getPhone());
@@ -309,8 +336,9 @@ public class InfoAccountActivity extends AppCompatActivity {
                         String gioitinhmoi= edtGioiTinhEditAccount.getText().toString();
                         String sdtmoi= edtSDTEditAccount.getText().toString();
                         String sinhnhatmoi= edtSinhNhatEditAccount.getText().toString();
+                        String motamoi= edtMotaEditAccount.getText().toString();
 
-                        EditAccount(tenmoi, gioitinhmoi,sdtmoi,sinhnhatmoi);
+                        EditAccount(tenmoi, gioitinhmoi,sdtmoi,sinhnhatmoi,motamoi);
                         alertDialog.dismiss();
                     }
                 });
@@ -318,13 +346,14 @@ public class InfoAccountActivity extends AppCompatActivity {
         });
     }
 
-    private void EditAccount(String tenmoi, String gioitinhmoi, String sdtmoi, String sinhnhatmoi) {
+    private void EditAccount(String tenmoi, String gioitinhmoi, String sdtmoi, String sinhnhatmoi,String motamoi) {
 
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("name", tenmoi);
         hashMap.put("gender", gioitinhmoi);
         hashMap.put("phone", sdtmoi);
         hashMap.put("birthday", sinhnhatmoi);
+        hashMap.put("note", motamoi);
         databaseReference.updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -399,7 +428,12 @@ public class InfoAccountActivity extends AppCompatActivity {
         tvGioiTinh = findViewById(R.id.tvgioitinhkhachhanginfo);
         tvSinhNhat = findViewById(R.id.tvngaysinhkhachhanginfo);
         tvEditAccount = findViewById(R.id.tvsuainfo);
+        tvLoaiNguoiDung = findViewById(R.id.tvloainguoidunginfoaccount);
+        tvMota = findViewById(R.id.tvmotanhanvieninfo);
         layoutDoiMatKhau = findViewById(R.id.layoutdoimatkhau);
+        layoutDiemLevel = findViewById(R.id.layoutdiemlevel);
+        layoutMotaNhanVien = findViewById(R.id.layoutmotanhanvieninfo);
+        viewKeNgangMotaNhanVien = findViewById(R.id.viewkengang);
 
         //set font tvlogan
         Typeface typeface= Typeface.createFromAsset(getAssets(),"fonts/NABILA.TTF");
