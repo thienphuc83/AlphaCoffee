@@ -14,13 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeAPI23"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.InfoAccountActivity"></activity>
-        <activity android:name=".activity.ForgotActivity">
+        <activity android:name=".activity.ProductActivity">
+
         </activity>
-        <activity android:name=".activity.RegisterActivity"></activity>
-        <activity android:name=".activity.LoginActivity">
+        <activity android:name=".activity.ExampleActivity">
+
         </activity>
-        <activity android:name=".activity.HomeActivity"></activity>
+        <activity android:name=".activity.InfoAccountActivity" />
+        <activity android:name=".activity.ForgotActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.HomeActivity">
+
+        </activity>
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

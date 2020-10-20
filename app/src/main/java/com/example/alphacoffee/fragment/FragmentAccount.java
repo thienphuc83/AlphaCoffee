@@ -34,11 +34,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FragmentAccount extends Fragment {
 
-    View view;
-    private LinearLayout layoutThanhVien, layoutThongTinTaiKhoan, layoutLichSu, layoutGiupDo, layoutDangXuat;
+    View view, viewKeNgangLichSu;
+    private LinearLayout layoutThanhVien, layoutThongTinTaiKhoan, layoutLichSu, layoutGiupDo, layoutDangXuat, layoutHoaDonNhanVien;
     private TextView tvTenTaiKhoan, tvLoaiNguoiDung;
     private CircleImageView imgKhachHang;
     private ImageView imgIconLevel;
+
 
     FirebaseUser firebaseUser;
     FirebaseAuth firebaseAuth;
@@ -68,17 +69,23 @@ public class FragmentAccount extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 user = snapshot.getValue(User.class);
                 assert user != null;
+                String loainguoidung = user.getType();
+                if (loainguoidung.equals("Nhân viên")){
+                    tvLoaiNguoiDung.setText("Nhân viên");
+                    layoutHoaDonNhanVien.setVisibility(View.VISIBLE);
+                }else {
+                    layoutThanhVien.setVisibility(View.VISIBLE);
+                    layoutLichSu.setVisibility(View.VISIBLE);
+                    viewKeNgangLichSu.setVisibility(View.VISIBLE);
+                    imgIconLevel.setVisibility(View.VISIBLE);
+                }
                 tvTenTaiKhoan.setText(user.getName());
                 if (user.getImageURL().equals("default")){
                     imgKhachHang.setImageResource(R.drawable.example);
                 }else {
                     Picasso.with(getContext()).load(user.getImageURL()).into(imgKhachHang);
                 }
-                String loainguoidung = user.getType();
-                if (loainguoidung.equals("Khách hàng")){
-                    tvLoaiNguoiDung.setVisibility(View.VISIBLE);
-                    imgIconLevel.setVisibility(View.VISIBLE);
-                }
+
             }
 
             @Override
@@ -98,34 +105,41 @@ public class FragmentAccount extends Fragment {
         layoutLichSu= view.findViewById(R.id.layoutlichsu);
         layoutGiupDo= view.findViewById(R.id.layoutgiupdo);
         layoutDangXuat= view.findViewById(R.id.layoutdangxuat);
+        layoutHoaDonNhanVien= view.findViewById(R.id.layouthoadonnhanvien);
+        viewKeNgangLichSu= view.findViewById(R.id.viewkenganglichsu);
 
         //set font tvlogan
         Typeface typeface= Typeface.createFromAsset(getResources().getAssets(),"fonts/NABILA.TTF");
         tvTenTaiKhoan.setTypeface(typeface);
+
         layoutThanhVien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
+
         layoutThongTinTaiKhoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(), InfoAccountActivity.class));
             }
         });
+
         layoutLichSu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
+
         layoutGiupDo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
+
         layoutDangXuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

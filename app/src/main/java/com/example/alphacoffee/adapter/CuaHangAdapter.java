@@ -1,6 +1,7 @@
 package com.example.alphacoffee.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.alphacoffee.R;
+import com.example.alphacoffee.activity.ProductActivity;
 import com.example.alphacoffee.model.CuaHang;
 import com.squareup.picasso.Picasso;
 
@@ -55,7 +57,7 @@ public class CuaHangAdapter extends RecyclerView.Adapter<CuaHangAdapter.ViewHold
         TextView tvTenCuaHang, tvSDTCuaHang, tvGioMoCua, tvDiaChi;
         ImageView imgAnhCuaHang;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull final View itemView) {
             super(itemView);
             tvTenCuaHang = itemView.findViewById(R.id.tvtencuahang);
             tvSDTCuaHang = itemView.findViewById(R.id.tvsdtcuahang);
@@ -66,6 +68,13 @@ public class CuaHangAdapter extends RecyclerView.Adapter<CuaHangAdapter.ViewHold
             //set font tvlogan
             Typeface typeface= Typeface.createFromAsset(itemView.getContext().getAssets(),"fonts/NABILA.TTF");
             tvTenCuaHang.setTypeface(typeface);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    context.startActivity(new Intent(itemView.getContext(), ProductActivity.class));
+                }
+            });
 
         }
     }

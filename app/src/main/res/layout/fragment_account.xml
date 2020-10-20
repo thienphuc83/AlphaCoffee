@@ -44,7 +44,6 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:text="Khách hàng mới"
-            android:visibility="gone"
             android:textColor="@color/colorBlack"
             android:textSize="12sp" />
 
@@ -67,6 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
+        android:visibility="gone"
         android:background="@drawable/custom_click_item_account"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -84,6 +84,30 @@
             android:textColor="@color/colorBlack"
             android:textSize="15sp" />
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layouthoadonnhanvien"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custom_click_item_account"
+        android:gravity="center_vertical"
+        android:visibility="gone"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:src="@drawable/ic_hoadon" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hóa đơn"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp" />
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -113,8 +137,10 @@
                 android:textSize="15sp" />
         </LinearLayout>
         <View
+            android:id="@+id/viewkenganglichsu"
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:visibility="gone"
             android:background="@color/colorSilver"/>
         <LinearLayout
             android:id="@+id/layoutlichsu"
@@ -122,6 +148,7 @@
             android:layout_height="50dp"
             android:background="@drawable/custom_click_item_account"
             android:gravity="center_vertical"
+            android:visibility="gone"
             android:orientation="horizontal">
 
             <ImageView
