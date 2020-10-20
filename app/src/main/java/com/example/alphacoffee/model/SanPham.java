@@ -1,6 +1,8 @@
 package com.example.alphacoffee.model;
 
-public class SanPham {
+import java.io.Serializable;
+
+public class SanPham implements Serializable {
 
     private String name;
     private String price;

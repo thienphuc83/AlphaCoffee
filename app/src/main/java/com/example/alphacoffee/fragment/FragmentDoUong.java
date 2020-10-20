@@ -115,7 +115,9 @@ public class FragmentDoUong extends Fragment {
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 SanPham sanPham = snapshot.getValue(SanPham.class);
 //                Log.d("AAA", sanPham.getName());
+                String id = snapshot.getKey();
                 assert sanPham != null;
+
                 String loaisanpham= sanPham.getType();
                 if (loaisanpham.equals("Đồ uống")){
                     mangDoUong.add(new SanPham(sanPham.getName(),

@@ -43,7 +43,7 @@
                 android:ellipsize="end"
                 android:gravity="left"
                 android:lines="2"
-                android:maxWidth="200dp"
+                android:maxWidth="170dp"
                 android:textColor="@color/colorBlack"
                 android:textStyle="bold"
                 android:textSize="15sp"

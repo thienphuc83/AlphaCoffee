@@ -1,6 +1,7 @@
 package com.example.alphacoffee.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.alphacoffee.R;
 import com.example.alphacoffee.activity.LoginActivity;
+import com.example.alphacoffee.activity.ProductDetailActivity;
 import com.example.alphacoffee.model.SanPham;
 import com.squareup.picasso.Picasso;
 
@@ -58,12 +60,21 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView tvTenProduct, tvGiaProduct;
         ImageView imgProduct;
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull final View itemView) {
             super(itemView);
             tvGiaProduct = itemView.findViewById(R.id.tvgiaproduct);
             tvTenProduct = itemView.findViewById(R.id.tvtenproduct);
             imgProduct = itemView.findViewById(R.id.imgproduct);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(context, ProductDetailActivity.class);
+                    intent.putExtra("thongtinsanpham", sanPhamArrayList.get(getPosition()));
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }
