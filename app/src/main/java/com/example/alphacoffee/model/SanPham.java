@@ -3,12 +3,14 @@ package com.example.alphacoffee.model;
 import java.io.Serializable;
 
 public class SanPham implements Serializable {
-
+    private String productId;
     private String name;
-    private String price;
+    private String priceL;
+    private String priceM;
+    private String priceS;
     private String note;
-    private String size;
     private String topping;
+    private String priceTopping;
     private String like;
     private String type;
     private String imageURL;
@@ -16,15 +18,26 @@ public class SanPham implements Serializable {
     public SanPham() {
     }
 
-    public SanPham(String name, String price, String note, String size, String topping, String like, String type, String imageURL) {
+    public SanPham(String productId, String name, String priceL, String priceM, String priceS, String note, String topping, String priceTopping, String like, String type, String imageURL) {
+        this.productId = productId;
         this.name = name;
-        this.price = price;
+        this.priceL = priceL;
+        this.priceM = priceM;
+        this.priceS = priceS;
         this.note = note;
-        this.size = size;
         this.topping = topping;
+        this.priceTopping = priceTopping;
         this.like = like;
         this.type = type;
         this.imageURL = imageURL;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public String getName() {
@@ -35,12 +48,28 @@ public class SanPham implements Serializable {
         this.name = name;
     }
 
-    public String getPrice() {
-        return price;
+    public String getPriceL() {
+        return priceL;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setPriceL(String priceL) {
+        this.priceL = priceL;
+    }
+
+    public String getPriceM() {
+        return priceM;
+    }
+
+    public void setPriceM(String priceM) {
+        this.priceM = priceM;
+    }
+
+    public String getPriceS() {
+        return priceS;
+    }
+
+    public void setPriceS(String priceS) {
+        this.priceS = priceS;
     }
 
     public String getNote() {
@@ -51,20 +80,20 @@ public class SanPham implements Serializable {
         this.note = note;
     }
 
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
-
     public String getTopping() {
         return topping;
     }
 
     public void setTopping(String topping) {
         this.topping = topping;
+    }
+
+    public String getPriceTopping() {
+        return priceTopping;
+    }
+
+    public void setPriceTopping(String priceTopping) {
+        this.priceTopping = priceTopping;
     }
 
     public String getLike() {

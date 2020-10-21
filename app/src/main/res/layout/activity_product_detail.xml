@@ -219,6 +219,8 @@
 
         </LinearLayout>
         <TextView
+            android:visibility="gone"
+            android:id="@+id/tvlayouttoppingproductdetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Topping"
@@ -227,6 +229,8 @@
             android:layout_margin="5dp"
             android:textStyle="bold"/>
         <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/layouttoppingproductdetail"
             android:background="@color/colorWhite"
             android:orientation="vertical"
             android:layout_width="match_parent"

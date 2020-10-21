@@ -49,6 +49,7 @@ public class FragmentPhoBien extends Fragment {
 
         return view;
     }
+
     private void LoadData() {
         mData.child("SanPham").addChildEventListener(new ChildEventListener() {
             @Override
@@ -58,11 +59,15 @@ public class FragmentPhoBien extends Fragment {
                 assert sanPham != null;
                 String like= sanPham.getLike();
                 if (!like.equals("default")){
-                    mangPhoBien.add(new SanPham(sanPham.getName(),
-                            sanPham.getPrice(),
+                    mangPhoBien.add(new SanPham(
+                            sanPham.getProductId(),
+                            sanPham.getName(),
+                            sanPham.getPriceL(),
+                            sanPham.getPriceM(),
+                            sanPham.getPriceS(),
                             sanPham.getNote(),
-                            sanPham.getSize(),
                             sanPham.getTopping(),
+                            sanPham.getPriceTopping(),
                             sanPham.getLike(),
                             sanPham.getType(),
                             sanPham.getImageURL()));
@@ -91,6 +96,7 @@ public class FragmentPhoBien extends Fragment {
             }
         });
     }
+
     private void AnhXa() {
         rvPhoBien = view.findViewById(R.id.rvphobien);
     }

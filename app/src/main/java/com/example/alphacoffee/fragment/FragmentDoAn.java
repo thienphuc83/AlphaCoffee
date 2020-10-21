@@ -55,7 +55,7 @@ public class FragmentDoAn extends Fragment {
 
         LoadData();
 
-        //tìm kiếm
+//        tìm kiếm
         edtTimDoAn.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -112,11 +112,15 @@ public class FragmentDoAn extends Fragment {
                 assert sanPham != null;
                 String loaisanpham= sanPham.getType();
                 if (loaisanpham.equals("Đồ ăn")){
-                    mangDoAn.add(new SanPham(sanPham.getName(),
-                            sanPham.getPrice(),
+                    mangDoAn.add(new SanPham(
+                            sanPham.getProductId(),
+                            sanPham.getName(),
+                            sanPham.getPriceL(),
+                            sanPham.getPriceM(),
+                            sanPham.getPriceS(),
                             sanPham.getNote(),
-                            sanPham.getSize(),
                             sanPham.getTopping(),
+                            sanPham.getPriceTopping(),
                             sanPham.getLike(),
                             sanPham.getType(),
                             sanPham.getImageURL()));

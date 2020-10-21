@@ -120,11 +120,15 @@ public class FragmentDoUong extends Fragment {
 
                 String loaisanpham= sanPham.getType();
                 if (loaisanpham.equals("Đồ uống")){
-                    mangDoUong.add(new SanPham(sanPham.getName(),
-                            sanPham.getPrice(),
+                    mangDoUong.add(new SanPham(
+                            sanPham.getProductId(),
+                            sanPham.getName(),
+                            sanPham.getPriceL(),
+                            sanPham.getPriceM(),
+                            sanPham.getPriceS(),
                             sanPham.getNote(),
-                            sanPham.getSize(),
                             sanPham.getTopping(),
+                            sanPham.getPriceTopping(),
                             sanPham.getLike(),
                             sanPham.getType(),
                             sanPham.getImageURL()));

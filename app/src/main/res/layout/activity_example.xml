@@ -1,9 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.ExampleActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/edttenSP"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tên"
+        android:inputType="text"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/colorBlack"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/edttenHinh"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Hinh"
+        android:inputType="text"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/colorBlack"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/edtGiaL"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Giá Lớn"
+        android:inputType="text"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/colorBlack"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/edtGiaM"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Giá Vừa"
+        android:inputType="text"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/colorBlack"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/edtGiaS"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Giá nhỏ"
+        android:inputType="text"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/colorBlack"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/edtMota"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mô tả"
+        android:inputType="text"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/colorBlack"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/edtTopping"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Topping"
+        android:inputType="text"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/colorBlack"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/edtGiaTopping"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Giá topping"
+        android:inputType="text"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/colorBlack"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/edtLike"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Like"
+        android:inputType="text"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/colorBlack"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/edtType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Loại"
+        android:inputType="text"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/colorBlack"
+        android:textSize="15dp" />
+
+    <Button
+        android:id="@+id/btnThem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thêm" />
+
+    <Button
+        android:id="@+id/btnHuy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hủy" />
+</LinearLayout>

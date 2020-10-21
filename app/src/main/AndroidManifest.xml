@@ -18,7 +18,9 @@
         <activity android:name=".activity.ProductActivity">
 
         </activity>
-        <activity android:name=".activity.ExampleActivity"></activity>
+        <activity android:name=".activity.ExampleActivity">
+
+        </activity>
         <activity android:name=".activity.InfoAccountActivity" />
         <activity android:name=".activity.ForgotActivity" />
         <activity android:name=".activity.RegisterActivity" />

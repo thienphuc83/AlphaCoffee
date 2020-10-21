@@ -48,8 +48,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         SanPham sanPham = sanPhamArrayList.get(position);
         holder.tvTenProduct.setText(sanPham.getName());
-        holder.tvGiaProduct.setText(sanPham.getPrice()+" đ");
-        Picasso.with(context).load(sanPham.getImageURL()).into(holder.imgProduct);
+        holder.tvGiaProduct.setText(sanPham.getPriceM()+" đ");
+        Picasso.with(context).load(sanPham.getImageURL()).placeholder(R.mipmap.ic_app_foreground).into(holder.imgProduct);
     }
 
     @Override

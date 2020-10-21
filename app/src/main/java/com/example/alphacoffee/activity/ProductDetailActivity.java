@@ -31,11 +31,10 @@ public class ProductDetailActivity extends AppCompatActivity {
     private TextView tvTenProductDetail, tvGiaProductDetail, tvSoLuongproductDetail,
             tvTongTienProductDetail, tvMoTaProductDetail,
             tvGiaSizeLonProductDetail, tvGiaSizeVuaProductDetail, tvGiaSizeNhoProductDetail,
-            tvToppingProductDetail, tvGiaToppingProductDetail;
+            tvToppingProductDetail, tvGiaToppingProductDetail, tvLayoutTopping;
     private FButton btnTruProductDetail, btnCongProductDetail;
-    private LinearLayout layoutTongTien, layoutLikeCongTruSoLuong;
+    private LinearLayout layoutTongTien, layoutLikeCongTruSoLuong, layoutToppingProductDetail;
     private RadioGroup radioGroupSizeProDuctDetail;
-
 
 
     FirebaseUser firebaseUser;
@@ -77,16 +76,28 @@ public class ProductDetailActivity extends AppCompatActivity {
         //Product
         GetProduct();
 
-
     }
 
     private void GetProduct() {
         SanPham sanPham= (SanPham) getIntent().getSerializableExtra("thongtinsanpham");
+
+        String topping = sanPham.getTopping();
+        if (!topping.equals("default")){
+            tvLayoutTopping.setVisibility(View.VISIBLE);
+            layoutToppingProductDetail.setVisibility(View.VISIBLE);
+            tvToppingProductDetail.setText(sanPham.getTopping());
+            tvGiaToppingProductDetail.setText("+ "+sanPham.getPriceTopping()+" đ");
+        }
+
         tvTenProductDetail.setText(sanPham.getName());
         tvMoTaProductDetail.setText(sanPham.getNote());
-        tvGiaProductDetail.setText(sanPham.getPrice()+" đ");
-        tvTongTienProductDetail.setText(sanPham.getPrice()+ " đ");
-        Picasso.with(this).load(sanPham.getImageURL()).into(imgProductDetail);
+        tvGiaProductDetail.setText(sanPham.getPriceM()+" đ");
+        tvGiaSizeLonProductDetail.setText(sanPham.getPriceL()+" đ");
+        tvGiaSizeVuaProductDetail.setText(sanPham.getPriceM()+" đ");
+        tvGiaSizeNhoProductDetail.setText(sanPham.getPriceS()+" đ");
+        tvTongTienProductDetail.setText(sanPham.getPriceM()+ " đ");
+
+        Picasso.with(this).load(sanPham.getImageURL()).placeholder(R.mipmap.ic_app_foreground).into(imgProductDetail);
     }
 
     private void AnhXa() {
@@ -104,10 +115,12 @@ public class ProductDetailActivity extends AppCompatActivity {
         tvGiaSizeNhoProductDetail = findViewById(R.id.tvgiasizenhoproductdetail);
         tvToppingProductDetail = findViewById(R.id.tvtoppingproductdetail);
         tvGiaToppingProductDetail = findViewById(R.id.tvgiatoppingproductdetail);
+        tvLayoutTopping = findViewById(R.id.tvlayouttoppingproductdetail);
         btnTruProductDetail = findViewById(R.id.btntruproductdetail);
         btnCongProductDetail = findViewById(R.id.btncongproductdetail);
         layoutTongTien = findViewById(R.id.layouttongtienproductdetail);
         layoutLikeCongTruSoLuong = findViewById(R.id.layoutlikeandcongtrusoluong);
+        layoutToppingProductDetail = findViewById(R.id.layouttoppingproductdetail);
         radioGroupSizeProDuctDetail = findViewById(R.id.radiobuttonsizeproductdetail);
 
 
