@@ -1,6 +1,7 @@
 package com.example.alphacoffee.model;
 
 public class CuaHang {
+    private String cuaHangId;
     private String tenCuaHang;
     private String soDienThoai;
     private String diaChi;
@@ -10,12 +11,21 @@ public class CuaHang {
     public CuaHang() {
     }
 
-    public CuaHang(String tenCuaHang, String soDienThoai, String diaChi, String gioMoCua, String hinhAnh) {
+    public CuaHang(String cuaHangId, String tenCuaHang, String soDienThoai, String diaChi, String gioMoCua, String hinhAnh) {
+        this.cuaHangId = cuaHangId;
         this.tenCuaHang = tenCuaHang;
         this.soDienThoai = soDienThoai;
         this.diaChi = diaChi;
         this.gioMoCua = gioMoCua;
         this.hinhAnh = hinhAnh;
+    }
+
+    public String getCuaHangId() {
+        return cuaHangId;
+    }
+
+    public void setCuaHangId(String cuaHangId) {
+        this.cuaHangId = cuaHangId;
     }
 
     public String getTenCuaHang() {

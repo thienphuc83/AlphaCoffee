@@ -66,7 +66,9 @@ public class FragmentStore extends Fragment {
                 //code lấy hóa đơn của khách hàng
 //                String email = cuaHang.getEmail();
 //                if (email.equals("thanh@gmail.com")){
-                mangCuaHang.add(new CuaHang(cuaHang.getTenCuaHang(),
+                mangCuaHang.add(new CuaHang(
+                        cuaHang.getCuaHangId(),
+                        cuaHang.getTenCuaHang(),
                         cuaHang.getSoDienThoai(),
                         cuaHang.getDiaChi(),
                         cuaHang.getGioMoCua(),

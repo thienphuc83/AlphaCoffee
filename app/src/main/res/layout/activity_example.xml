@@ -30,7 +30,7 @@
         android:textSize="15dp" />
 
     <EditText
-        android:id="@+id/edtGiaL"
+        android:id="@+id/edtGio"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
         android:textSize="15dp" />
 
     <EditText
-        android:id="@+id/edtGiaM"
+        android:id="@+id/edtDiaChi"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
         android:textSize="15dp" />
 
     <EditText
-        android:id="@+id/edtGiaS"
+        android:id="@+id/edtSDT"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,58 +62,6 @@
         android:textColorHint="@color/colorBlack"
         android:textSize="15dp" />
 
-    <EditText
-        android:id="@+id/edtMota"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Mô tả"
-        android:inputType="text"
-        android:textColor="@color/colorBlack"
-        android:textColorHint="@color/colorBlack"
-        android:textSize="15dp" />
-
-    <EditText
-        android:id="@+id/edtTopping"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Topping"
-        android:inputType="text"
-        android:textColor="@color/colorBlack"
-        android:textColorHint="@color/colorBlack"
-        android:textSize="15dp" />
-
-    <EditText
-        android:id="@+id/edtGiaTopping"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Giá topping"
-        android:inputType="text"
-        android:textColor="@color/colorBlack"
-        android:textColorHint="@color/colorBlack"
-        android:textSize="15dp" />
-
-    <EditText
-        android:id="@+id/edtLike"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Like"
-        android:inputType="text"
-        android:textColor="@color/colorBlack"
-        android:textColorHint="@color/colorBlack"
-        android:textSize="15dp" />
-
-    <EditText
-        android:id="@+id/edtType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Loại"
-        android:inputType="text"
-        android:textColor="@color/colorBlack"
-        android:textColorHint="@color/colorBlack"
-        android:textSize="15dp" />
 
     <Button
         android:id="@+id/btnThem"
