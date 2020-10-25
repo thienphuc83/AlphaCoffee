@@ -17,6 +17,7 @@ import com.example.alphacoffee.activity.ProductDetailActivity;
 import com.example.alphacoffee.model.SanPham;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
@@ -48,7 +49,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         SanPham sanPham = sanPhamArrayList.get(position);
         holder.tvTenProduct.setText(sanPham.getName());
-        holder.tvGiaProduct.setText(sanPham.getPriceM()+" đ");
+        // custom giá
+        int giatien = Integer.parseInt(sanPham.getPriceM());
+        DecimalFormat decimalFormat =new DecimalFormat("###,###,###");
+        holder.tvGiaProduct.setText(decimalFormat.format(giatien)+" đ");
+
         Picasso.with(context).load(sanPham.getImageURL()).placeholder(R.mipmap.ic_app_foreground).into(holder.imgProduct);
     }
 

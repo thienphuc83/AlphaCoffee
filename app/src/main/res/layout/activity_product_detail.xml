@@ -78,40 +78,41 @@
                     android:maxLines="1"
                     android:text="200000"
                     android:textColor="@color/colorBlack"
-                    android:textSize="15sp"
-                    />
+                    android:textSize="15sp" />
 
                 <LinearLayout
-                    android:visibility="gone"
                     android:id="@+id/layoutlikeandcongtrusoluong"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp">
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
                     <ImageView
                         android:id="@+id/imglikeproductdetail"
                         android:layout_width="40dp"
                         android:layout_height="match_parent"
                         android:padding="5dp"
                         android:src="@drawable/ic_heart" />
+
                     <info.hoang8f.widget.FButton
                         android:id="@+id/btntruproductdetail"
-                        android:layout_marginLeft="50dp"
-                        android:padding="5dp"
                         android:layout_width="40dp"
                         android:layout_height="match_parent"
+                        android:layout_marginLeft="50dp"
+                        android:padding="5dp"
                         android:text="-"
                         android:textColor="@color/colorBlack"
-                        android:textSize="15sp"
-                        />
+                        android:textSize="15sp" />
+
                     <TextView
                         android:id="@+id/tvsoluongproductdetail"
-                        android:textColor="@color/colorBlack"
-                        android:text="2"
-                        android:gravity="center_vertical"
-                        android:textAlignment="center"
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="2"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorBlack"
                         android:textSize="20sp"
                         tools:ignore="RtlCompat" />
 
@@ -119,11 +120,10 @@
                         android:id="@+id/btncongproductdetail"
                         android:layout_width="40dp"
                         android:layout_height="match_parent"
-                        android:text="+"
                         android:padding="5dp"
+                        android:text="+"
                         android:textColor="@color/colorBlack"
-                        android:textSize="15sp"
-                        />
+                        android:textSize="15sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -131,192 +131,210 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7.3">
+        android:layout_weight="7.3"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:text="Size"
             android:textColor="@color/colorBlack"
             android:textSize="15sp"
-            android:layout_margin="5dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
+
         <LinearLayout
-            android:background="@color/colorWhite"
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:orientation="horizontal">
+
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_height="match_parent">
+                android:orientation="vertical">
+
                 <RadioGroup
                     android:id="@+id/radiobuttonsizeproductdetail"
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
                     <RadioButton
                         android:id="@+id/rbsizelonproductdetail"
                         android:layout_width="match_parent"
-                        android:textColor="@color/colorBlack"
+                        android:layout_height="40dp"
                         android:text="Lớn"
-                        android:textSize="15sp"
-                        android:layout_height="40dp"/>
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15sp" />
+
                     <RadioButton
                         android:id="@+id/rbsizevuaproductdetail"
                         android:layout_width="match_parent"
-                        android:textColor="@color/colorBlack"
+                        android:layout_height="40dp"
                         android:text="Vừa"
-                        android:textSize="15sp"
-                        android:layout_height="40dp"/>
+                        android:checked="true"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15sp" />
+
                     <RadioButton
                         android:id="@+id/rbsizenhoproductdetail"
                         android:layout_width="match_parent"
-                        android:textColor="@color/colorBlack"
+                        android:layout_height="40dp"
                         android:text="Nhỏ"
-                        android:textSize="15sp"
-                        android:layout_height="40dp"/>
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15sp" />
                 </RadioGroup>
             </LinearLayout>
+
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:layout_height="match_parent">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tvgiasizelonproductdetail"
-                    android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:padding="10dp"
                     android:text="+10000 đ"
-                    android:textSize="15sp"
+                    android:textAlignment="textEnd"
                     android:textColor="@color/colorBlack"
-                    android:textAlignment="textEnd"/>
+                    android:textSize="15sp" />
+
                 <TextView
                     android:id="@+id/tvgiasizevuaproductdetail"
-                    android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:padding="10dp"
                     android:text="+10000 đ"
-                    android:textSize="15sp"
+                    android:textAlignment="textEnd"
                     android:textColor="@color/colorBlack"
-                    android:textAlignment="textEnd"/>
+                    android:textSize="15sp" />
+
                 <TextView
                     android:id="@+id/tvgiasizenhoproductdetail"
-                    android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:padding="10dp"
                     android:text="+10000 đ"
-                    android:textSize="15sp"
+                    android:textAlignment="textEnd"
                     android:textColor="@color/colorBlack"
-                    android:textAlignment="textEnd"/>
+                    android:textSize="15sp" />
             </LinearLayout>
 
         </LinearLayout>
+
         <TextView
-            android:visibility="gone"
             android:id="@+id/tvlayouttoppingproductdetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:text="Topping"
             android:textColor="@color/colorBlack"
             android:textSize="15sp"
-            android:layout_margin="5dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:visibility="gone" />
+
         <LinearLayout
-            android:visibility="gone"
             android:id="@+id/layouttoppingproductdetail"
-            android:background="@color/colorWhite"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_click_item_account"
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <RelativeLayout
-                android:gravity="center_vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp">
+                android:layout_height="40dp"
+                android:gravity="center_vertical">
+
                 <ImageView
-                    android:visibility="gone"
                     android:id="@+id/imgchecktopping"
-                    android:padding="10dp"
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_check"/>
+                    android:padding="10dp"
+                    android:src="@drawable/ic_check"
+                    android:visibility="gone" />
+
                 <TextView
                     android:id="@+id/tvtoppingproductdetail"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Thêm trân châu"
+                    android:layout_toRightOf="@+id/imgchecktopping"
                     android:padding="10dp"
+                    android:text="Thêm trân châu"
                     android:textColor="@color/colorBlack"
-                    android:textSize="15sp"
-                    android:layout_toRightOf="@+id/imgchecktopping"/>
+                    android:textSize="15sp" />
+
                 <TextView
                     android:id="@+id/tvgiatoppingproductdetail"
-                    android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
                     android:padding="10dp"
                     android:text="+ 10000 đ"
-                    android:textSize="15sp"
-                    android:textColor="@color/colorBlack"/>
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
             </RelativeLayout>
         </LinearLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:text="Giới thiệu"
             android:textColor="@color/colorBlack"
             android:textSize="15sp"
-            android:layout_margin="5dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
+
         <LinearLayout
-            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/colorWhite"
             android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:padding="15dp">
 
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:id="@+id/tvmotaproductdetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ahdkj"
                     android:maxLines="7"
+                    android:text="ahdkj"
                     android:textColor="@color/colorBlack"
-                    android:textSize="15sp"
-                    />
+                    android:textSize="15sp" />
             </ScrollView>
 
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:visibility="gone"
+
         android:id="@+id/layouttongtienproductdetail"
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.7"
-        android:background="@color/colorTheme">
+        android:background="@drawable/custom_click_item_order"
+        android:gravity="center"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/tvtongtienproductdetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
             android:text="200000 đ"
-            android:textSize="20sp"
+            android:textAlignment="center"
             android:textColor="@color/colorBlack"
-            android:textStyle="bold"/>
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
 
     </LinearLayout>
