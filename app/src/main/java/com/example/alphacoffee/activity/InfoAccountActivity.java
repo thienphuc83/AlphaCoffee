@@ -141,7 +141,7 @@ public class InfoAccountActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(InfoAccountActivity.this);
                 builder.setCancelable(false);
                 //set layout cho dialog
-                View view = LayoutInflater.from(InfoAccountActivity.this).inflate(R.layout.edit_img_account, null);
+                View view = LayoutInflater.from(InfoAccountActivity.this).inflate(R.layout.dialog_edit_img_account, null);
                 ImageView imgcamera = view.findViewById(R.id.imgcamera);
                 ImageView imgcancel = view.findViewById(R.id.imgcloseuploadimgkhachhang);
                 ImageView imgfolder = view.findViewById(R.id.imgfolder);
@@ -234,7 +234,7 @@ public class InfoAccountActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(InfoAccountActivity.this);
                 builder.setCancelable(false);
                 //set layout cho dialog
-                View view = LayoutInflater.from(InfoAccountActivity.this).inflate(R.layout.change_password, null);
+                View view = LayoutInflater.from(InfoAccountActivity.this).inflate(R.layout.dialog_change_password, null);
                 TextView tvDoiMatKhau = view.findViewById(R.id.tvdoimatkhau);
                 ImageView imgClose = view.findViewById(R.id.imgclosechangepass);
                 final EditText edtMatKhauCu = view.findViewById(R.id.edtmatkhaucu);
@@ -283,7 +283,7 @@ public class InfoAccountActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(InfoAccountActivity.this);
                 builder.setCancelable(false);
                 //set layout cho dialog
-                View view = LayoutInflater.from(InfoAccountActivity.this).inflate(R.layout.edit_account, null);
+                View view = LayoutInflater.from(InfoAccountActivity.this).inflate(R.layout.dialog_edit_account, null);
                 TextView tvEditAccount = view.findViewById(R.id.tveditaccount);
                 ImageView imgCloseEditAccount = view.findViewById(R.id.imgcloseeditaccount);
                 final EditText edtTenEditAccount = view.findViewById(R.id.edtteneditaccount);

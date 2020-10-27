@@ -114,13 +114,15 @@ public class ProductDetailActivity extends AppCompatActivity {
                 String sizesp  = Sizesp;
                 String topping  = Toppingsp;
                 int soluongsp  = SLMoiNhat;
-                String tonggiasp  = String.valueOf(tongtien);
+                long tonggiasp  = tongtien;
+                String idbill  = "default";
 
 //                Toast.makeText(ProductDetailActivity.this, SLMoiNhat+"", Toast.LENGTH_SHORT).show();
-                SanPhamOrder sp = new SanPhamOrder(idsp,tensp,tonggiasp,sizesp,topping,hinhsp,soluongsp);
+//                SanPhamOrder sp = new SanPhamOrder(idsp,tensp,tonggiasp,sizesp,topping,hinhsp,soluongsp);
                 Intent intent = new Intent(ProductDetailActivity.this,BillActivity.class);
-                intent.putExtra("sanphamorder",sp);
                 startActivity(intent);
+                ProductActivity.mangsanphamorder.add(new SanPhamOrder(idsp,tensp,tonggiasp,sizesp,topping,hinhsp,soluongsp,idbill));
+
 
             }
         });

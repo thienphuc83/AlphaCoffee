@@ -1,6 +1,8 @@
 package com.example.alphacoffee.model;
 
-public class CuaHang {
+import java.io.Serializable;
+
+public class CuaHang implements Serializable {
     private String cuaHangId;
     private String tenCuaHang;
     private String soDienThoai;

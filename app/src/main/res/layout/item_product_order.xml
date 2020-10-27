@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="5dp">
+
+    <LinearLayout
+        android:background="@color/colorWhite"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher"
+                android:id="@+id/imgsanphamorder"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tvtensanphamorder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên sản phẩm"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:gravity="left"
+                android:lines="2"
+                android:maxWidth="170dp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:textSize="15sp" />
+            <TextView
+                android:id="@+id/tvsizesanphamorder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vừa"
+                android:gravity="left"
+                android:textColor="@color/colorBlack"
+                android:textSize="12sp"
+                />
+            <TextView
+                android:id="@+id/tvsoluongsanphamorder"
+                android:textAlignment="center"
+                android:background="@drawable/custom_border_img"
+                android:layout_marginTop="5dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:text="3"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorBlack"
+                android:textSize="12sp"
+                tools:ignore="RtlCompat" />
+            <TextView
+                android:id="@+id/tvgiasanphamorder"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="30000 đ"
+                android:gravity="left"
+                android:textColor="@color/colorBlack"
+                android:textSize="15sp"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeAPI23"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.BillActivity"></activity>
+        <activity android:name=".activity.BillActivity">
+
+        </activity>
         <activity android:name=".activity.ProductDetailActivity" />
         <activity android:name=".activity.ProductActivity">
 

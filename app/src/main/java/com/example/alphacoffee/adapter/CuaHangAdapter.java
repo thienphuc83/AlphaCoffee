@@ -72,7 +72,9 @@ public class CuaHangAdapter extends RecyclerView.Adapter<CuaHangAdapter.ViewHold
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    context.startActivity(new Intent(itemView.getContext(), ProductActivity.class));
+                    Intent intent = new Intent(context,ProductActivity.class);
+                    intent.putExtra("cuahang", cuaHangArrayList.get(getPosition()));
+                    context.startActivity(intent);
                 }
             });
 

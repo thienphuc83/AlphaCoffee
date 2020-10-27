@@ -5,16 +5,17 @@ import java.io.Serializable;
 public class SanPhamOrder implements Serializable {
     private String id;
     private String name;
-    private String price;
+    private long price;
     private String size;
     private String topping;
     private String imageURL;
     private int soluong;
+    private String idBill;
 
     public SanPhamOrder() {
     }
 
-    public SanPhamOrder(String id, String name, String price, String size, String topping, String imageURL, int soluong) {
+    public SanPhamOrder(String id, String name, long price, String size, String topping, String imageURL, int soluong, String idBill) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -22,6 +23,7 @@ public class SanPhamOrder implements Serializable {
         this.topping = topping;
         this.imageURL = imageURL;
         this.soluong = soluong;
+        this.idBill = idBill;
     }
 
     public String getId() {
@@ -40,11 +42,11 @@ public class SanPhamOrder implements Serializable {
         this.name = name;
     }
 
-    public String getPrice() {
+    public long getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(long price) {
         this.price = price;
     }
 
@@ -78,5 +80,13 @@ public class SanPhamOrder implements Serializable {
 
     public void setSoluong(int soluong) {
         this.soluong = soluong;
+    }
+
+    public String getIdBill() {
+        return idBill;
+    }
+
+    public void setIdBill(String idBill) {
+        this.idBill = idBill;
     }
 }
