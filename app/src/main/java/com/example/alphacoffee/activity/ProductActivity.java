@@ -26,7 +26,7 @@ import java.util.ArrayList;
 public class ProductActivity extends AppCompatActivity {
 
     private TextView tvMenu;
-    private ImageView imgBack, imgShoppingCart;
+    private ImageView imgBack, imgShoppingCart, imgDot;
     private ViewPager viewPagerProduct;
     private TabLayout tabLayoutProduct;
 
@@ -39,13 +39,27 @@ public class ProductActivity extends AppCompatActivity {
         setContentView(R.layout.activity_product);
 
         AnhXa();
+
         Init();
 
         IntentCuaHang();
 
+        // khi thoát về cửa hàng và chọn cửa hàng lại vẫn sẽ hiện thông báo khi có sp trong giỏ
+        if (mangsanphamorder.size()>0){
+            imgDot.setVisibility(View.VISIBLE);
+        }
     }
 
-
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        //cập nhật lại xem đã có sp nào trong mảng hay chưa
+        if (mangsanphamorder.size()>0){
+            imgDot.setVisibility(View.VISIBLE);
+        }else if (mangsanphamorder.size()==0){
+            imgDot.setVisibility(View.GONE);
+        }
+    }
 
     private void IntentCuaHang() {
         // nhận đối tượng cửa hàng từ fragnment cửa hàng
@@ -53,12 +67,7 @@ public class ProductActivity extends AppCompatActivity {
         tencuahang = cuaHang.getTenCuaHang();
 //        Toast.makeText(this, cuaHang.getTenCuaHang(), Toast.LENGTH_SHORT).show();
 
-        // nhận lại tên cửa hàng từ bên bill
-//        String tenCH = getIntent().getStringExtra("tenCH");
-//        tencuahang = tenCH;
     }
-
-
 
     private void Init() {
 
@@ -77,6 +86,7 @@ public class ProductActivity extends AppCompatActivity {
         tvMenu= findViewById(R.id.tvmenu);
         imgBack= findViewById(R.id.imgbackmenu);
         imgShoppingCart= findViewById(R.id.imgshoppingcartmenu);
+        imgDot= findViewById(R.id.imgdotproduct);
 
         //set font tvlogan
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/NABILA.TTF");
@@ -96,11 +106,13 @@ public class ProductActivity extends AppCompatActivity {
             }
         });
 
-        //cấp phát vùng bộ nhớ cho cái mảng toàn cục
+        //cấp phát vùng bộ nhớ cho mảng toàn cục
         if (mangsanphamorder != null){
 
         }else {
             mangsanphamorder = new ArrayList<>();
+
         }
+
     }
 }

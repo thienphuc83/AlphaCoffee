@@ -3,13 +3,16 @@ package com.example.alphacoffee.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -50,7 +53,6 @@ public class BillActivity extends AppCompatActivity {
     private ImageView imgBackBill;
     private RelativeLayout layoutOrderBill;
     private EditText edtGhiChuBill;
-    private FButton btnThemProductBill;
     private RecyclerView rvSanPhamOrderBill;
 
     SanPhamOrderAdapter sanPhamOrderAdapter;
@@ -67,11 +69,11 @@ public class BillActivity extends AppCompatActivity {
 
     String tenKH = null;
     String idKH = null;
+    String tenCH = ProductActivity.tencuahang;
 
     String diaDiemUong = "";
     String thanhToanBang = "";
 
-//    String tenCH = ProductActivity.tencuahang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,16 +110,35 @@ public class BillActivity extends AppCompatActivity {
 
         TongTien();
 
+        // vuốt để xoa sản phẩm order
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                int position = viewHolder.getAdapterPosition();
+                ProductActivity.mangsanphamorder.remove(position);
+                Toast.makeText(BillActivity.this, "Đã xóa sản phẩm khỏi giỏ hàng!", Toast.LENGTH_SHORT).show();
+                sanPhamOrderAdapter.notifyDataSetChanged();
+
+            }
+        });
+        itemTouchHelper.attachToRecyclerView(rvSanPhamOrderBill);
+
+        //order
         layoutOrderBill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (ProductActivity.mangsanphamorder.size() > 0) {
                     // bắt đk để insert bill
-                    if (diaDiemUong.equals("")){
+                    if (diaDiemUong.equals("")) {
                         Toast.makeText(BillActivity.this, "Bạn chưa chọn kiểu nhận order!", Toast.LENGTH_SHORT).show();
-                    }else if (thanhToanBang.equals("")){
+                    } else if (thanhToanBang.equals("")) {
                         Toast.makeText(BillActivity.this, "Bạn chưa chọn kiểu thanh toán!", Toast.LENGTH_SHORT).show();
-                    }else {
+                    } else {
                         // insert bill vào firebaes để get key ra làm idBill và
                         // gán vào idbill của sanphamorder để sau này mở hóa đơn sẽ get sanphamorder theo bill
                         String idbill = mData.child("Bill").push().getKey();
@@ -156,7 +177,7 @@ public class BillActivity extends AppCompatActivity {
                         // thêm all data vào đối tượng bill
                         Bill bill = new Bill(idbill, "default", ngaytao, tongTien, "default",
                                 diaDiemUong, ghichu, thanhToanBang, String.valueOf(diem),
-                                idKH, tenKH, "Cửa hàng 1", "default");
+                                idKH, tenKH, tenCH, "default");
 
                         //insert bill vào firebase
                         mData.child("Bill").child(idbill).setValue(bill).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -165,7 +186,7 @@ public class BillActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(BillActivity.this, "Order thành công!", Toast.LENGTH_SHORT).show();
                                     // kết thúc màn hình sau khi đặt hàng
-                                    startActivity(new Intent(BillActivity.this,ProductActivity.class));
+                                    startActivity(new Intent(BillActivity.this, ProductActivity.class));
                                     ProductActivity.mangsanphamorder.clear();
                                     finish();
 
@@ -192,13 +213,14 @@ public class BillActivity extends AppCompatActivity {
         }
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         tvTongTienOrderBill.setText(decimalFormat.format(tongTien) + " đ");
-        diem = sl *2;
-        tvTichDiemBill.setText(diem+"");
+        diem = sl * 2;
+        tvTichDiemBill.setText(diem + "");
     }
 
     private void CheckData() {
         if (ProductActivity.mangsanphamorder.size() <= 0) {
             sanPhamOrderAdapter.notifyDataSetChanged();
+
         } else {
             sanPhamOrderAdapter.notifyDataSetChanged();
         }
@@ -216,9 +238,7 @@ public class BillActivity extends AppCompatActivity {
         imgBackBill = findViewById(R.id.imgbackgiohang);
         layoutOrderBill = findViewById(R.id.layoutorderbill);
         edtGhiChuBill = findViewById(R.id.edtghichubill);
-        btnThemProductBill = findViewById(R.id.btnthemsanphambill);
         rvSanPhamOrderBill = findViewById(R.id.rvsanphamorder);
-
 
 
         imgBackBill.setOnClickListener(new View.OnClickListener() {
@@ -240,7 +260,7 @@ public class BillActivity extends AppCompatActivity {
         rvSanPhamOrderBill.setAdapter(sanPhamOrderAdapter);
 
         // lấy tên cửa hàng
-        tvTenCuaHangBill.setText("Alpha Coffee 1");
+        tvTenCuaHangBill.setText(tenCH);
 
         //set kiểu nhận order cho bill
         tvKieuNhanBill.setOnClickListener(new View.OnClickListener() {
@@ -329,15 +349,6 @@ public class BillActivity extends AppCompatActivity {
                         alertDialog.dismiss();
                     }
                 });
-            }
-        });
-
-        btnThemProductBill.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent  = new Intent(getApplicationContext(),ProductActivity.class);
-//                intent.putExtra("tenCH", tenCH);
-                startActivity(intent);
             }
         });
 

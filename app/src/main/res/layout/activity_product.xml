@@ -33,15 +33,31 @@
             android:textSize="20sp"
             android:textColor="@color/colorBlack"
             tools:ignore="RtlCompat" />
-        <ImageView
-            android:id="@+id/imgshoppingcartmenu"
+
+
+        <FrameLayout
             android:layout_alignParentRight="true"
-            android:layout_gravity="center_vertical"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_shopping_cart"
-            android:padding="12dp"
-            />
+            android:layout_height="50dp">
+            <ImageView
+                android:id="@+id/imgshoppingcartmenu"
+                android:layout_gravity="center_vertical"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_shopping_cart"
+                android:padding="12dp"
+                />
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/imgdotproduct"
+                android:layout_gravity="right"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_dot"
+                android:padding="8dp"
+                />
+        </FrameLayout>
+
     </RelativeLayout>
 
     <com.google.android.material.tabs.TabLayout

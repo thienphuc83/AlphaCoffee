@@ -116,13 +116,12 @@ public class ProductDetailActivity extends AppCompatActivity {
                 int soluongsp  = SLMoiNhat;
                 long tonggiasp  = tongtien;
                 String idbill  = "default";
-
 //                Toast.makeText(ProductDetailActivity.this, SLMoiNhat+"", Toast.LENGTH_SHORT).show();
-//                SanPhamOrder sp = new SanPhamOrder(idsp,tensp,tonggiasp,sizesp,topping,hinhsp,soluongsp);
-                Intent intent = new Intent(ProductDetailActivity.this,BillActivity.class);
-                startActivity(intent);
-                ProductActivity.mangsanphamorder.add(new SanPhamOrder(idsp,tensp,tonggiasp,sizesp,topping,hinhsp,soluongsp,idbill));
 
+                ProductActivity.mangsanphamorder.add(new SanPhamOrder(idsp,tensp,tonggiasp,sizesp,topping,hinhsp,soluongsp,idbill));
+                Toast.makeText(ProductDetailActivity.this, "Đã thêm vào giỏ hàng!", Toast.LENGTH_SHORT).show();
+
+                finish();
 
             }
         });
