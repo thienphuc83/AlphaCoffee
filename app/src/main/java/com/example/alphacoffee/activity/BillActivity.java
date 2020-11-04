@@ -8,16 +8,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,8 +22,6 @@ import android.widget.Toast;
 import com.example.alphacoffee.R;
 import com.example.alphacoffee.adapter.SanPhamOrderAdapter;
 import com.example.alphacoffee.model.Bill;
-import com.example.alphacoffee.model.CuaHang;
-import com.example.alphacoffee.model.SanPham;
 import com.example.alphacoffee.model.SanPhamOrder;
 import com.example.alphacoffee.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -40,11 +35,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
-import info.hoang8f.widget.FButton;
 
 public class BillActivity extends AppCompatActivity {
 
@@ -177,7 +169,7 @@ public class BillActivity extends AppCompatActivity {
                         // thêm all data vào đối tượng bill
                         Bill bill = new Bill(idbill, "default", ngaytao, tongTien, "default",
                                 diaDiemUong, ghichu, thanhToanBang, String.valueOf(diem),
-                                idKH, tenKH, tenCH, "default");
+                                idKH, tenKH, tenCH, "default","default");
 
                         //insert bill vào firebase
                         mData.child("Bill").child(idbill).setValue(bill).addOnCompleteListener(new OnCompleteListener<Void>() {

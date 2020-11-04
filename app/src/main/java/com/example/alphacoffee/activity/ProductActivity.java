@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.alphacoffee.R;
 import com.example.alphacoffee.adapter.ViewPagerProductAdapter;
@@ -17,7 +16,6 @@ import com.example.alphacoffee.fragment.FragmentDoAn;
 import com.example.alphacoffee.fragment.FragmentDoUong;
 import com.example.alphacoffee.fragment.FragmentPhoBien;
 import com.example.alphacoffee.model.CuaHang;
-import com.example.alphacoffee.model.SanPham;
 import com.example.alphacoffee.model.SanPhamOrder;
 import com.google.android.material.tabs.TabLayout;
 
@@ -95,7 +93,7 @@ public class ProductActivity extends AppCompatActivity {
         imgShoppingCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ProductActivity.this,BillActivity.class));
+                startActivity(new Intent(ProductActivity.this, BillActivity.class));
             }
         });
 

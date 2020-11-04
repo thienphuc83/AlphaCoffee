@@ -15,11 +15,12 @@ public class Bill {
     private String tenKH;
     private String tenCH;
     private String tenNV;
+    private String idNV;
 
     public Bill() {
     }
 
-    public Bill(String idBill, String soThuTu, String ngayTao, long tongtien, String trangThai, String diaDiem, String ghiChu, String loaiThanhToan, String tichDiem, String idKH, String tenKH, String tenCH, String tenNV) {
+    public Bill(String idBill, String soThuTu, String ngayTao, long tongtien, String trangThai, String diaDiem, String ghiChu, String loaiThanhToan, String tichDiem, String idKH, String tenKH, String tenCH, String tenNV, String idNV) {
         this.idBill = idBill;
         this.soThuTu = soThuTu;
         this.ngayTao = ngayTao;
@@ -33,6 +34,7 @@ public class Bill {
         this.tenKH = tenKH;
         this.tenCH = tenCH;
         this.tenNV = tenNV;
+        this.idNV = idNV;
     }
 
     public String getIdBill() {
@@ -137,5 +139,13 @@ public class Bill {
 
     public void setTenNV(String tenNV) {
         this.tenNV = tenNV;
+    }
+
+    public String getIdNV() {
+        return idNV;
+    }
+
+    public void setIdNV(String idNV) {
+        this.idNV = idNV;
     }
 }

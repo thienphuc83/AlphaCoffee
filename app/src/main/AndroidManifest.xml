@@ -14,16 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeAPI23"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.BillDetailActivity"></activity>
+        <activity android:name=".activity.OrderHistoryActivity"></activity>
+        <activity android:name=".activity.OrderDetailActivity" />
+        <activity android:name=".activity.OrderActivity" />
+        <activity android:name=".activity.BillDetailActivity" />
+        <activity android:name=".activity.BillHistoryActivity" />
         <activity android:name=".activity.MemberActivity" />
         <activity android:name=".activity.HelpActivity" />
-        <activity android:name=".activity.BillHistoryActivity" />
         <activity android:name=".activity.BillActivity" />
         <activity android:name=".activity.ProductDetailActivity" />
         <activity android:name=".activity.ProductActivity" />
-        <activity android:name=".activity.ExampleActivity" >
-
-        </activity>
+        <activity android:name=".activity.ExampleActivity" />
         <activity android:name=".activity.InfoAccountActivity" />
         <activity android:name=".activity.ForgotActivity" />
         <activity android:name=".activity.RegisterActivity" />

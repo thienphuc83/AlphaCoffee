@@ -321,7 +321,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         layoutTongTien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ProductDetailActivity.this,BillActivity.class));
+                startActivity(new Intent(ProductDetailActivity.this, BillActivity.class));
             }
         });
 

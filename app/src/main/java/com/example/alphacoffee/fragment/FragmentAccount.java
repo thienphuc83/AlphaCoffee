@@ -15,11 +15,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.alphacoffee.R;
-import com.example.alphacoffee.activity.BillHistoryActivity;
 import com.example.alphacoffee.activity.HelpActivity;
 import com.example.alphacoffee.activity.InfoAccountActivity;
 import com.example.alphacoffee.activity.LoginActivity;
-import com.example.alphacoffee.activity.MainActivity;
 import com.example.alphacoffee.activity.MemberActivity;
 import com.example.alphacoffee.model.User;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,8 +28,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Text;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -132,7 +128,7 @@ public class FragmentAccount extends Fragment {
         layoutLichSu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), BillHistoryActivity.class));
+
             }
         });
 
