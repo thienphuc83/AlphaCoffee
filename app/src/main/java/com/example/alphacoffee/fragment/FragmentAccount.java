@@ -15,10 +15,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.alphacoffee.R;
+import com.example.alphacoffee.activity.BillHistoryActivity;
 import com.example.alphacoffee.activity.HelpActivity;
 import com.example.alphacoffee.activity.InfoAccountActivity;
 import com.example.alphacoffee.activity.LoginActivity;
 import com.example.alphacoffee.activity.MemberActivity;
+import com.example.alphacoffee.activity.OrderHistoryActivity;
 import com.example.alphacoffee.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,7 +36,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class FragmentAccount extends Fragment {
 
     View view, viewKeNgangLichSu;
-    private LinearLayout layoutThanhVien, layoutThongTinTaiKhoan, layoutLichSu, layoutGiupDo, layoutDangXuat, layoutHoaDonNhanVien;
+    private LinearLayout layoutThanhVien, layoutThongTinTaiKhoan, layoutLichSuKH, layoutLichSuNV, layoutGiupDo, layoutDangXuat, layoutHoaDonNhanVien;
     private TextView tvTenTaiKhoan, tvLoaiNguoiDung;
     private CircleImageView imgKhachHang;
     private ImageView imgIconLevel;
@@ -72,11 +74,13 @@ public class FragmentAccount extends Fragment {
                 if (loainguoidung.equals("Nhân viên")){
                     tvLoaiNguoiDung.setText("Nhân viên");
                     layoutHoaDonNhanVien.setVisibility(View.VISIBLE);
-                }else {
-                    layoutThanhVien.setVisibility(View.VISIBLE);
-                    layoutLichSu.setVisibility(View.VISIBLE);
+                    layoutLichSuNV.setVisibility(View.VISIBLE);
                     viewKeNgangLichSu.setVisibility(View.VISIBLE);
+                }else {
                     imgIconLevel.setVisibility(View.VISIBLE);
+                    layoutThanhVien.setVisibility(View.VISIBLE);
+                    layoutLichSuKH.setVisibility(View.VISIBLE);
+                    viewKeNgangLichSu.setVisibility(View.VISIBLE);
                 }
                 tvTenTaiKhoan.setText(user.getName());
                 if (user.getImageURL().equals("default")){
@@ -101,7 +105,8 @@ public class FragmentAccount extends Fragment {
         imgIconLevel = view.findViewById(R.id.imgiconlevel);
         layoutThanhVien= view.findViewById(R.id.layoutthealphacoffee);
         layoutThongTinTaiKhoan= view.findViewById(R.id.layoutthongtintaikhoan);
-        layoutLichSu= view.findViewById(R.id.layoutlichsu);
+        layoutLichSuKH= view.findViewById(R.id.layoutlichsukhachhang);
+        layoutLichSuNV= view.findViewById(R.id.layoutlichsunhanvien);
         layoutGiupDo= view.findViewById(R.id.layoutgiupdo);
         layoutDangXuat= view.findViewById(R.id.layoutdangxuat);
         layoutHoaDonNhanVien= view.findViewById(R.id.layouthoadonnhanvien);
@@ -125,13 +130,18 @@ public class FragmentAccount extends Fragment {
             }
         });
 
-        layoutLichSu.setOnClickListener(new View.OnClickListener() {
+        layoutLichSuKH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(getContext(), BillHistoryActivity.class));
             }
         });
-
+        layoutLichSuNV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), OrderHistoryActivity.class));
+            }
+        });
         layoutGiupDo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

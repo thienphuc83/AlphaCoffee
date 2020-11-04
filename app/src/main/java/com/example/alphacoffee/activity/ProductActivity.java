@@ -29,7 +29,6 @@ public class ProductActivity extends AppCompatActivity {
     private TabLayout tabLayoutProduct;
 
     public static ArrayList<SanPhamOrder> mangsanphamorder;
-    public static String tencuahang = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +38,6 @@ public class ProductActivity extends AppCompatActivity {
         AnhXa();
 
         Init();
-
-        IntentCuaHang();
 
         // khi thoát về cửa hàng và chọn cửa hàng lại vẫn sẽ hiện thông báo khi có sp trong giỏ
         if (mangsanphamorder.size()>0){
@@ -57,13 +54,6 @@ public class ProductActivity extends AppCompatActivity {
         }else if (mangsanphamorder.size()==0){
             imgDot.setVisibility(View.GONE);
         }
-    }
-
-    private void IntentCuaHang() {
-        // nhận đối tượng cửa hàng từ fragnment cửa hàng
-        CuaHang cuaHang = (CuaHang) getIntent().getSerializableExtra("cuahang");
-        tencuahang = cuaHang.getTenCuaHang();
-//        Toast.makeText(this, cuaHang.getTenCuaHang(), Toast.LENGTH_SHORT).show();
 
     }
 

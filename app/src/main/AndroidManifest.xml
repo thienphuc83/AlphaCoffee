@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeAPI23"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.OrderHistoryActivity"></activity>
+        <activity android:name=".activity.NewspaperDetailActivity"></activity>
+        <activity android:name=".activity.StoreDetailActivity" />
+        <activity android:name=".activity.OrderHistoryActivity" />
         <activity android:name=".activity.OrderDetailActivity" />
         <activity android:name=".activity.OrderActivity" />
         <activity android:name=".activity.BillDetailActivity" />

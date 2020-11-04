@@ -1,9 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorTheme4"
     tools:context=".activity.BillHistoryActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:gravity="center_vertical"
+        android:background="@color/colorTheme"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        >
+        <ImageView
+            android:id="@+id/imgbackbillhistory"
+            android:layout_gravity="center_vertical"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/back"
+            android:padding="12dp"/>
+        <TextView
+            android:id="@+id/tvbillhistory"
+            android:textAlignment="center"
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Lịch sử"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/colorBlack"
+            tools:ignore="RtlCompat" />
+
+    </RelativeLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:layout_marginTop="5dp"
+        android:id="@+id/tablayoutbillhistory"
+        app:tabSelectedTextColor="@color/colorTheme"
+        app:tabMode="fixed"
+        app:tabTextAppearance="@style/MyCustomTextAppearance"
+        app:tabTextColor="@color/colorBlack"
+        android:background="@color/colorWhite"
+        app:tabIndicatorColor="@color/colorTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpagerbillhistory"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </androidx.viewpager.widget.ViewPager>
+
+</LinearLayout>

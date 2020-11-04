@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.alphacoffee.R;
 import com.example.alphacoffee.activity.ProductActivity;
+import com.example.alphacoffee.activity.StoreDetailActivity;
 import com.example.alphacoffee.model.CuaHang;
 import com.squareup.picasso.Picasso;
 
@@ -72,8 +73,8 @@ public class CuaHangAdapter extends RecyclerView.Adapter<CuaHangAdapter.ViewHold
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context,ProductActivity.class);
-                    intent.putExtra("cuahang", cuaHangArrayList.get(getPosition()));
+                    Intent intent = new Intent(context, StoreDetailActivity.class);
+                    intent.putExtra("cuahangchitiet", cuaHangArrayList.get(getPosition()));
                     context.startActivity(intent);
                 }
             });

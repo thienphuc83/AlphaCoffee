@@ -72,7 +72,8 @@ public class FragmentStore extends Fragment {
                         cuaHang.getSoDienThoai(),
                         cuaHang.getDiaChi(),
                         cuaHang.getGioMoCua(),
-                        cuaHang.getHinhAnh()));
+                        cuaHang.getHinhAnh(),
+                        cuaHang.getLike()));
 
                 cuaHangAdapter.notifyDataSetChanged();
 //            }

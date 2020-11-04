@@ -1,6 +1,7 @@
 package com.example.alphacoffee.activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -13,21 +14,26 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.alphacoffee.R;
 import com.example.alphacoffee.adapter.SanPhamOrderAdapter;
 import com.example.alphacoffee.model.Bill;
+import com.example.alphacoffee.model.CuaHang;
 import com.example.alphacoffee.model.SanPhamOrder;
 import com.example.alphacoffee.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,16 +41,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class BillActivity extends AppCompatActivity {
 
     private TextView tvGioHang, tvTichDiemBill, tvTongTienOrderBill,
-            tvTenCuaHangBill, tvTenKHBill, tvKieuNhanBill, tvThanhToanBill;
+             tvTenKHBill, tvKieuNhanBill, tvThanhToanBill, tvChonCuaHang;
     private ImageView imgBackBill;
     private RelativeLayout layoutOrderBill;
     private EditText edtGhiChuBill;
+    private Spinner spinnerCuaHang;
     private RecyclerView rvSanPhamOrderBill;
 
     SanPhamOrderAdapter sanPhamOrderAdapter;
@@ -61,11 +69,14 @@ public class BillActivity extends AppCompatActivity {
 
     String tenKH = null;
     String idKH = null;
-    String tenCH = ProductActivity.tencuahang;
+    String tenCH = null;
 
     String diaDiemUong = "";
     String thanhToanBang = "";
 
+    private ArrayList<String> mangTenCuaHang = new ArrayList<>();
+
+    boolean nhapChon = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +113,8 @@ public class BillActivity extends AppCompatActivity {
 
         TongTien();
 
+        ChonCuaHang();
+
         // vuốt để xoa sản phẩm order
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
@@ -120,13 +133,16 @@ public class BillActivity extends AppCompatActivity {
         });
         itemTouchHelper.attachToRecyclerView(rvSanPhamOrderBill);
 
+
         //order
         layoutOrderBill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (ProductActivity.mangsanphamorder.size() > 0) {
                     // bắt đk để insert bill
-                    if (diaDiemUong.equals("")) {
+                    if (nhapChon == false){
+                        Toast.makeText(BillActivity.this, "Bạn chưa chọn cửa hàng!", Toast.LENGTH_SHORT).show();
+                    } else if (diaDiemUong.equals("")) {
                         Toast.makeText(BillActivity.this, "Bạn chưa chọn kiểu nhận order!", Toast.LENGTH_SHORT).show();
                     } else if (thanhToanBang.equals("")) {
                         Toast.makeText(BillActivity.this, "Bạn chưa chọn kiểu thanh toán!", Toast.LENGTH_SHORT).show();
@@ -192,8 +208,40 @@ public class BillActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    private void ChonCuaHang(){
+        mData.child("CuaHang").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                mangTenCuaHang.clear();
+                for (DataSnapshot item : snapshot.getChildren() ){
+                    //
+                    mangTenCuaHang.add(item.child("tenCuaHang").getValue(String.class));
+                }
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(BillActivity.this,android.R.layout.simple_spinner_dropdown_item,mangTenCuaHang);
+                spinnerCuaHang.setAdapter(arrayAdapter);
 
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        spinnerCuaHang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(BillActivity.this, mangTenCuaHang.get(position), Toast.LENGTH_SHORT).show();
+                tenCH = mangTenCuaHang.get(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     private void TongTien() {
@@ -223,14 +271,15 @@ public class BillActivity extends AppCompatActivity {
         tvGioHang = findViewById(R.id.tvgiohang);
         tvTichDiemBill = findViewById(R.id.tvtichdiembill);
         tvTongTienOrderBill = findViewById(R.id.tvtongtienbill);
-        tvTenCuaHangBill = findViewById(R.id.tvtencuahangbill);
         tvTenKHBill = findViewById(R.id.tvtenkhachhangbill);
         tvKieuNhanBill = findViewById(R.id.tvkieunhanbill);
         tvThanhToanBill = findViewById(R.id.tvthanhtoanbangbill);
+        tvChonCuaHang = findViewById(R.id.tvchoncuahangbill);
         imgBackBill = findViewById(R.id.imgbackgiohang);
         layoutOrderBill = findViewById(R.id.layoutorderbill);
         edtGhiChuBill = findViewById(R.id.edtghichubill);
         rvSanPhamOrderBill = findViewById(R.id.rvsanphamorder);
+        spinnerCuaHang = findViewById(R.id.spinnercuahangbill);
 
 
         imgBackBill.setOnClickListener(new View.OnClickListener() {
@@ -251,8 +300,17 @@ public class BillActivity extends AppCompatActivity {
         rvSanPhamOrderBill.setLayoutManager(layoutManager);
         rvSanPhamOrderBill.setAdapter(sanPhamOrderAdapter);
 
-        // lấy tên cửa hàng
-        tvTenCuaHangBill.setText(tenCH);
+
+        // mở spinner chọn cửa hàng
+        tvChonCuaHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nhapChon = true;
+                tvChonCuaHang.setVisibility(View.GONE);
+                spinnerCuaHang.setVisibility(View.VISIBLE);
+            }
+        });
+
 
         //set kiểu nhận order cho bill
         tvKieuNhanBill.setOnClickListener(new View.OnClickListener() {

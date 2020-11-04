@@ -74,43 +74,11 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/colorWhite"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="Cửa hàng"
-                        android:textColor="@color/colorSilver"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/tvtencuahangbill"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="2dp"
-                        android:text="Alpha Coffee 1"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="15sp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="5dp"
                 android:background="@color/colorWhite"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -137,6 +105,50 @@
                         android:text="Lê Văn Tèo"
                         android:textColor="@color/colorBlack"
                         android:textSize="15sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorWhite"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Cửa hàng"
+                        android:textColor="@color/colorSilver"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvchoncuahangbill"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="2dp"
+                        android:text="Chọn cửa hàng"
+                        android:visibility="visible"
+                        android:textColor="@color/colorGray"
+                        android:textSize="15sp" />
+                    <Spinner
+                        android:id="@+id/spinnercuahangbill"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="2dp"
+                        android:text="Alpha Coffee 1"
+                        android:visibility="gone"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="10sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -181,24 +193,6 @@
                     android:textSize="15sp" />
 
             </LinearLayout>
-
-<!--            <LinearLayout-->
-<!--                android:id="@+id/layoutthanhtoanbangbill"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="40dp"-->
-<!--                android:background="@drawable/custom_click_item_account"-->
-<!--                android:gravity="center">-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/tvthanhtoanbangbill"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Thanh toán bằng"-->
-<!--                    android:textAlignment="center"-->
-<!--                    android:textColor="@color/colorBlack"-->
-<!--                    android:textSize="15sp" />-->
-
-<!--            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -4,8 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.FrameLayout;
 
 import com.example.alphacoffee.R;
 import com.example.alphacoffee.fragment.FragmentAccount;
@@ -21,19 +24,28 @@ public class HomeActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     Deque<Integer> integerDeque = new ArrayDeque<>(3);
     boolean flag = true;
+    private FrameLayout layoutMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
+        layoutMenu = findViewById(R.id.layoutmenu);
+
+        layoutMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, ProductActivity.class));
+            }
+        });
 
         // add account fragment
-        integerDeque.push(R.id.menu_store);
+        integerDeque.push(R.id.menu_newspaper);
         //load fragment
-        LoadFragment(new FragmentStore());
+        LoadFragment(new FragmentNewspaper());
         // set account as default fragment
-        bottomNavigationView.setSelectedItemId(R.id.menu_store);
+        bottomNavigationView.setSelectedItemId(R.id.menu_newspaper);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -44,7 +56,7 @@ public class HomeActivity extends AppCompatActivity {
                 if (integerDeque.contains(id)){
                     // when deque list contains selected id
                     // check condition
-                    if (id == R.id.menu_store){
+                    if (id == R.id.menu_newspaper){
                         //when selected id is equal to home fragment id
                         // check condition
                         if (integerDeque.size()!=1){
@@ -53,7 +65,7 @@ public class HomeActivity extends AppCompatActivity {
                             if (flag){
                                 // when flag value is true
                                 // add home fragment in deque list
-                                integerDeque.addFirst(R.id.menu_store);
+                                integerDeque.addFirst(R.id.menu_newspaper);
                                 // set flag = false
                                 flag = false;
                             }
@@ -95,9 +107,9 @@ public class HomeActivity extends AppCompatActivity {
 
         }
         //set checked default account fragment
-        bottomNavigationView.getMenu().getItem(0).setChecked(true);
+        bottomNavigationView.getMenu().getItem(1).setChecked(true);
         // return
-        return new FragmentAccount();
+        return new FragmentNewspaper();
 
     }
 

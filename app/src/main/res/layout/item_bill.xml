@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp">
+
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvsttbillhistory"
+                    android:padding="5dp"
+                    android:background="@drawable/custom_border_img"
+                    android:text="001"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorTheme"
+                    android:textSize="10sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/tvtencuahangbillhistory"
+                    android:layout_marginLeft="10dp"
+                    android:text="Tên cửa hàng"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tvtrangthaibillhistory"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trạng thái"
+                android:textColor="@color/colorTheme"
+                android:textStyle="italic"
+                android:textSize="12sp"/>
+            <TextView
+                android:id="@+id/tvngaytaobillhistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textColor="@color/colorGray"
+                android:text="Ngày tạo"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorSilver"/>
+        <RelativeLayout
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginBottom="5dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/rv"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:textColor="@color/colorBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tổng tiền: "/>
+            <TextView
+                android:id="@+id/tvtongtienbillhistory"
+                android:layout_marginBottom="5dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/rv"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:textColor="@color/colorBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="200.000 đ"/>
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorSilver"/>
+        <RelativeLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnchitietbillhistory"
+                android:background="@drawable/custom_click_btn_chitietbill"
+                android:layout_alignParentRight="true"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:textColor="@color/colorBlack"
+                android:textAllCaps="false"
+                android:textSize="10sp"
+                android:text="Chi tiết"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
