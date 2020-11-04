@@ -15,9 +15,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.alphacoffee.R;
+import com.example.alphacoffee.activity.BillHistoryActivity;
+import com.example.alphacoffee.activity.HelpActivity;
 import com.example.alphacoffee.activity.InfoAccountActivity;
 import com.example.alphacoffee.activity.LoginActivity;
 import com.example.alphacoffee.activity.MainActivity;
+import com.example.alphacoffee.activity.MemberActivity;
 import com.example.alphacoffee.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -115,7 +118,7 @@ public class FragmentAccount extends Fragment {
         layoutThanhVien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(getContext(), MemberActivity.class));
             }
         });
 
@@ -129,14 +132,14 @@ public class FragmentAccount extends Fragment {
         layoutLichSu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(getContext(), BillHistoryActivity.class));
             }
         });
 
         layoutGiupDo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(getContext(), HelpActivity.class));
             }
         });
 

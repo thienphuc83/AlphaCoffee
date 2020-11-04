@@ -2,6 +2,7 @@ package com.example.alphacoffee.activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,9 +11,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -25,13 +28,18 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Objects;
+
+import info.hoang8f.widget.FButton;
 
 public class RegisterActivity extends AppCompatActivity {
     private TextView tvDangKy;
@@ -42,7 +50,9 @@ public class RegisterActivity extends AppCompatActivity {
     private RadioGroup radioGroupCheck;
 
     FirebaseAuth auth;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference, mData;
+
+    String passtaonhanvienmoi = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +62,20 @@ public class RegisterActivity extends AppCompatActivity {
         AnhXa();
 
         auth = FirebaseAuth.getInstance();
+
+        mData = FirebaseDatabase.getInstance().getReference();
+        mData.child("PassTaoNhanVien").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                passtaonhanvienmoi = snapshot.getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         btnDangKy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,8 +97,48 @@ public class RegisterActivity extends AppCompatActivity {
                     final String nguoidung = select_nguoidung.getText().toString();
                     if (TextUtils.isEmpty(name) || TextUtils.isEmpty(pass) || TextUtils.isEmpty(email) || TextUtils.isEmpty(phone)) {
                         Toast.makeText(RegisterActivity.this, "Điền đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
-                    } else {
+                    } else if (nguoidung.equals("Nhân viên")){
+
+                        // khởi tạo dialog
+                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                        builder.setCancelable(false);
+                        //set layout cho dialog
+                        View view = LayoutInflater.from(RegisterActivity.this).inflate(R.layout.dialog_pass_taonhanvien, null);
+                        final EditText edtpassss = view.findViewById(R.id.edtpassdangkynhanvien);
+                        ImageView imgclose = view.findViewById(R.id.imgclosepassdangky);
+                        Button btnkiemtrapass = view.findViewById(R.id.btnpassdangky);
+
+                        //mở dialog
+                        builder.setView(view);
+                        final AlertDialog alertDialog = builder.create();
+                        alertDialog.show();
+
+                        btnkiemtrapass.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                String passnhapvao = edtpassss.getText().toString().trim();
+                                if (passnhapvao.isEmpty()){
+                                    Toast.makeText(RegisterActivity.this, "Không được để trống!", Toast.LENGTH_SHORT).show();
+                                }else {
+                                    if (passnhapvao.equals(passtaonhanvienmoi)){
+                                        DangKy(name, email, pass, phone, gender, nguoidung);
+                                        alertDialog.dismiss();
+                                    }else {
+                                        Toast.makeText(RegisterActivity.this, "Pass sai! Vui lòng kiểm tra lại!", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }
+                        });
+                        imgclose.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                alertDialog.dismiss();
+                            }
+                        });
+
+                    }else {
                         DangKy(name, email, pass, phone, gender, nguoidung);
+
                     }
                 }
             }
