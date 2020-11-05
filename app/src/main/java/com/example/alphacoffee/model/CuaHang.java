@@ -9,19 +9,17 @@ public class CuaHang implements Serializable {
     private String diaChi;
     private String gioMoCua;
     private String hinhAnh;
-    private String like;
 
     public CuaHang() {
     }
 
-    public CuaHang(String cuaHangId, String tenCuaHang, String soDienThoai, String diaChi, String gioMoCua, String hinhAnh, String like) {
+    public CuaHang(String cuaHangId, String tenCuaHang, String soDienThoai, String diaChi, String gioMoCua, String hinhAnh) {
         this.cuaHangId = cuaHangId;
         this.tenCuaHang = tenCuaHang;
         this.soDienThoai = soDienThoai;
         this.diaChi = diaChi;
         this.gioMoCua = gioMoCua;
         this.hinhAnh = hinhAnh;
-        this.like = like;
     }
 
     public String getCuaHangId() {
@@ -70,13 +68,5 @@ public class CuaHang implements Serializable {
 
     public void setHinhAnh(String hinhAnh) {
         this.hinhAnh = hinhAnh;
-    }
-
-    public String getLike() {
-        return like;
-    }
-
-    public void setLike(String like) {
-        this.like = like;
     }
 }

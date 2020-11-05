@@ -20,6 +20,11 @@ public class BillHistoryAdapter extends RecyclerView.Adapter<BillHistoryAdapter.
     Context context;
     ArrayList<Bill> billArrayList;
 
+    public BillHistoryAdapter(Context context, ArrayList<Bill> billArrayList) {
+        this.context = context;
+        this.billArrayList = billArrayList;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
