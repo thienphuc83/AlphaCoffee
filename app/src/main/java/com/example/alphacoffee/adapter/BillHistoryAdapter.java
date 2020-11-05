@@ -1,6 +1,7 @@
 package com.example.alphacoffee.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.alphacoffee.R;
+import com.example.alphacoffee.activity.BillDetailActivity;
 import com.example.alphacoffee.model.Bill;
 
 import java.util.ArrayList;
@@ -20,7 +22,7 @@ public class BillHistoryAdapter extends RecyclerView.Adapter<BillHistoryAdapter.
     Context context;
     ArrayList<Bill> billArrayList;
 
-    public BillHistoryAdapter(Context context, ArrayList<Bill> billArrayList) {
+    public BillHistoryAdapter(Context context, int item_bill, ArrayList<Bill> billArrayList) {
         this.context = context;
         this.billArrayList = billArrayList;
     }
@@ -55,7 +57,7 @@ public class BillHistoryAdapter extends RecyclerView.Adapter<BillHistoryAdapter.
         TextView tvSTT, tvTenCH, tvTrangThai, tvNgayTao, tvTongTien;
         Button btnChiTiet;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull final View itemView) {
             super(itemView);
 
             tvSTT = itemView.findViewById(R.id.tvsttbillhistory);
@@ -63,7 +65,16 @@ public class BillHistoryAdapter extends RecyclerView.Adapter<BillHistoryAdapter.
             tvTrangThai = itemView.findViewById(R.id.tvtrangthaibillhistory);
             tvNgayTao = itemView.findViewById(R.id.tvngaytaobillhistory);
             tvTongTien = itemView.findViewById(R.id.tvtongtienbillhistory);
-            btnChiTiet = itemView.findViewById(R.id.tvsttbillhistory);
+            btnChiTiet = itemView.findViewById(R.id.btnchitietbillhistory);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, BillDetailActivity.class);
+                    intent.putExtra("hoadonchitiet", billArrayList.get(getPosition()));
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

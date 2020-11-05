@@ -90,7 +90,7 @@ public class ProductActivity extends AppCompatActivity {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                startActivity(new Intent(ProductActivity.this, HomeActivity.class));
             }
         });
 
