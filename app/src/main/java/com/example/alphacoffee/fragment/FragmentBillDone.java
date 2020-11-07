@@ -91,9 +91,11 @@ public class FragmentBillDone extends Fragment {
                     tvThongBao.setVisibility(View.VISIBLE);
                     rvBillHistoryDone.setVisibility(View.GONE);
                 }
+
                 String iduser = user.getUserId();
                 String idusertrongbill = bill.getIdKH();
                 String trangthai = bill.getTrangThai();
+
                 // lấy bill theo idKH
                 if (iduser.equals(idusertrongbill)) {
                     if (trangthai.equals("done")){
@@ -114,6 +116,7 @@ public class FragmentBillDone extends Fragment {
                         billHistoryAdapter.notifyDataSetChanged();
                     }else {
                         tvThongBao.setVisibility(View.VISIBLE);
+                        rvBillHistoryDone.setVisibility(View.GONE);
                     }
                 }
             }

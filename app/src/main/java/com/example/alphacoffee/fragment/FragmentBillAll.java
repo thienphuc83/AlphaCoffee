@@ -51,7 +51,7 @@ public class FragmentBillAll extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_billall,container,false);
+        view = inflater.inflate(R.layout.fragment_billall, container, false);
         rvBillHistoryAll = view.findViewById(R.id.rvbillhistoryall);
         tvThongBao = view.findViewById(R.id.tvthongbaobillall);
 
@@ -61,7 +61,7 @@ public class FragmentBillAll extends Fragment {
         mData = FirebaseDatabase.getInstance().getReference();
 
         mangbillall = new ArrayList<>();
-        billHistoryAdapter = new BillHistoryAdapter(getContext(),R.layout.item_bill,mangbillall);
+        billHistoryAdapter = new BillHistoryAdapter(getContext(), R.layout.item_bill, mangbillall);
         rvBillHistoryAll.setLayoutManager(new LinearLayoutManager(getContext()));
         rvBillHistoryAll.setAdapter(billHistoryAdapter);
 
@@ -91,12 +91,14 @@ public class FragmentBillAll extends Fragment {
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 bill = snapshot.getValue(Bill.class);
 //                Log.d("CCC", bill.getTenCH());
-                if (bill == null){
+                if (bill == null) {
                     tvThongBao.setVisibility(View.VISIBLE);
                     rvBillHistoryAll.setVisibility(View.GONE);
                 }
+
                 String iduser = user.getUserId();
                 String idusertrongbill = bill.getIdKH();
+
                 // lấy bill theo idKH
                 if (iduser.equals(idusertrongbill)) {
                     mangbillall.add(new Bill(bill.getIdBill(),
@@ -115,8 +117,6 @@ public class FragmentBillAll extends Fragment {
                             bill.getIdNV()));
                     billHistoryAdapter.notifyDataSetChanged();
                 }
-
-
             }
 
             @Override
@@ -139,7 +139,6 @@ public class FragmentBillAll extends Fragment {
 
             }
         });
-
     }
 }
 

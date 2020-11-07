@@ -38,6 +38,15 @@ public class BillHistoryActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        AnhXa();
+
+        Init();
+    }
+
     private void AnhXa() {
         tvBillHistory = findViewById(R.id.tvbillhistory);
         imgBackBillHistory = findViewById(R.id.imgbackbillhistory);

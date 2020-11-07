@@ -2,6 +2,7 @@ package com.example.alphacoffee.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.example.alphacoffee.R;
 import com.example.alphacoffee.activity.BillDetailActivity;
 import com.example.alphacoffee.model.Bill;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class BillHistoryAdapter extends RecyclerView.Adapter<BillHistoryAdapter.ViewHolder> {
@@ -39,11 +41,33 @@ public class BillHistoryAdapter extends RecyclerView.Adapter<BillHistoryAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         Bill bill = billArrayList.get(position);
-        holder.tvSTT.setText(bill.getSoThuTu());
+
+        String stt = bill.getSoThuTu();
+        String trangthai = bill.getTrangThai();
+
+        if (stt.equals("default")){
+            holder.tvSTT.setText("0");
+        }else {
+            holder.tvSTT.setText(bill.getSoThuTu());
+        }
+
+        if (trangthai.equals("default")){
+            holder.tvTrangThai.setText("Chưa xử lý");
+        }else if (trangthai.equals("Hủy đơn")){
+            holder.tvTrangThai.setText(bill.getTrangThai());
+            holder.tvTrangThai.setTextColor(Color.RED);
+        }else {
+            holder.tvTrangThai.setText(bill.getTrangThai());
+        }
+
         holder.tvTenCH.setText(bill.getTenCH());
-        holder.tvTrangThai.setText(bill.getTrangThai());
         holder.tvNgayTao.setText(bill.getNgayTao());
-        holder.tvTongTien.setText(bill.getTongtien()+"");
+
+        // custom giá
+        long giatien = bill.getTongtien();
+        DecimalFormat decimalFormat =new DecimalFormat("###,###,###");
+        holder.tvTongTien.setText(decimalFormat.format(giatien)+" đ");
+
 
 
     }
@@ -67,7 +91,7 @@ public class BillHistoryAdapter extends RecyclerView.Adapter<BillHistoryAdapter.
             tvTongTien = itemView.findViewById(R.id.tvtongtienbillhistory);
             btnChiTiet = itemView.findViewById(R.id.btnchitietbillhistory);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            btnChiTiet.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, BillDetailActivity.class);
