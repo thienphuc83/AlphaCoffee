@@ -61,6 +61,7 @@ public class FragmentNewspaper extends Fragment {
     TinTucAdapter tinTucAdapter;
     ArrayList<TinTuc> mangtintuc;
 
+    Handler handler= new Handler();
 
 
     @Nullable
@@ -158,7 +159,7 @@ public class FragmentNewspaper extends Fragment {
 
         //banner
         List<Banner> banners = new ArrayList<>();
-        banners.add(new Banner(R.drawable.banner2));
+        banners.add(new Banner(R.drawable.banner1));
         banners.add(new Banner(R.drawable.banner2));
         banners.add(new Banner(R.drawable.banner3));
 
@@ -181,6 +182,17 @@ public class FragmentNewspaper extends Fragment {
         });
         viewPager2.setPageTransformer(compositePageTransformer);
 
+        // auto
+        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                handler.removeCallbacks(runnable);
+                handler.postDelayed(runnable,3000);
+            }
+        });
+
+
         //load data tintuc
         mangtintuc = new ArrayList<>();
         tinTucAdapter = new TinTucAdapter(getContext(), mangtintuc);
@@ -191,4 +203,11 @@ public class FragmentNewspaper extends Fragment {
 
 
     }
+
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            viewPager2.setCurrentItem(viewPager2.getCurrentItem()+1);
+        }
+    };
 }

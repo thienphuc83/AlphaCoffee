@@ -34,6 +34,11 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.setImg(banners.get(position));
+
+        if (position == banners.size() - 2){
+            viewPager2.post(runnable);
+        }
+
     }
 
     @Override
@@ -53,4 +58,11 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.ViewHolder
             img.setImageResource(banner.getImage());
         }
     }
-}
+
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            banners.addAll(banners);
+            notifyDataSetChanged();
+        }
+    };}

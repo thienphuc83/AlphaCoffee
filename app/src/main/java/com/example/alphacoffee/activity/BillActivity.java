@@ -194,7 +194,7 @@ public class BillActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(BillActivity.this, "Order thành công!", Toast.LENGTH_SHORT).show();
                                     // kết thúc màn hình sau khi đặt hàng
-                                    startActivity(new Intent(BillActivity.this, ProductActivity.class));
+//                                    startActivity(new Intent(BillActivity.this, ProductActivity.class));
                                     ProductActivity.mangsanphamorder.clear();
                                     finish();
 
