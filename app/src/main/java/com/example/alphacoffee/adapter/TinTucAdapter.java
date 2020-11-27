@@ -1,6 +1,7 @@
 package com.example.alphacoffee.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.alphacoffee.R;
+import com.example.alphacoffee.activity.NewspaperDetailActivity;
 import com.example.alphacoffee.model.TinTuc;
 import com.squareup.picasso.Picasso;
 
@@ -60,7 +62,7 @@ public class TinTucAdapter extends RecyclerView.Adapter<TinTucAdapter.ViewHolder
         TextView tvTen, tvNoiDung;
         Button btnChiTiet;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull final View itemView) {
             super(itemView);
             imgHinh = itemView.findViewById(R.id.imgtintuc);
             tvNoiDung = itemView.findViewById(R.id.tvnoidungtintuc);
@@ -70,7 +72,9 @@ public class TinTucAdapter extends RecyclerView.Adapter<TinTucAdapter.ViewHolder
             btnChiTiet.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Intent intent = new Intent(context, NewspaperDetailActivity.class);
+                    intent.putExtra("tintucchitiet",tinTucArrayList.get(getPosition()));
+                    context.startActivity(intent);
                 }
             });
 
