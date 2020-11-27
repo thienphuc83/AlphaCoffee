@@ -5,6 +5,17 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
 
+
+    <TextView
+        android:id="@+id/tvthongbaobillall"
+        android:layout_marginTop="40dp"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Không có đơn nào"
+        android:textStyle="italic"
+        android:textColor="@color/colorSilver"
+        />
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="5dp"
         android:visibility="visible"
@@ -13,15 +24,4 @@
         android:layout_height="match_parent">
 
     </androidx.recyclerview.widget.RecyclerView>
-    <TextView
-        android:id="@+id/tvthongbaobillall"
-        android:layout_marginTop="50dp"
-        android:textAlignment="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Không có đơn nào"
-        android:visibility="gone"
-        android:textStyle="italic"
-        android:textColor="@color/colorSilver"
-        />
 </FrameLayout>

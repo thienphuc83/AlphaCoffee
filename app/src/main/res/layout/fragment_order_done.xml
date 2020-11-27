@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tvthongbaobilldone"
+        android:id="@+id/tvthongbaoorderdone"
         android:layout_marginTop="40dp"
         android:textAlignment="center"
         android:layout_width="match_parent"
@@ -15,9 +14,11 @@
         android:textStyle="italic"
         android:textColor="@color/colorSilver"
         />
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="5dp"
-        android:id="@+id/rvbillhistorydone"
+        android:visibility="visible"
+        android:id="@+id/rvorderdone"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

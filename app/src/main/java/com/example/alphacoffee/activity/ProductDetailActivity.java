@@ -17,6 +17,8 @@ import com.example.alphacoffee.R;
 import com.example.alphacoffee.model.SanPham;
 import com.example.alphacoffee.model.SanPhamOrder;
 import com.example.alphacoffee.model.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -32,7 +34,7 @@ import info.hoang8f.widget.FButton;
 
 public class ProductDetailActivity extends AppCompatActivity {
 
-    private ImageView imgClose, imgProductDetail, imgLikeProDuctDetail, imgCheckTopping;
+    private ImageView imgClose, imgProductDetail, imgLikeProDuctDetail, imgNoLikeProDuctDetail, imgCheckTopping;
     private TextView tvTenProductDetail, tvGiaProductDetail, tvSoLuongproductDetail,
             tvTongTienProductDetail, tvMoTaProductDetail,
             tvGiaSizeLonProductDetail, tvGiaSizeVuaProductDetail, tvGiaSizeNhoProductDetail,
@@ -45,6 +47,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     FirebaseUser firebaseUser;
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
+    DatabaseReference mData;
     User user;
 
     SanPham sanPham;
@@ -54,7 +57,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     int GiaSize = 0;
     int GiaTopping = 0;
     int tongtien = 0;
-    String Toppingsp = null;
+    String Toppingsp = "null";
     String Sizesp = null;
 
     @Override
@@ -67,6 +70,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+        mData = FirebaseDatabase.getInstance().getReference();
 
         //User
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -75,11 +79,13 @@ public class ProductDetailActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 user = dataSnapshot.getValue(User.class);
                 assert user != null;
-
+                // phân quyền người dùng
                 String loainguoidung= user.getType();
                 if (loainguoidung.equals("Khách hàng")){
                     layoutTongTien.setVisibility(View.VISIBLE);
                     layoutLikeCongTruSoLuong.setVisibility(View.VISIBLE);
+                    // nếu là khách hàng thì cho chọn topping
+                    ChonTopping();
                 }
             }
 
@@ -95,7 +101,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         ChonSoLuong();
 
         //chọn topping cho sp
-        ChonTopping();
+//        ChonTopping();
 
         //chon size cho sp
         ChonSize();
@@ -103,6 +109,10 @@ public class ProductDetailActivity extends AppCompatActivity {
         //tính tổng tiền khi thay đổi số lượng, size, thêm bớt topping
         TinhTongTien();
 
+        // khi KH Like sản phẩm
+        LikeSP();
+
+        //thêm sp vào mảng giỏ hàng
         layoutTongTien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,7 +130,6 @@ public class ProductDetailActivity extends AppCompatActivity {
 
                 ProductActivity.mangsanphamorder.add(new SanPhamOrder(idsp,tensp,tonggiasp,sizesp,topping,hinhsp,soluongsp,idbill));
                 Toast.makeText(ProductDetailActivity.this, "Đã thêm vào giỏ hàng!", Toast.LENGTH_SHORT).show();
-
                 finish();
 
             }
@@ -129,10 +138,58 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     }
 
+    private void LikeSP() {
+        final int likecu = Integer.parseInt(sanPham.getLike());
+        // bình thường nolike sẽ hiện,
+        imgNoLikeProDuctDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int likemoi1 = likecu + 1;
+                imgNoLikeProDuctDetail.setVisibility(View.GONE);
+                imgLikeProDuctDetail.setVisibility(View.VISIBLE);
+                Toast.makeText(ProductDetailActivity.this, "Đã thích!", Toast.LENGTH_SHORT).show();
+                String likemoimoi1 = String.valueOf(likemoi1);
+                //set vào db
+                mData.child("SanPham").child(sanPham.getProductId()).child("like").setValue(likemoimoi1).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+//                        Toast.makeText(ProductDetailActivity.this, "Thích thành công", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+        //khi click nolike thì like mới hiện
+        imgLikeProDuctDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int likemoi2 = likecu;
+                imgLikeProDuctDetail.setVisibility(View.GONE);
+                imgNoLikeProDuctDetail.setVisibility(View.VISIBLE);
+                Toast.makeText(ProductDetailActivity.this, "Bỏ thích!", Toast.LENGTH_SHORT).show();
+                String likemoimoi2 = String.valueOf(likemoi2);
+                //set vào db
+                mData.child("SanPham").child(sanPham.getProductId()).child("like").setValue(likemoimoi2).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+//                        Toast.makeText(ProductDetailActivity.this, "Bỏ Thích thành công", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
+
+
+
+
+    }
+
     private void TinhTongTien() {
         // Tính tổng tiền
         tongtien = (SLMoiNhat * GiaSize)+ GiaTopping;
-        tvTongTienProductDetail.setText(tongtien+"");
+        DecimalFormat decimalFormat2 =new DecimalFormat("###,###,###");
+        tvTongTienProductDetail.setText(decimalFormat2.format(tongtien)+ " đ");
+
+//        tvTongTienProductDetail.setText(tongtien+"");
 
     }
 
@@ -184,7 +241,7 @@ public class ProductDetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 imgCheckTopping.setVisibility(View.GONE);
                 GiaTopping = 0;
-                Toppingsp = null;
+                Toppingsp = "null";
                 Toast.makeText(ProductDetailActivity.this, "Bạn đã bỏ chọn topping!", Toast.LENGTH_SHORT).show();
                 TinhTongTien();
 
@@ -289,6 +346,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     private void AnhXa() {
         imgClose = findViewById(R.id.imgcloseproductdetail);
         imgLikeProDuctDetail = findViewById(R.id.imglikeproductdetail);
+        imgNoLikeProDuctDetail = findViewById(R.id.imgnolikeproductdetail);
         imgProductDetail = findViewById(R.id.imgproductdetail);
         imgCheckTopping = findViewById(R.id.imgchecktopping);
         tvTenProductDetail = findViewById(R.id.tvtenproductdetail);

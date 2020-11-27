@@ -11,6 +11,9 @@
     <color name="colorTheme4">#2623A8D9</color>
     <color name="colorTheme5">#0D23A8D9</color>
 
+    <color name="colorThemeBackroundMenu">#55BBE1</color>
+    <color name="colorThemeBackroundMenu1">#8FCCE3</color>
+
     <color name="transparent">#00000000</color>
 
     <color name="theme">#0f1837</color>

@@ -88,12 +88,25 @@
                     android:orientation="horizontal"
                     android:visibility="gone">
 
-                    <ImageView
-                        android:id="@+id/imglikeproductdetail"
+                    <FrameLayout
                         android:layout_width="40dp"
-                        android:layout_height="match_parent"
-                        android:padding="5dp"
-                        android:src="@drawable/ic_heart" />
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/imgnolikeproductdetail"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="5dp"
+                            android:visibility="visible"
+                            android:src="@drawable/ic_heart" />
+                        <ImageView
+                            android:id="@+id/imglikeproductdetail"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="5dp"
+                            android:visibility="gone"
+                            android:src="@drawable/ic_heartcheck" />
+                    </FrameLayout>
+
 
                     <info.hoang8f.widget.FButton
                         android:id="@+id/btntruproductdetail"

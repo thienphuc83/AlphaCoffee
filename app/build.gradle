@@ -63,6 +63,10 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.5.2'
     compile 'info.hoang8f:fbutton:1.0.5'
 
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+    implementation "com.makeramen:roundedimageview:2.3.0"
+
+
     //git
     implementation 'com.github.Cutta:GifView:1.4'
 

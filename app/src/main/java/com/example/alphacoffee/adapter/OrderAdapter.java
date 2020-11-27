@@ -14,17 +14,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.alphacoffee.R;
 import com.example.alphacoffee.activity.BillDetailActivity;
+import com.example.alphacoffee.activity.OrderActivity;
 import com.example.alphacoffee.model.Bill;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class BillHistoryAdapter extends RecyclerView.Adapter<BillHistoryAdapter.ViewHolder> {
+public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> {
 
     Context context;
     ArrayList<Bill> billArrayList;
 
-    public BillHistoryAdapter(Context context, int item_bill, ArrayList<Bill> billArrayList) {
+    public OrderAdapter(Context context, ArrayList<Bill> billArrayList) {
         this.context = context;
         this.billArrayList = billArrayList;
     }
@@ -32,8 +33,7 @@ public class BillHistoryAdapter extends RecyclerView.Adapter<BillHistoryAdapter.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.item_bill,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_order,parent,false);
         return new ViewHolder(view);
     }
 
@@ -54,15 +54,6 @@ public class BillHistoryAdapter extends RecyclerView.Adapter<BillHistoryAdapter.
         if (trangthai.equals("default")){
             holder.tvTrangThai.setText("Chưa xử lý");
             holder.tvTrangThai.setTextColor(Color.YELLOW);
-        }else if (trangthai.equals("Hủy đơn")){
-            holder.tvTrangThai.setText(bill.getTrangThai());
-            holder.tvTrangThai.setTextColor(Color.RED);
-        }else if (trangthai.equals("Hoàn thành")){
-            holder.tvTrangThai.setText(bill.getTrangThai());
-            holder.tvTrangThai.setTextColor(Color.GREEN);
-        }else if (trangthai.equals("Đang xử lý")){
-            holder.tvTrangThai.setText(bill.getTrangThai());
-            holder.tvTrangThai.setTextColor(Color.BLUE);
         }
 
         holder.tvTenCH.setText(bill.getTenCH());
@@ -82,23 +73,22 @@ public class BillHistoryAdapter extends RecyclerView.Adapter<BillHistoryAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView tvSTT, tvTenCH, tvTrangThai, tvNgayTao, tvTongTien;
-        Button btnChiTiet;
-
-        public ViewHolder(@NonNull final View itemView) {
+        Button btnOrder;
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tvSTT = itemView.findViewById(R.id.tvsttbillhistory);
-            tvTenCH = itemView.findViewById(R.id.tvtencuahangbillhistory);
-            tvTrangThai = itemView.findViewById(R.id.tvtrangthaibillhistory);
-            tvNgayTao = itemView.findViewById(R.id.tvngaytaobillhistory);
-            tvTongTien = itemView.findViewById(R.id.tvtongtienbillhistory);
-            btnChiTiet = itemView.findViewById(R.id.btnchitietbillhistory);
+            tvSTT = itemView.findViewById(R.id.tvsttorder);
+            tvTenCH = itemView.findViewById(R.id.tvtencuahangorder);
+            tvTrangThai = itemView.findViewById(R.id.tvtrangthaiorder);
+            tvNgayTao = itemView.findViewById(R.id.tvngaytaoorder);
+            tvTongTien = itemView.findViewById(R.id.tvtongtienorder);
+            btnOrder = itemView.findViewById(R.id.btnorder);
 
-            btnChiTiet.setOnClickListener(new View.OnClickListener() {
+            btnOrder.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context, BillDetailActivity.class);
-                    intent.putExtra("hoadonchitiet", billArrayList.get(getPosition()));
+                    Intent intent = new Intent(context, OrderActivity.class);
+                    intent.putExtra("order", billArrayList.get(getPosition()));
                     context.startActivity(intent);
                 }
             });

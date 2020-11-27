@@ -8,7 +8,7 @@
     tools:context=".activity.ExampleActivity">
 
     <EditText
-        android:id="@+id/edttenSP"
+        android:id="@+id/edtTen"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
         android:textSize="15dp" />
 
     <EditText
-        android:id="@+id/edttenHinh"
+        android:id="@+id/edtHinh"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,37 +30,16 @@
         android:textSize="15dp" />
 
     <EditText
-        android:id="@+id/edtGio"
+        android:id="@+id/edtMoTa"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Giá Lớn"
+        android:hint="mota"
         android:inputType="text"
         android:textColor="@color/colorBlack"
         android:textColorHint="@color/colorBlack"
         android:textSize="15dp" />
 
-    <EditText
-        android:id="@+id/edtDiaChi"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Giá Vừa"
-        android:inputType="text"
-        android:textColor="@color/colorBlack"
-        android:textColorHint="@color/colorBlack"
-        android:textSize="15dp" />
-
-    <EditText
-        android:id="@+id/edtSDT"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Giá nhỏ"
-        android:inputType="text"
-        android:textColor="@color/colorBlack"
-        android:textColorHint="@color/colorBlack"
-        android:textSize="15dp" />
 
 
     <Button

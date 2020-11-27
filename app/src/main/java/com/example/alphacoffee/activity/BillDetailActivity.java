@@ -173,7 +173,11 @@ public class BillDetailActivity extends AppCompatActivity {
         } else if (trangthai.equals("Hủy đơn")) {
             tvTrangThaiBillDetail.setTextColor(getResources().getColor(R.color.colorRed));
             tvTrangThaiBillDetail.setText(bill.getTrangThai());
-        } else {
+        } else if (trangthai.equals("Đang xử lý")){
+            tvTrangThaiBillDetail.setTextColor(getResources().getColor(R.color.colorBlue));
+            tvTrangThaiBillDetail.setText(bill.getTrangThai());
+        }else if (trangthai.equals("Hoàn thành")){
+            tvTrangThaiBillDetail.setTextColor(getResources().getColor(R.color.colorGreen));
             tvTrangThaiBillDetail.setText(bill.getTrangThai());
         }
 

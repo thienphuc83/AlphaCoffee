@@ -39,6 +39,14 @@ public class SanPhamOrderAdapter extends RecyclerView.Adapter<SanPhamOrderAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         SanPhamOrder sanPhamOrder = sanPhamOrderArrayList.get(position);
+
+        String topping = sanPhamOrder.getTopping();
+        if (topping.equals("null")){
+            holder.tvToppingSPOrder.setText("Topping: Không");
+        }else {
+            holder.tvToppingSPOrder.setText("Topping: Thêm "+sanPhamOrder.getTopping());
+        }
+
         holder.tvTenSPOrder.setText(sanPhamOrder.getName());
 
         // custom giá
@@ -47,6 +55,7 @@ public class SanPhamOrderAdapter extends RecyclerView.Adapter<SanPhamOrderAdapte
         holder.tvGiaSPOrder.setText(decimalFormat.format(giatien)+" đ");
 
         holder.tvSizeSPOrder.setText(sanPhamOrder.getSize());
+
         holder.tvSoLuongSPOrder.setText(sanPhamOrder.getSoluong()+"");
         Picasso.with(context).load(sanPhamOrder.getImageURL()).placeholder(R.mipmap.ic_app_foreground).into(holder.imgHinhSPOrder);
 
@@ -60,7 +69,7 @@ public class SanPhamOrderAdapter extends RecyclerView.Adapter<SanPhamOrderAdapte
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         ImageView imgHinhSPOrder;
-        TextView tvTenSPOrder, tvSizeSPOrder, tvGiaSPOrder, tvSoLuongSPOrder;
+        TextView tvTenSPOrder, tvSizeSPOrder, tvGiaSPOrder, tvSoLuongSPOrder, tvToppingSPOrder;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -69,6 +78,7 @@ public class SanPhamOrderAdapter extends RecyclerView.Adapter<SanPhamOrderAdapte
             tvSizeSPOrder = itemView.findViewById(R.id.tvsizesanphamorder);
             tvSoLuongSPOrder = itemView.findViewById(R.id.tvsoluongsanphamorder);
             tvGiaSPOrder = itemView.findViewById(R.id.tvgiasanphamorder);
+            tvToppingSPOrder = itemView.findViewById(R.id.tvtoppingsanphamorder);
 
         }
     }

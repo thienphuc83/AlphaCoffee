@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -45,12 +46,12 @@ public class FragmentBillAll extends Fragment {
     DatabaseReference mData;
 
     User user;
-    Bill bill;
+    Bill bill, cobillthaydoi;
 
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_billall, container, false);
         rvBillHistoryAll = view.findViewById(R.id.rvbillhistoryall);
         tvThongBao = view.findViewById(R.id.tvthongbaobillall);
@@ -61,17 +62,11 @@ public class FragmentBillAll extends Fragment {
         mData = FirebaseDatabase.getInstance().getReference();
 
         mangbillall = new ArrayList<>();
-        billHistoryAdapter = new BillHistoryAdapter(getContext(), R.layout.item_bill, mangbillall);
+        billHistoryAdapter = new BillHistoryAdapter(getContext(),R.layout.item_bill,mangbillall);
         rvBillHistoryAll.setLayoutManager(new LinearLayoutManager(getContext()));
         rvBillHistoryAll.setAdapter(billHistoryAdapter);
 
-        LoadData();
-
-        return view;
-    }
-
-    private void LoadData() {
-
+        //lấy data user
         databaseReference.addValueEventListener(new ValueEventListener() {
             @SuppressLint("ResourceAsColor")
             @Override
@@ -86,36 +81,114 @@ public class FragmentBillAll extends Fragment {
             }
         });
 
+        //lấy data bill
         mData.child("Bill").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 bill = snapshot.getValue(Bill.class);
 //                Log.d("CCC", bill.getTenCH());
-                if (bill == null) {
-                    tvThongBao.setVisibility(View.VISIBLE);
-                    rvBillHistoryAll.setVisibility(View.GONE);
-                }
 
                 String iduser = user.getUserId();
                 String idusertrongbill = bill.getIdKH();
+                String trangthai = bill.getTrangThai();
 
                 // lấy bill theo idKH
                 if (iduser.equals(idusertrongbill)) {
-                    mangbillall.add(new Bill(bill.getIdBill(),
-                            bill.getSoThuTu(),
-                            bill.getNgayTao(),
-                            bill.getTongtien(),
-                            bill.getTrangThai(),
-                            bill.getDiaDiem(),
-                            bill.getGhiChu(),
-                            bill.getLoaiThanhToan(),
-                            bill.getTichDiem(),
-                            bill.getIdKH(),
-                            bill.getTenKH(),
-                            bill.getTenCH(),
-                            bill.getTenNV(),
-                            bill.getIdNV()));
-                    billHistoryAdapter.notifyDataSetChanged();
+                    if (trangthai.equals("default") || trangthai.equals("Đang xử lý") || trangthai.equals("Hủy đơn")) {
+                        mangbillall.add(new Bill(bill.getIdBill(),
+                                bill.getSoThuTu(),
+                                bill.getNgayTao(),
+                                bill.getTongtien(),
+                                bill.getTrangThai(),
+                                bill.getDiaDiem(),
+                                bill.getGhiChu(),
+                                bill.getLoaiThanhToan(),
+                                bill.getTichDiem(),
+                                bill.getIdKH(),
+                                bill.getTenKH(),
+                                bill.getTenCH(),
+                                bill.getTenNV(),
+                                bill.getIdNV()));
+                        billHistoryAdapter.notifyDataSetChanged();
+                    }
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                // nếu có data thay đổi thì load lại bill
+//                LoadData();
+                // thông báo cho người dùng: đơn hàng đã đc nhận và đang xử lý
+                // không có vẫn đc nhưng phải để ở màn hình frag hoàn thành nếu để màn hình frag all thì crack app
+                cobillthaydoi = snapshot.getValue(Bill.class);
+                String idKHdangxem = user.getUserId();
+                String idKHbillthaydoi = cobillthaydoi.getIdKH();
+                String trangthaibillthaydoi =  cobillthaydoi.getTrangThai();
+                if (idKHdangxem.equals(idKHbillthaydoi)){
+                    if (trangthaibillthaydoi.equals("Hoàn thành")|| trangthaibillthaydoi.equals("Đang xử lý")) {
+//                        Toast.makeText(getContext(), "có 1 đơn đã chuyển sang đang xử lý!", Toast.LENGTH_SHORT).show();
+                        LoadData();
+                    }
+                }else if (!idKHdangxem.equals(idKHbillthaydoi)){
+//                    Toast.makeText(getContext(), "có 1 hoàn thành nhưng của tài khoản khác", Toast.LENGTH_SHORT).show();
+                    //tránh crack app
+                    LoadData();
+                }
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+        return view;
+    }
+
+    private void LoadData() {
+        mangbillall.clear();
+
+        mData.child("Bill").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                bill = snapshot.getValue(Bill.class);
+//                Log.d("CCC", bill.getTenCH());
+
+                String iduser = user.getUserId();
+                String idusertrongbill = bill.getIdKH();
+                String trangthai = bill.getTrangThai();
+
+                // lấy bill theo idKH
+                if (iduser.equals(idusertrongbill)) {
+                    if (trangthai.equals("default") || trangthai.equals("Đang xử lý") || trangthai.equals("Đã hủy")) {
+                        mangbillall.add(new Bill(bill.getIdBill(),
+                                bill.getSoThuTu(),
+                                bill.getNgayTao(),
+                                bill.getTongtien(),
+                                bill.getTrangThai(),
+                                bill.getDiaDiem(),
+                                bill.getGhiChu(),
+                                bill.getLoaiThanhToan(),
+                                bill.getTichDiem(),
+                                bill.getIdKH(),
+                                bill.getTenKH(),
+                                bill.getTenCH(),
+                                bill.getTenNV(),
+                                bill.getIdNV()));
+                        billHistoryAdapter.notifyDataSetChanged();
+                    }
                 }
             }
 
@@ -139,6 +212,7 @@ public class FragmentBillAll extends Fragment {
 
             }
         });
+
     }
 }
 

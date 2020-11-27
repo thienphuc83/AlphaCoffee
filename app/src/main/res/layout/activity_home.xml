@@ -12,33 +12,49 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+
         <FrameLayout
             android:id="@+id/framelayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
         </FrameLayout>
 
-        <FrameLayout
+        <LinearLayout
             android:id="@+id/layoutmenu"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="right|bottom">
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="right|bottom"
+            android:background="@drawable/custom_border_menu_gif"
+            android:orientation="vertical">
 
-            <com.cunoraz.gifview.library.GifView
-                android:id="@+id/gif1"
+            <RelativeLayout
+                android:gravity="center"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                custom:gif="@mipmap/source" />
+                android:layout_height="match_parent">
+                <com.cunoraz.gifview.library.GifView
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="130dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    custom:gif="@mipmap/drinkoneunscreen" />
 
-            <com.cunoraz.gifview.library.GifView
-                android:id="@+id/gif2"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="right|bottom"
-                custom:gif="@mipmap/menunho" />
-        </FrameLayout>
+                <TextView
+                    android:id="@+id/tvorderngay"
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:text="Order ngay"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp"
+                    tools:ignore="RtlCompat" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

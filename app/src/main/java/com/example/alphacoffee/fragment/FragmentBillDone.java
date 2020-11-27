@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -42,7 +43,7 @@ public class FragmentBillDone extends Fragment {
     DatabaseReference mData;
 
     User user;
-    Bill bill;
+    Bill bill, cobillthaydoi;
 
     @Nullable
     @Override
@@ -61,12 +62,7 @@ public class FragmentBillDone extends Fragment {
         rvBillHistoryDone.setLayoutManager(new LinearLayoutManager(getContext()));
         rvBillHistoryDone.setAdapter(billHistoryAdapter);
 
-        LoadData();
-        return view;
-    }
-
-    private void LoadData() {
-
+        //lấy data user
         databaseReference.addValueEventListener(new ValueEventListener() {
             @SuppressLint("ResourceAsColor")
             @Override
@@ -81,16 +77,12 @@ public class FragmentBillDone extends Fragment {
             }
         });
 
+        //lấy data bill
         mData.child("Bill").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 bill = snapshot.getValue(Bill.class);
 //                Log.d("CCC", bill.getTenCH());
-
-                if (bill == null){
-                    tvThongBao.setVisibility(View.VISIBLE);
-                    rvBillHistoryDone.setVisibility(View.GONE);
-                }
 
                 String iduser = user.getUserId();
                 String idusertrongbill = bill.getIdKH();
@@ -98,7 +90,7 @@ public class FragmentBillDone extends Fragment {
 
                 // lấy bill theo idKH
                 if (iduser.equals(idusertrongbill)) {
-                    if (trangthai.equals("done")){
+                    if (trangthai.equals("Hoàn thành")){
                         mangbilldone.add(new Bill(bill.getIdBill(),
                                 bill.getSoThuTu(),
                                 bill.getNgayTao(),
@@ -114,9 +106,86 @@ public class FragmentBillDone extends Fragment {
                                 bill.getTenNV(),
                                 bill.getIdNV()));
                         billHistoryAdapter.notifyDataSetChanged();
+                    }
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                // nếu có data thay đổi thì load lại bill
+//                LoadData();
+                // thông báo cho người dùng: đơn hàng đã hoàn thành và đang giao hàng
+                // thông báo cho người dùng: đơn hàng đã đc nhận và đang xử lý
+                cobillthaydoi = snapshot.getValue(Bill.class);
+                String idKHdangxem = user.getUserId();
+                String idKHbillthaydoi = cobillthaydoi.getIdKH();
+                String trangthaibillthaydoi =  cobillthaydoi.getTrangThai();
+                if (idKHdangxem.equals(idKHbillthaydoi)){
+                    if (  trangthaibillthaydoi.equals("Hoàn thành")){
+//                        Toast.makeText(getContext(), "Có 1 đơn đã hoàn thành,bật thông báo tại đây!", Toast.LENGTH_SHORT).show();
+                        // bật thông báo ngay đây
+                        LoadData();
                     }else {
-                        tvThongBao.setVisibility(View.VISIBLE);
-                        rvBillHistoryDone.setVisibility(View.GONE);
+                        LoadData();
+                    }
+
+                }else if (!idKHdangxem.equals(idKHbillthaydoi)){
+//                    Toast.makeText(getContext(), "có đơn hoàn thành nhưng của tài khoản khác! aheee", Toast.LENGTH_SHORT).show();
+                    LoadData();
+                }
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        return view;
+    }
+
+    private void LoadData() {
+        //clear mảng
+        mangbilldone.clear();
+        // load lại data sau thay đổi
+        mData.child("Bill").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                bill = snapshot.getValue(Bill.class);
+//                Log.d("CCC", bill.getTenCH());
+
+                String iduser = user.getUserId();
+                String idusertrongbill = bill.getIdKH();
+                String trangthai = bill.getTrangThai();
+
+                // lấy bill theo idKH
+                if (iduser.equals(idusertrongbill)) {
+                    if (trangthai.equals("Hoàn thành")){
+                        mangbilldone.add(new Bill(bill.getIdBill(),
+                                bill.getSoThuTu(),
+                                bill.getNgayTao(),
+                                bill.getTongtien(),
+                                bill.getTrangThai(),
+                                bill.getDiaDiem(),
+                                bill.getGhiChu(),
+                                bill.getLoaiThanhToan(),
+                                bill.getTichDiem(),
+                                bill.getIdKH(),
+                                bill.getTenKH(),
+                                bill.getTenCH(),
+                                bill.getTenNV(),
+                                bill.getIdNV()));
+                        billHistoryAdapter.notifyDataSetChanged();
                     }
                 }
             }

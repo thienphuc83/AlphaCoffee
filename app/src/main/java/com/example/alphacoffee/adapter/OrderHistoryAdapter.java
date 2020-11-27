@@ -14,17 +14,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.alphacoffee.R;
 import com.example.alphacoffee.activity.BillDetailActivity;
+import com.example.alphacoffee.activity.OrderDetailActivity;
 import com.example.alphacoffee.model.Bill;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class BillHistoryAdapter extends RecyclerView.Adapter<BillHistoryAdapter.ViewHolder> {
-
+public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapter.ViewHolder> {
     Context context;
     ArrayList<Bill> billArrayList;
 
-    public BillHistoryAdapter(Context context, int item_bill, ArrayList<Bill> billArrayList) {
+    public OrderHistoryAdapter(Context context, ArrayList<Bill> billArrayList) {
         this.context = context;
         this.billArrayList = billArrayList;
     }
@@ -39,25 +39,11 @@ public class BillHistoryAdapter extends RecyclerView.Adapter<BillHistoryAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
         Bill bill = billArrayList.get(position);
 
-        String stt = bill.getSoThuTu();
         String trangthai = bill.getTrangThai();
 
-        if (stt.equals("default")){
-            holder.tvSTT.setText("0");
-        }else {
-            holder.tvSTT.setText(bill.getSoThuTu());
-        }
-
-        if (trangthai.equals("default")){
-            holder.tvTrangThai.setText("Chưa xử lý");
-            holder.tvTrangThai.setTextColor(Color.YELLOW);
-        }else if (trangthai.equals("Hủy đơn")){
-            holder.tvTrangThai.setText(bill.getTrangThai());
-            holder.tvTrangThai.setTextColor(Color.RED);
-        }else if (trangthai.equals("Hoàn thành")){
+        if (trangthai.equals("Hoàn thành")){
             holder.tvTrangThai.setText(bill.getTrangThai());
             holder.tvTrangThai.setTextColor(Color.GREEN);
         }else if (trangthai.equals("Đang xử lý")){
@@ -67,6 +53,7 @@ public class BillHistoryAdapter extends RecyclerView.Adapter<BillHistoryAdapter.
 
         holder.tvTenCH.setText(bill.getTenCH());
         holder.tvNgayTao.setText(bill.getNgayTao());
+        holder.tvSTT.setText(bill.getSoThuTu());
 
         // custom giá
         long giatien = bill.getTongtien();
@@ -84,9 +71,8 @@ public class BillHistoryAdapter extends RecyclerView.Adapter<BillHistoryAdapter.
         TextView tvSTT, tvTenCH, tvTrangThai, tvNgayTao, tvTongTien;
         Button btnChiTiet;
 
-        public ViewHolder(@NonNull final View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             tvSTT = itemView.findViewById(R.id.tvsttbillhistory);
             tvTenCH = itemView.findViewById(R.id.tvtencuahangbillhistory);
             tvTrangThai = itemView.findViewById(R.id.tvtrangthaibillhistory);
@@ -97,11 +83,13 @@ public class BillHistoryAdapter extends RecyclerView.Adapter<BillHistoryAdapter.
             btnChiTiet.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context, BillDetailActivity.class);
-                    intent.putExtra("hoadonchitiet", billArrayList.get(getPosition()));
+                    Intent intent = new Intent(context, OrderDetailActivity.class);
+                    intent.putExtra("orderchitiet", billArrayList.get(getPosition()));
                     context.startActivity(intent);
                 }
             });
         }
     }
+
+
 }

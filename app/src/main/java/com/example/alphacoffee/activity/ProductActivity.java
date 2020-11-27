@@ -1,5 +1,6 @@
 package com.example.alphacoffee.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
@@ -17,7 +18,15 @@ import com.example.alphacoffee.fragment.FragmentDoUong;
 import com.example.alphacoffee.fragment.FragmentPhoBien;
 import com.example.alphacoffee.model.CuaHang;
 import com.example.alphacoffee.model.SanPhamOrder;
+import com.example.alphacoffee.model.User;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -30,12 +39,39 @@ public class ProductActivity extends AppCompatActivity {
 
     public static ArrayList<SanPhamOrder> mangsanphamorder;
 
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
+    DatabaseReference databaseReference;
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
 
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+
         AnhXa();
+
+        // set quyền xem giỏ hàng
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+
+                String loainguoidung = user.getType();
+                if (loainguoidung.equals("Khách hàng")){
+                    imgShoppingCart.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         Init();
 
@@ -90,7 +126,7 @@ public class ProductActivity extends AppCompatActivity {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ProductActivity.this, HomeActivity.class));
+                finish();
             }
         });
 

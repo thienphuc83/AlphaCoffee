@@ -21,6 +21,7 @@ import com.example.alphacoffee.activity.InfoAccountActivity;
 import com.example.alphacoffee.activity.LoginActivity;
 import com.example.alphacoffee.activity.MemberActivity;
 import com.example.alphacoffee.activity.OrderHistoryActivity;
+import com.example.alphacoffee.activity.OrderListActivity;
 import com.example.alphacoffee.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -158,6 +159,13 @@ public class FragmentAccount extends Fragment {
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
 
+            }
+        });
+
+        layoutHoaDonNhanVien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), OrderListActivity.class));
             }
         });
     }

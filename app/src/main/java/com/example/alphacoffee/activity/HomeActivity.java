@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.alphacoffee.R;
 import com.example.alphacoffee.fragment.FragmentAccount;
@@ -21,18 +24,25 @@ import java.util.Deque;
 
 public class HomeActivity extends AppCompatActivity {
 
+    private TextView tvOrderNgay;
     private BottomNavigationView bottomNavigationView;
     Deque<Integer> integerDeque = new ArrayDeque<>(3);
     boolean flag = true;
-    private FrameLayout layoutMenu;
+    private LinearLayout layoutMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        tvOrderNgay = findViewById(R.id.tvorderngay);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         layoutMenu = findViewById(R.id.layoutmenu);
 
+        //set font tvlogan
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/NABILA.TTF");
+        tvOrderNgay.setTypeface(typeface);
+
+        // click vào menu
         layoutMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

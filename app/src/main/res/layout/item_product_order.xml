@@ -53,18 +53,35 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="12sp"
                 />
-            <TextView
-                android:id="@+id/tvsoluongsanphamorder"
-                android:textAlignment="center"
-                android:background="@drawable/custom_border_img"
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_marginTop="5dp"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:text="3"
-                android:gravity="center_vertical"
-                android:textColor="@color/colorBlack"
-                android:textSize="12sp"
-                tools:ignore="RtlCompat" />
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+                <TextView
+                    android:id="@+id/tvsoluongsanphamorder"
+                    android:textAlignment="center"
+                    android:background="@drawable/custom_border_img"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:text="3"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    tools:ignore="RtlCompat" />
+                <TextView
+                    android:id="@+id/tvtoppingsanphamorder"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Topping"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    tools:ignore="RtlCompat" />
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/tvgiasanphamorder"
                 android:layout_marginTop="5dp"
