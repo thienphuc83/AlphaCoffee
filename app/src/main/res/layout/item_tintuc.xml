@@ -2,75 +2,81 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="280dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="5dp"
     android:layout_marginRight="5dp"
+    android:layout_marginBottom="5dp"
     app:cardCornerRadius="5dp">
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorWhite"
         android:orientation="vertical">
 
         <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/imgtintuc"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_launcher_background" />
+                android:layout_width="190dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher" />
 
             <View
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_width="190dp"
+                android:layout_height="100dp"
                 android:background="@drawable/custom_bg_item_img" />
-
-
-
         </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dp"
-            >
+            android:padding="5dp">
 
             <TextView
                 android:id="@+id/tvtentintuc"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
+                android:gravity="left"
+                android:lines="1"
+                android:maxWidth="170dp"
                 android:maxLines="1"
-                android:text="Tên tin tức"
+                android:text="Tên sản phẩm"
                 android:textColor="@color/colorBlack"
                 android:textSize="12sp"
                 android:textStyle="bold" />
+
             <TextView
+                android:layout_marginTop="5dp"
                 android:id="@+id/tvnoidungtintuc"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="30000"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:text="12 Lê Duẫn, Quận 1, TP Hồ Chí Minh"
                 android:textColor="@color/colorBlack"
                 android:textSize="10sp" />
+
             <Button
-                android:layout_marginTop="10dp"
                 android:id="@+id/btnchitiettintuc"
-                android:background="@drawable/custom_click_btn_change_pass"
+                android:layout_width="80dp"
+                android:layout_height="20dp"
                 android:layout_gravity="right"
-                android:layout_width="100dp"
-                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_click_btn_change_pass"
                 android:text="Chi tiết"
                 android:textAllCaps="false"
                 android:textColor="@color/colorBlack"
-                android:textSize="10sp"/>
+                android:textSize="8sp" />
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

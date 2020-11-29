@@ -100,7 +100,10 @@ public class InfoAccountActivity extends AppCompatActivity {
 
                 String loainguoidung= user.getType();
                 if (loainguoidung.equals("Khách hàng")){
+                    tvLoaiNguoiDung.setText("Khách hàng mới");
                     layoutDiemLevel.setVisibility(View.VISIBLE);
+                }else if (loainguoidung.equals("Admin")){
+                    tvLoaiNguoiDung.setText("Admin");
                 }else {
                     tvLoaiNguoiDung.setText("Nhân viên");
                     viewKeNgangMotaNhanVien.setVisibility(View.VISIBLE);

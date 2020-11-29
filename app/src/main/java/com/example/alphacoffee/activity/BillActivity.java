@@ -390,15 +390,15 @@ public class BillActivity extends AppCompatActivity {
                         alertDialog.dismiss();
                     }
                 });
-                tvMoMo.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        thanhToanBang = "Momo";
-                        tvThanhToanBill.setText("Momo");
-                        tvThanhToanBill.setTextColor(getResources().getColor(R.color.colorTheme));
-                        alertDialog.dismiss();
-                    }
-                });
+//                tvMoMo.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        thanhToanBang = "Momo";
+//                        tvThanhToanBill.setText("Momo");
+//                        tvThanhToanBill.setTextColor(getResources().getColor(R.color.colorTheme));
+//                        alertDialog.dismiss();
+//                    }
+//                });
             }
         });
 

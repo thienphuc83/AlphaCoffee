@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -86,17 +87,18 @@ public class FragmentNewspaper extends Fragment {
 
                 Picasso.with(getContext()).load(user.getImageURL()).placeholder(R.drawable.example).into(imgHinh);
                 tvTen.setText(user.getName());
-                String loai = user.getType();
-                if (loai.equals("Khách hàng")) {
-                    layoutDiem.setVisibility(View.VISIBLE);
-                    String diem = user.getPoint();
-                    if (diem.equals("default")){
-                        tvDiem.setText("0");
-                    }else {
-                        tvDiem.setText(user.getPoint());
-                    }
-
-                }
+                //set hiện điểm của khách hàng
+//                String loai = user.getType();
+//                if (loai.equals("Khách hàng")) {
+//                    layoutDiem.setVisibility(View.VISIBLE);
+//                    String diem = user.getPoint();
+//                    if (diem.equals("default")){
+//                        tvDiem.setText("0");
+//                    }else {
+//                        tvDiem.setText(user.getPoint());
+//                    }
+//
+//                }
 
 
             }
@@ -181,7 +183,6 @@ public class FragmentNewspaper extends Fragment {
             }
         });
         viewPager2.setPageTransformer(compositePageTransformer);
-
         // auto
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -196,14 +197,15 @@ public class FragmentNewspaper extends Fragment {
         //load data tintuc
         mangtintuc = new ArrayList<>();
         tinTucAdapter = new TinTucAdapter(getContext(), mangtintuc);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
-        rvTinTuc.setLayoutManager(layoutManager);
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+//        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
+        rvTinTuc.setLayoutManager(new GridLayoutManager(getContext(),2));
         rvTinTuc.setAdapter(tinTucAdapter);
 
 
     }
 
+    // chạy slide
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {

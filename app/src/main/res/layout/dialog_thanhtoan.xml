@@ -75,8 +75,8 @@
                 android:id="@+id/tvthanhtoanbangmomo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Thanh toán bằng ví momo"
-                android:textColor="@color/colorBlack"
+                android:text="Thanh toán bằng ví điện tử"
+                android:textColor="@color/colorSilver"
                 android:textSize="15sp" />
         </LinearLayout>
 

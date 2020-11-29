@@ -6,7 +6,6 @@
     android:background="@color/colorTheme4"
     android:orientation="vertical">
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="210dp"
@@ -56,7 +55,7 @@
             android:layout_alignParentBottom="true"
             android:padding="10dp"
             android:visibility="gone"
-            android:src="@drawable/ic_icon_level_alpha"
+            android:src="@drawable/ic_icon_level_alpha_1"
 
             />
     </RelativeLayout>
@@ -84,6 +83,7 @@
             android:textColor="@color/colorBlack"
             android:textSize="15sp" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/layouthoadonnhanvien"
         android:layout_width="match_parent"
@@ -108,6 +108,29 @@
             android:textSize="15sp" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/layoutadmin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custom_click_item_account"
+        android:gravity="center_vertical"
+        android:visibility="gone"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:src="@drawable/ic_admin" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quản lý chung"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

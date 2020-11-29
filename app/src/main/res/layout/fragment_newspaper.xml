@@ -90,6 +90,7 @@
             </androidx.viewpager2.widget.ViewPager2>
         </LinearLayout>
         <LinearLayout
+            android:visibility="gone"
             android:orientation="vertical"
             android:background="@color/colorWhite"
             android:layout_width="match_parent"
@@ -141,10 +142,9 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="4.5">
+            android:layout_weight="6.6">
 
             <TextView
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -154,7 +154,7 @@
                 android:textColor="@color/colorBlack"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:paddingLeft="5dp"
+                android:layout_margin="5dp"
                 android:layout_marginTop="15dp"
                 android:id="@+id/rvtintuc"
                 android:layout_width="match_parent"

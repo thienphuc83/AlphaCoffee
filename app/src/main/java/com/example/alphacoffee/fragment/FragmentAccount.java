@@ -9,12 +9,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.alphacoffee.R;
+import com.example.alphacoffee.activity.AdminManagerActivity;
 import com.example.alphacoffee.activity.BillHistoryActivity;
 import com.example.alphacoffee.activity.HelpActivity;
 import com.example.alphacoffee.activity.InfoAccountActivity;
@@ -37,7 +39,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class FragmentAccount extends Fragment {
 
     View view, viewKeNgangLichSu;
-    private LinearLayout layoutThanhVien, layoutThongTinTaiKhoan, layoutLichSuKH, layoutLichSuNV, layoutGiupDo, layoutDangXuat, layoutHoaDonNhanVien;
+    private LinearLayout layoutThanhVien, layoutThongTinTaiKhoan, layoutLichSuKH,
+            layoutLichSuNV, layoutGiupDo, layoutDangXuat,
+            layoutHoaDonNhanVien, layoutAdmin;
     private TextView tvTenTaiKhoan, tvLoaiNguoiDung;
     private CircleImageView imgKhachHang;
     private ImageView imgIconLevel;
@@ -73,15 +77,25 @@ public class FragmentAccount extends Fragment {
                 assert user != null;
                 String loainguoidung = user.getType();
                 if (loainguoidung.equals("Nhân viên")){
+
                     tvLoaiNguoiDung.setText("Nhân viên");
                     layoutHoaDonNhanVien.setVisibility(View.VISIBLE);
                     layoutLichSuNV.setVisibility(View.VISIBLE);
                     viewKeNgangLichSu.setVisibility(View.VISIBLE);
+
+                }else if (loainguoidung.equals("Admin")) {
+
+                    tvLoaiNguoiDung.setText("Admin");
+                    layoutAdmin.setVisibility(View.VISIBLE);
+
                 }else {
+
+                    tvLoaiNguoiDung.setText("Khách hàng mới");
                     imgIconLevel.setVisibility(View.VISIBLE);
                     layoutThanhVien.setVisibility(View.VISIBLE);
                     layoutLichSuKH.setVisibility(View.VISIBLE);
                     viewKeNgangLichSu.setVisibility(View.VISIBLE);
+
                 }
                 tvTenTaiKhoan.setText(user.getName());
                 if (user.getImageURL().equals("default")){
@@ -111,16 +125,25 @@ public class FragmentAccount extends Fragment {
         layoutGiupDo= view.findViewById(R.id.layoutgiupdo);
         layoutDangXuat= view.findViewById(R.id.layoutdangxuat);
         layoutHoaDonNhanVien= view.findViewById(R.id.layouthoadonnhanvien);
+        layoutAdmin= view.findViewById(R.id.layoutadmin);
         viewKeNgangLichSu= view.findViewById(R.id.viewkenganglichsu);
 
         //set font tvlogan
         Typeface typeface= Typeface.createFromAsset(getResources().getAssets(),"fonts/NABILA.TTF");
         tvTenTaiKhoan.setTypeface(typeface);
 
+        layoutAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), AdminManagerActivity.class));
+            }
+        });
+
         layoutThanhVien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), MemberActivity.class));
+//                startActivity(new Intent(getContext(), MemberActivity.class));
+                Toast.makeText(getActivity(), "Đang phát triển!", Toast.LENGTH_SHORT).show();
             }
         });
 
