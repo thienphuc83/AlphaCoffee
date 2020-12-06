@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.ThemTinTucActivity">
+    tools:context=".activity.SuaXoaCuaHangActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,27 +14,13 @@
         android:gravity="center_vertical">
 
         <ImageView
-            android:background="?android:attr/selectableItemBackground"
-            android:id="@+id/imgbackthemtintuc"
+            android:id="@+id/imgbacksuaxoacuahang"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground"
             android:padding="12dp"
             android:src="@drawable/back" />
-
-        <TextView
-            android:id="@+id/tvthemtintuc"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="center_vertical"
-            android:padding="8dp"
-            android:text="Thêm tin tức"
-            android:textAlignment="center"
-            android:textColor="@color/colorBlack"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:ignore="RtlCompat" />
-
     </RelativeLayout>
 
     <ScrollView
@@ -62,7 +48,7 @@
                     android:background="@drawable/custom_border_img">
 
                     <ImageView
-                        android:id="@+id/imgthemtintuc"
+                        android:id="@+id/imgsuaxoacuahang"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="5dp"
@@ -79,33 +65,33 @@
                     android:padding="10dp">
 
                     <ImageView
-                        android:visibility="visible"
-                        android:id="@+id/imgcamerathemtintuc"
+                        android:id="@+id/imgcamerasuaxoacuahang"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:padding="10dp"
                         android:layout_marginRight="40dp"
-                        android:src="@drawable/ic_camera" />
-
-                    <ImageView
-                        android:visibility="gone"
-                        android:id="@+id/imguploadthemtintuc"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:padding="10dp"
                         android:background="?android:attr/selectableItemBackground"
-                        android:src="@drawable/ic_upload" />
+                        android:padding="10dp"
+                        android:src="@drawable/ic_camera"
+                        android:visibility="visible" />
 
                     <ImageView
-                        android:visibility="visible"
-                        android:id="@+id/imgfolderthemtintuc"
+                        android:id="@+id/imguploadsuaxoacuahang"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:background="?android:attr/selectableItemBackground"
                         android:padding="10dp"
+                        android:src="@drawable/ic_upload"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/imgfoldersuaxoacuahang"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:layout_marginLeft="40dp"
-                        android:src="@drawable/ic_folder" />
+                        android:background="?android:attr/selectableItemBackground"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_folder"
+                        android:visibility="visible" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -115,11 +101,11 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvluuythemtintuc"
+                    android:id="@+id/tvluuysuaxoacuahang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Lưu ý: Upload ảnh thành công thì mới được thêm!"
+                    android:text="Lưu ý: Upload ảnh thành công thì mới được cập nhật!"
                     android:textAlignment="center"
                     android:textColor="@color/colorTheme"
                     android:textSize="8sp"
@@ -129,48 +115,108 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Tên tin tức"
+                    android:text="Tên cửa hàng"
                     android:textColor="@color/colorBlack"
                     android:textSize="15sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
+
                 <EditText
-                    android:id="@+id/edttenthemtintuc"
+                    android:id="@+id/edttensuaxoacuahang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:background="@drawable/custom_border_img"
-                    android:maxLines="3"
                     android:inputType="text"
+                    android:maxLines="3"
                     android:padding="10dp"
                     android:textSize="18sp"
                     android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Nội dung tin tức"
+                    android:text="Địa chỉ cửa hàng"
                     android:textColor="@color/colorBlack"
                     android:textSize="15sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
+
                 <EditText
-                    android:id="@+id/edtnoidungthemtintuc"
+                    android:id="@+id/edtdiachisuaxoacuahang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:background="@drawable/custom_border_img"
-                    android:maxLines="10"
                     android:inputType="text"
+                    android:maxLines="3"
                     android:padding="10dp"
                     android:textSize="18sp" />
 
-                <info.hoang8f.widget.FButton
-                    android:id="@+id/btnthemtintuc"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="SĐT cửa hàng"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edtsdtsuaxoacuahang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Thêm"
-                    android:textAllCaps="false"
-                    android:textColor="@color/colorWhite" />
+                    android:background="@drawable/custom_border_img"
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Giờ mở cửa hàng"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edtgiosuaxoacuahang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/custom_border_img"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <info.hoang8f.widget.FButton
+                        android:id="@+id/btnsuacuahang"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="Cập nhật"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorWhite" />
+
+                    <info.hoang8f.widget.FButton
+                        android:id="@+id/btnxoacuahang"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:text="Xóa"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorWhite" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

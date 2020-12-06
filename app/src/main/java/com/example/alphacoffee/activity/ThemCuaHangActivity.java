@@ -3,10 +3,7 @@ package com.example.alphacoffee.activity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -22,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.alphacoffee.R;
+import com.example.alphacoffee.model.CuaHang;
 import com.example.alphacoffee.model.TinTuc;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -37,15 +35,14 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Calendar;
-import java.util.HashMap;
 
 import info.hoang8f.widget.FButton;
 
-public class ThemTinTucActivity extends AppCompatActivity {
+public class ThemCuaHangActivity extends AppCompatActivity {
 
-    private ImageView imgTinTuc, imgBack, imgCam, imgFolder, imgUpload;
+    private ImageView imgCuaHang, imgBack, imgCam, imgFolder, imgUpload;
     private TextView tvTitle, tvLuuY;
-    private EditText edtTen, edtNoiDung;
+    private EditText edtTen, edtDiaChi, edtGioMoCua, edtSDT;
     private FButton btnThem;
 
     DatabaseReference mData;
@@ -58,7 +55,7 @@ public class ThemTinTucActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_them_tin_tuc);
+        setContentView(R.layout.activity_them_cua_hang);
 
         mData = FirebaseDatabase.getInstance().getReference();
         //upload ảnh phải có
@@ -71,22 +68,29 @@ public class ThemTinTucActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String ten = edtTen.getText().toString().trim();
-                String noidung = edtNoiDung.getText().toString().trim();
-                String tintucId = mData.child("TinTuc").push().getKey();
+                String diachi = edtDiaChi.getText().toString().trim();
+                String sdt = edtSDT.getText().toString().trim();
+                String giomo = edtGioMoCua.getText().toString().trim();
+
+                String cuahangId = mData.child("TinTuc").push().getKey();
 
                 if (linkimage == null){
-                    Toast.makeText(ThemTinTucActivity.this, "Upload ảnh trước rồi mới thêm!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ThemCuaHangActivity.this, "Upload ảnh trước rồi mới thêm!", Toast.LENGTH_SHORT).show();
                 }else if (ten == null || ten.equals("")){
-                    Toast.makeText(ThemTinTucActivity.this, "Tên của tin tức không được bỏ trống!", Toast.LENGTH_SHORT).show();
-                }else if ( noidung == null || noidung.equals("")){
-                    Toast.makeText(ThemTinTucActivity.this, "Nội dung của tin tức không được bỏ trống!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ThemCuaHangActivity.this, "Tên cửa hàng không được bỏ trống!", Toast.LENGTH_SHORT).show();
+                }else if ( diachi == null || diachi.equals("")){
+                    Toast.makeText(ThemCuaHangActivity.this, "Địa chỉ cửa hàng không được bỏ trống!", Toast.LENGTH_SHORT).show();
+                }else if ( sdt == null || sdt.equals("")){
+                    Toast.makeText(ThemCuaHangActivity.this, "Số điện thoại cửa hàng không được bỏ trống!", Toast.LENGTH_SHORT).show();
+                }else if ( giomo == null || giomo.equals("")){
+                    Toast.makeText(ThemCuaHangActivity.this, "Giờ mở cửa hàng không được bỏ trống!", Toast.LENGTH_SHORT).show();
                 }else {
-                    TinTuc tinTuc = new TinTuc(tintucId,ten,noidung,linkimage);
-                    mData.child("TinTuc").child(tintucId).setValue(tinTuc).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    CuaHang cuaHang = new CuaHang(cuahangId,ten,sdt,diachi,giomo,linkimage);
+                    mData.child("CuaHang").child(cuahangId).setValue(cuaHang).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
-                                Toast.makeText(ThemTinTucActivity.this, "Thêm thành công.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ThemCuaHangActivity.this, "Thêm thành công.", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         }
@@ -122,9 +126,9 @@ public class ThemTinTucActivity extends AppCompatActivity {
                 StorageReference mountainsRef = mStorageRef.child("image" + calendar.getTimeInMillis() + ".png");
 
                 // Get the data from an ImageView as bytes
-                imgTinTuc.setDrawingCacheEnabled(true);
-                imgTinTuc.buildDrawingCache();
-                Bitmap bitmap = ((BitmapDrawable) imgTinTuc.getDrawable()).getBitmap();
+                imgCuaHang.setDrawingCacheEnabled(true);
+                imgCuaHang.buildDrawingCache();
+                Bitmap bitmap = ((BitmapDrawable) imgCuaHang.getDrawable()).getBitmap();
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
                 byte[] data = baos.toByteArray();
@@ -134,7 +138,7 @@ public class ThemTinTucActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception exception) {
                         // Handle unsuccessful uploads
-                        Toast.makeText(ThemTinTucActivity.this, "Lỗi!!!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ThemCuaHangActivity.this, "Lỗi!!!", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -154,7 +158,7 @@ public class ThemTinTucActivity extends AppCompatActivity {
 //                                        Log.d("AAA", "Failed to get uri");
                             }
                         });
-                        Toast.makeText(ThemTinTucActivity.this, "Tải ảnh thành công!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ThemCuaHangActivity.this, "Tải ảnh thành công!", Toast.LENGTH_SHORT).show();
                         tvLuuY.setText("Upload xong!");
                         imgCam.setVisibility(View.GONE);
                         imgFolder.setVisibility(View.GONE);
@@ -170,7 +174,7 @@ public class ThemTinTucActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == REQUEST_CODE_CAMERA && resultCode == RESULT_OK && data != null) {
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-            imgTinTuc.setImageBitmap(bitmap);
+            imgCuaHang.setImageBitmap(bitmap);
             tvLuuY.setVisibility(View.VISIBLE);
             imgUpload.setVisibility(View.VISIBLE);
         }
@@ -179,7 +183,7 @@ public class ThemTinTucActivity extends AppCompatActivity {
             try {
                 InputStream inputStream = getContentResolver().openInputStream(uri);
                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                imgTinTuc.setImageBitmap(bitmap);
+                imgCuaHang.setImageBitmap(bitmap);
                 tvLuuY.setVisibility(View.VISIBLE);
                 imgUpload.setVisibility(View.VISIBLE);
 
@@ -192,16 +196,18 @@ public class ThemTinTucActivity extends AppCompatActivity {
     }
 
     private void AnhXa() {
-        imgTinTuc = findViewById(R.id.imgthemtintuc);
-        imgBack = findViewById(R.id.imgbackthemtintuc);
-        imgCam = findViewById(R.id.imgcamerathemtintuc);
-        imgFolder = findViewById(R.id.imgfolderthemtintuc);
-        imgUpload = findViewById(R.id.imguploadthemtintuc);
-        tvTitle = findViewById(R.id.tvthemtintuc);
-        edtNoiDung = findViewById(R.id.edtnoidungthemtintuc);
-        edtTen = findViewById(R.id.edttenthemtintuc);
-        btnThem = findViewById(R.id.btnthemtintuc);
-        tvLuuY = findViewById(R.id.tvluuythemtintuc);
+        imgCuaHang = findViewById(R.id.imgthemcuahang);
+        imgBack = findViewById(R.id.imgbackthemcuahang);
+        imgCam = findViewById(R.id.imgcamerathemcuahang);
+        imgFolder = findViewById(R.id.imgfolderthemcuahang);
+        imgUpload = findViewById(R.id.imguploadthemcuahang);
+        tvTitle = findViewById(R.id.tvthemcuahang);
+        edtDiaChi = findViewById(R.id.edtdiachithemcuahang);
+        edtTen = findViewById(R.id.edttenthemcuahang);
+        edtGioMoCua = findViewById(R.id.edtgiothemcuahang);
+        edtSDT = findViewById(R.id.edtsdtthemcuahang);
+        btnThem = findViewById(R.id.btnthemcuahang);
+        tvLuuY = findViewById(R.id.tvluuythemcuahang);
 
         //set font tvlogan
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/NABILA.TTF");
