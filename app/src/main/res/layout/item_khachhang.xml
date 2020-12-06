@@ -1,64 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginBottom="5dp"
     app:cardCornerRadius="3dp">
 
     <LinearLayout
-        android:background="@color/colorWhite"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal">
 
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <ImageView
+                android:id="@+id/imgkh"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/ic_launcher"
-                android:id="@+id/imgkh"/>
+                android:src="@mipmap/ic_launcher" />
         </FrameLayout>
+
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/colorSilver"/>
+            android:background="@color/colorSilver" />
+
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:orientation="vertical"
-            android:padding="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:padding="10dp">
+
             <TextView
-                android:layout_marginBottom="10dp"
                 android:id="@+id/tvtenkh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tên sản phẩm"
-                android:maxLines="1"
+                android:layout_marginBottom="10dp"
                 android:ellipsize="end"
                 android:gravity="left"
                 android:lines="1"
                 android:maxWidth="170dp"
+                android:maxLines="1"
+                android:text="Tên sản phẩm"
                 android:textColor="@color/colorBlack"
-                android:textStyle="bold"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/tvemailkh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="email@gmail.com"
-                android:textStyle="italic"
+                android:ellipsize="end"
                 android:gravity="left"
                 android:maxLines="1"
-                android:ellipsize="end"
+                android:text="email@gmail.com"
                 android:textColor="@color/colorGray"
                 android:textSize="10sp"
-                />
+                android:textStyle="italic" />
 
         </LinearLayout>
 

@@ -14,7 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeAPI23"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.ManagerDonHangActivity"></activity>
+        <activity android:name=".activity.ThemTinTucActivity" />
+        <activity
+            android:name=".activity.AccountDetailActivity"
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
+        <activity android:name=".activity.ManagerDonHangActivity" />
         <activity android:name=".activity.ManagerTinTucActivity" />
         <activity android:name=".activity.ManagerCuaHangActivity" />
         <activity android:name=".activity.ManagerMenuActivity" />

@@ -56,9 +56,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0987654321"
-                        android:textStyle="bold"
                         android:textColor="@color/colorWhite"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -74,9 +74,9 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text="6h - 22h"
-                        android:textStyle="bold"
                         android:textColor="@color/colorWhite"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
 

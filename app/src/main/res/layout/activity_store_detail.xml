@@ -19,6 +19,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground"
             android:padding="12dp"
             android:src="@drawable/back" />
 
@@ -158,11 +159,11 @@
                     android:visibility="gone">
 
                     <EditText
-                        android:background="@color/transparent"
                         android:id="@+id/edtnoidungbinhluan"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="9"
+                        android:background="@color/transparent"
                         android:hint="Viết nhận xét..."
                         android:maxLength="300"
                         android:maxLines="2"
@@ -171,13 +172,13 @@
 
 
                     <ImageView
-                        android:visibility="gone"
                         android:id="@+id/imgsendbinhluan"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:padding="5dp"
-                        android:src="@drawable/ic_send" />
+                        android:src="@drawable/ic_send"
+                        android:visibility="gone" />
                 </LinearLayout>
             </LinearLayout>
 

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorTheme4"
+    android:orientation="vertical"
     tools:context=".activity.AdminManagerActivity">
 
 
@@ -21,6 +20,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground"
             android:padding="12dp"
             android:src="@drawable/back" />
 
@@ -49,6 +49,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center_vertical"
+                android:background="?android:attr/selectableItemBackground"
                 android:padding="12dp"
                 android:src="@drawable/ic_plus" />
         </LinearLayout>
@@ -56,90 +57,98 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="85dp"
-            app:cardCornerRadius="3dp"
-            android:layout_margin="5dp">
+            android:layout_margin="5dp"
+            app:cardCornerRadius="3dp">
+
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
                     android:text="Pass tạo nhân viên"
-                    android:textStyle="bold"
-                    android:textSize="12sp"
                     android:textColor="@color/colorGray"
-                    android:layout_margin="5dp"/>
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
                 <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:background="@drawable/custom_border_simple"
                     android:padding="1dp"
-                    android:weightSum="10"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:weightSum="10">
+
                     <EditText
-                        android:background="@color/transparent"
                         android:id="@+id/edtpasstaonvadminmanager"
-                        android:layout_weight="8"
-                        android:paddingLeft="10dp"
-                        android:textSize="12sp"
                         android:layout_width="0dp"
-                        android:textColor="@color/colorBlack"
                         android:layout_height="match_parent"
+                        android:layout_weight="8"
+                        android:background="@color/transparent"
                         android:inputType="text"
-                        />
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="12sp" />
+
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="@color/colorBlack"/>
+                        android:background="@color/colorBlack" />
+
                     <TextView
                         android:id="@+id/tvtaopassnvadminmanager"
-                        android:textAlignment="center"
-                        android:padding="15dp"
-                        android:layout_weight="2"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:text="Tạo"
+                        android:layout_weight="2"
                         android:background="@drawable/custom_click_layout_xemgiohang"
-                        android:textColor="@color/colorWhite"/>
+                        android:padding="15dp"
+                        android:text="Tạo"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite" />
                 </LinearLayout>
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/colorBlack"
-            android:textSize="12sp"
-            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nhân viên"/>
+            android:layout_marginLeft="10dp"
+            android:text="Nhân viên"
+            android:textColor="@color/colorBlack"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvnhanvien"
             android:layout_width="match_parent"
-            android:layout_height="160dp"/>
+            android:layout_height="160dp" />
+
         <TextView
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/colorBlack"
-            android:textSize="12sp"
-            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Khách hàng"/>
+            android:layout_marginLeft="10dp"
+            android:text="Khách hàng"
+            android:textColor="@color/colorBlack"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
         <androidx.recyclerview.widget.RecyclerView
-            android:padding="5dp"
             android:id="@+id/rvkhachhang"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:padding="5dp" />
     </LinearLayout>
 
 </LinearLayout>

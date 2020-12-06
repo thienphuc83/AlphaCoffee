@@ -1,16 +1,21 @@
 package com.example.alphacoffee.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.alphacoffee.R;
+import com.example.alphacoffee.activity.AccountDetailActivity;
+import com.example.alphacoffee.activity.AdminManagerActivity;
 import com.example.alphacoffee.model.User;
 import com.squareup.picasso.Picasso;
 
@@ -58,12 +63,21 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.ViewHo
         ImageView imgNV;
         TextView tvTenNV, tvMotaNV;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull final View itemView) {
             super(itemView);
 
             imgNV = itemView.findViewById(R.id.imgnhanvien);
             tvTenNV = itemView.findViewById(R.id.tvtennhanvien);
             tvMotaNV = itemView.findViewById(R.id.tvmotanhanvien);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, AccountDetailActivity.class);
+                    intent.putExtra("accountdetail",mangNhanVien.get(getPosition()));
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="380dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="5dp"
-    android:layout_height="wrap_content">
+    android:layout_width="380dp"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="5dp">
 
 
     <RelativeLayout
-        android:gravity="top"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:layout_margin="5dp"
-            android:id="@+id/imgclosepassdangky"
-            android:layout_alignParentRight="true"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_close"/>
-    </RelativeLayout>
-    <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="top">
+
+        <ImageView
+            android:id="@+id/imgclosepassdangky"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="5dp"
+            android:src="@drawable/ic_close" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="10dp">
@@ -45,14 +47,15 @@
                 android:text="Pass"
                 android:textColor="@color/colorBlack"
                 android:textSize="12sp" />
+
             <EditText
                 android:id="@+id/edtpassdangkynhanvien"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/custom_border_edittext_change_pass"
-                android:inputType="text"
                 android:hint="******"
+                android:inputType="text"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:textColor="@color/colorBlack"
@@ -60,13 +63,13 @@
         </LinearLayout>
 
         <TextView
-            android:textAlignment="center"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nhập pass cửa hàng cung cấp để tạo tài khoản nhân viên."
-            android:textColor="@color/colorTheme1"
+            android:layout_marginTop="10dp"
             android:ellipsize="end"
+            android:text="Nhập pass cửa hàng cung cấp để tạo tài khoản nhân viên."
+            android:textAlignment="center"
+            android:textColor="@color/colorTheme1"
             android:textSize="10sp" />
 
         <Button

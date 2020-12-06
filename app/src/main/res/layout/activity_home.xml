@@ -29,23 +29,24 @@
             android:orientation="vertical">
 
             <RelativeLayout
-                android:gravity="center"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
                 <com.cunoraz.gifview.library.GifView
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="130dp"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="130dp"
                     custom:gif="@mipmap/drinkoneunscreen" />
 
                 <TextView
                     android:id="@+id/tvorderngay"
-                    android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="bottom"
+                    android:padding="10dp"
                     android:text="Order ngay"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"

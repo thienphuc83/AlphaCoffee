@@ -4,50 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorTheme4"
+    android:orientation="vertical"
     tools:context=".activity.BillHistoryActivity">
 
 
     <RelativeLayout
-        android:gravity="center_vertical"
-        android:background="@color/colorTheme"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        >
+        android:background="@color/colorTheme"
+        android:gravity="center_vertical">
+
         <ImageView
             android:id="@+id/imgbackbillhistory"
-            android:layout_gravity="center_vertical"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/back"
-            android:padding="12dp"/>
+            android:layout_gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="12dp"
+            android:src="@drawable/back" />
+
         <TextView
             android:id="@+id/tvbillhistory"
-            android:textAlignment="center"
-            android:layout_gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="Lịch sử"
+            android:layout_gravity="center_vertical"
             android:padding="5dp"
-            android:textStyle="bold"
-            android:textSize="20sp"
+            android:text="Lịch sử"
+            android:textAlignment="center"
             android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            android:textStyle="bold"
             tools:ignore="RtlCompat" />
 
     </RelativeLayout>
 
     <com.google.android.material.tabs.TabLayout
-        android:layout_marginTop="5dp"
         android:id="@+id/tablayoutbillhistory"
-        app:tabSelectedTextColor="@color/colorTheme"
-        app:tabMode="fixed"
-        app:tabTextAppearance="@style/MyCustomTextAppearance"
-        app:tabTextColor="@color/colorBlack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:background="@color/colorWhite"
         app:tabIndicatorColor="@color/colorTheme"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/colorTheme"
+        app:tabTextAppearance="@style/MyCustomTextAppearance"
+        app:tabTextColor="@color/colorBlack">
 
     </com.google.android.material.tabs.TabLayout>
 

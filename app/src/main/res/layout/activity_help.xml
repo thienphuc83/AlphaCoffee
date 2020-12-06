@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -20,6 +19,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground"
             android:padding="12dp"
             android:src="@drawable/back" />
 
@@ -37,119 +37,120 @@
             tools:ignore="RtlCompat" />
 
     </RelativeLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
-            android:orientation="vertical"
-            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
             <TextView
-                android:textColor="@color/colorBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="50dp"
-                android:textAlignment="center"
-                android:layout_width="wrap_content"
-                android:textSize="20sp"
-                android:layout_height="match_parent"
                 android:text="ĐIỀU KHOẢN SỬ DỤNG"
-                />
-            <TextView
-                android:layout_marginTop="5dp"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:textColor="@color/colorBlack"
                 android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
                 android:text="THE ALPHA COFFEE DELIVERY"
-                />
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_marginTop="80dp"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:layout_marginBottom="5dp"
-                    android:textColor="@color/colorBlack"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textSize="15sp"
-                    android:text="Quy định về phạm vi giao hàng"
-                    />
-                <TextView
-                    android:textColor="@color/colorGray"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textSize="12sp"
-                    android:text="Điểm nhận hàng không quá 5 km so với cửa hàng gần nhất, để đảm bảo chất lượng nước"
-                    />
+                android:layout_height="match_parent"
+                android:layout_marginTop="80dp"
+                android:orientation="vertical"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp">
 
                 <TextView
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:textColor="@color/colorBlack"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="15sp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Quy định về phạm vi giao hàng"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Điểm nhận hàng không quá 5 km so với cửa hàng gần nhất, để đảm bảo chất lượng nước"
+                    android:textColor="@color/colorGray"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:text="Quy định về phí giao hàng"
-                    />
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
                 <TextView
-                    android:textColor="@color/colorGray"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="12sp"
                     android:text="Đơn hàng trên 50.000VND miễn phi giao hàng"
-                    />
-                <TextView
                     android:textColor="@color/colorGray"
+                    android:textSize="12sp" />
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="12sp"
                     android:text="Đơn hàng dưới 50.000VND cộng 10.000VND phí vận chuyển"
-                    />
+                    android:textColor="@color/colorGray"
+                    android:textSize="12sp" />
+
                 <TextView
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:textColor="@color/colorBlack"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="15sp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:text="Quy định về địa điểm giao hàng"
-                    />
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
                 <TextView
-                    android:textColor="@color/colorGray"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="12sp"
                     android:text="Nếu địa điểm giao hàng là Trường học, Bệnh viện quý khách vui lòng hoàn thành việc thanh toán trực tuyến trước."
-                    />
-                <TextView
                     android:textColor="@color/colorGray"
+                    android:textSize="12sp" />
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="12sp"
                     android:text="Đơn hàng sẽ được hủy nếu quý khách không cung cấp chính xác địa chỉ giao hàng."
-                    />
+                    android:textColor="@color/colorGray"
+                    android:textSize="12sp" />
+
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
-                    android:textColor="@color/colorBlack"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textSize="15sp"
                     android:text="Quy định về thời gian giao hàng"
-                    />
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
                 <TextView
-                    android:textColor="@color/colorGray"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="12sp"
                     android:text="Một số thứ linh tinh khác pla..pla..pla...."
-                    />
+                    android:textColor="@color/colorGray"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 

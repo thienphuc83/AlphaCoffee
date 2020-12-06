@@ -1,43 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="350dp"
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <RelativeLayout
-            android:gravity="top"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_margin="5dp"
-                android:id="@+id/imgclosemanager"
-                android:layout_alignParentRight="true"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_close"/>
-        </RelativeLayout>
-        <TextView
-            android:id="@+id/tvtitlemanager"
-            android:layout_marginBottom="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="top">
+
+            <ImageView
+                android:id="@+id/imgclosemanager"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_margin="5dp"
+                android:src="@drawable/ic_close" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvtitlemanager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
             android:text="Manager"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/layoutmanagermenu"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:gravity="center_vertical"
             android:background="@drawable/custom_click_item_account"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <ImageView
@@ -53,12 +54,13 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/layoutmanagercuahang"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:gravity="center_vertical"
             android:background="@drawable/custom_click_item_account"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <ImageView
@@ -74,12 +76,13 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/layoutmanagertintuc"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:gravity="center_vertical"
             android:background="@drawable/custom_click_item_account"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <ImageView
@@ -95,12 +98,13 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/layoutmanagerdonhang"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:gravity="center_vertical"
             android:background="@drawable/custom_click_item_account"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <ImageView

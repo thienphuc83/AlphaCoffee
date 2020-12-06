@@ -54,8 +54,8 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:padding="10dp"
-            android:visibility="gone"
             android:src="@drawable/ic_icon_level_alpha_1"
+            android:visibility="gone"
 
             />
     </RelativeLayout>
@@ -65,10 +65,10 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
-        android:visibility="gone"
         android:background="@drawable/custom_click_item_account"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <ImageView
             android:layout_width="50dp"
@@ -91,8 +91,8 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/custom_click_item_account"
         android:gravity="center_vertical"
-        android:visibility="gone"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <ImageView
             android:layout_width="50dp"
@@ -115,8 +115,8 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/custom_click_item_account"
         android:gravity="center_vertical"
-        android:visibility="gone"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <ImageView
             android:layout_width="50dp"
@@ -142,8 +142,8 @@
             android:id="@+id/layoutthongtintaikhoan"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:gravity="center_vertical"
             android:background="@drawable/custom_click_item_account"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <ImageView
@@ -159,20 +159,22 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
         </LinearLayout>
+
         <View
             android:id="@+id/viewkenganglichsu"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:visibility="gone"
-            android:background="@color/colorSilver"/>
+            android:background="@color/colorSilver"
+            android:visibility="gone" />
+
         <LinearLayout
             android:id="@+id/layoutlichsunhanvien"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/custom_click_item_account"
             android:gravity="center_vertical"
-            android:visibility="gone"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <ImageView
                 android:layout_width="50dp"
@@ -187,14 +189,15 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/layoutlichsukhachhang"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/custom_click_item_account"
             android:gravity="center_vertical"
-            android:visibility="gone"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <ImageView
                 android:layout_width="50dp"
@@ -213,7 +216,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/colorSilver"/>
+            android:background="@color/colorSilver" />
+
         <LinearLayout
             android:id="@+id/layoutgiupdo"
             android:layout_width="match_parent"

@@ -7,6 +7,7 @@
     android:background="@color/colorTheme4"
     android:orientation="vertical"
     tools:context=".activity.NewspaperDetailActivity">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -18,6 +19,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground"
             android:padding="12dp"
             android:src="@drawable/back" />
 
@@ -74,8 +76,8 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="3"
-                android:textAlignment="center"
                 android:text="Tên tin tức"
+                android:textAlignment="center"
                 android:textColor="@color/colorBlack"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -101,13 +103,12 @@
 
                 <TextView
                     android:id="@+id/tvnoidungtintucdetail"
-                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:text="Nội dung tin tức"
                     android:textColor="@color/colorBlack"
-                    android:textSize="15sp"
-                    />
+                    android:textSize="15sp" />
 
             </ScrollView>
 
