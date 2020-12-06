@@ -2,11 +2,11 @@ package com.example.alphacoffee.activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,9 +15,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +35,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -41,62 +45,102 @@ import java.util.HashMap;
 
 import info.hoang8f.widget.FButton;
 
-public class ThemTinTucActivity extends AppCompatActivity {
+public class SuaXoaTinTucActivity extends AppCompatActivity {
 
     private ImageView imgTinTuc, imgBack, imgCam, imgFolder, imgUpload;
-    private TextView tvTitle, tvLuuY;
+    private TextView tvLuuY;
     private EditText edtTen, edtNoiDung;
-    private FButton btnThem;
+    private FButton btnSua, btnXoa;
 
     DatabaseReference mData;
     private StorageReference mStorageRef;
-    private int REQUEST_CODE_FOLDER = 123;
-    private int REQUEST_CODE_CAMERA = 456;
+    private int REQUEST_CODE_FOLDER = 11;
+    private int REQUEST_CODE_CAMERA = 22;
 
     String linkimage = null;
-
+    TinTuc tinTuc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_them_tin_tuc);
+        setContentView(R.layout.activity_sua_xoa_tin_tuc);
 
         mData = FirebaseDatabase.getInstance().getReference();
         //upload ảnh phải có
         mStorageRef = FirebaseStorage.getInstance().getReference();
+
         AnhXa();
+
+        GetIntent();
 
         UploadImage();
 
-        btnThem.setOnClickListener(new View.OnClickListener() {
+        btnSua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String ten = edtTen.getText().toString().trim();
                 String noidung = edtNoiDung.getText().toString().trim();
-                String tintucId = mData.child("TinTuc").push().getKey();
 
                 if (linkimage == null){
-                    Toast.makeText(ThemTinTucActivity.this, "Upload ảnh trước rồi mới thêm!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SuaXoaTinTucActivity.this, "Upload ảnh trước rồi mới cập nhật!", Toast.LENGTH_SHORT).show();
                 }else if (ten == null || ten.equals("")){
-                    Toast.makeText(ThemTinTucActivity.this, "Tên của tin tức không được bỏ trống!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SuaXoaTinTucActivity.this, "Tên của tin tức không được bỏ trống!", Toast.LENGTH_SHORT).show();
                 }else if ( noidung == null || noidung.equals("")){
-                    Toast.makeText(ThemTinTucActivity.this, "Nội dung của tin tức không được bỏ trống!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SuaXoaTinTucActivity.this, "Nội dung của tin tức không được bỏ trống!", Toast.LENGTH_SHORT).show();
                 }else {
-                    TinTuc tinTuc = new TinTuc(tintucId,ten,noidung,linkimage);
-                    mData.child("TinTuc").child(tintucId).setValue(tinTuc).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()){
-                                Toast.makeText(ThemTinTucActivity.this, "Thêm thành công.", Toast.LENGTH_SHORT).show();
-                                finish();
-                            }
-                        }
-                    });
+                    UpdateTinTuc(ten, noidung, linkimage);
                 }
             }
         });
 
+        btnXoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // khởi tạo dialog
+                AlertDialog.Builder builder = new AlertDialog.Builder(SuaXoaTinTucActivity.this);
+                builder.setCancelable(true);
+                //set layout cho dialog
+                View view = LayoutInflater.from(SuaXoaTinTucActivity.this).inflate(R.layout.dialog_xoa, null);
+                TextView tvCo = view.findViewById(R.id.tvco);
+                TextView tvKhong = view.findViewById(R.id.tvkhong);
+                //mở dialog
+                builder.setView(view);
+                final AlertDialog alertDialog = builder.create();
+                alertDialog.show();
 
+                tvCo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mData.child("TinTuc").child(tinTuc.getTinTucId()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()){
+                                    Toast.makeText(SuaXoaTinTucActivity.this, "Xóa thành công.", Toast.LENGTH_SHORT).show();
+                                    alertDialog.dismiss();
+                                    finish();
+                                }
+                            }
+                        });
+                    }
+                });
 
+                tvKhong.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+            }
+        });
+
+    }
+
+    private void GetIntent() {
+        tinTuc = (TinTuc) getIntent().getSerializableExtra("suaxoatintuc");
+
+        Picasso.with(this).load(tinTuc.getHinhAnh()).into(imgTinTuc);
+        linkimage = tinTuc.getHinhAnh();
+        edtTen.setText(tinTuc.getTenTinTuc());
+        edtNoiDung.setText(tinTuc.getNoiDung());
 
     }
 
@@ -137,7 +181,7 @@ public class ThemTinTucActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception exception) {
                         // Handle unsuccessful uploads
-                        Toast.makeText(ThemTinTucActivity.this, "Lỗi!!!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SuaXoaTinTucActivity.this, "Lỗi!!!", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -157,7 +201,7 @@ public class ThemTinTucActivity extends AppCompatActivity {
 //                                        Log.d("AAA", "Failed to get uri");
                             }
                         });
-                        Toast.makeText(ThemTinTucActivity.this, "Tải ảnh thành công!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SuaXoaTinTucActivity.this, "Tải ảnh thành công!", Toast.LENGTH_SHORT).show();
                         tvLuuY.setText("Upload xong!");
                         imgCam.setVisibility(View.GONE);
                         imgFolder.setVisibility(View.GONE);
@@ -194,21 +238,35 @@ public class ThemTinTucActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private void AnhXa() {
-        imgTinTuc = findViewById(R.id.imgthemtintuc);
-        imgBack = findViewById(R.id.imgbackthemtintuc);
-        imgCam = findViewById(R.id.imgcamerathemtintuc);
-        imgFolder = findViewById(R.id.imgfolderthemtintuc);
-        imgUpload = findViewById(R.id.imguploadthemtintuc);
-        tvTitle = findViewById(R.id.tvthemtintuc);
-        edtNoiDung = findViewById(R.id.edtnoidungthemtintuc);
-        edtTen = findViewById(R.id.edttenthemtintuc);
-        btnThem = findViewById(R.id.btnthemtintuc);
-        tvLuuY = findViewById(R.id.tvluuythemtintuc);
+    private void UpdateTinTuc( String tentintucmoi, String noidungtintucmoi,String hinhanhtintucmoi) {
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("tenTinTuc", tentintucmoi);
+        hashMap.put("noiDung", noidungtintucmoi);
+        hashMap.put("hinhAnh", hinhanhtintucmoi);
+        mData.child("TinTuc").child(tinTuc.getTinTucId()).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    Toast.makeText(SuaXoaTinTucActivity.this, "Cập nhật tin tức thành công!", Toast.LENGTH_SHORT).show();
+                    finish();
+                }else {
+                    Toast.makeText(SuaXoaTinTucActivity.this, "Lỗi! Vui lòng thử lại sau!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
 
-        //set font tvlogan
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/NABILA.TTF");
-        tvTitle.setTypeface(typeface);
+    private void AnhXa() {
+        imgTinTuc = findViewById(R.id.imgsuaxoatintuc);
+        imgBack = findViewById(R.id.imgbacksuaxoatintuc);
+        imgCam = findViewById(R.id.imgcamerasuaxoatintuc);
+        imgFolder = findViewById(R.id.imgfoldersuaxoatintuc);
+        imgUpload = findViewById(R.id.imguploadsuaxoatintuc);
+        edtNoiDung = findViewById(R.id.edtnoidungsuaxoatintuc);
+        edtTen = findViewById(R.id.edttensuaxoatintuc);
+        btnSua = findViewById(R.id.btnsuatintuc);
+        btnXoa = findViewById(R.id.btnxoatintuc);
+        tvLuuY = findViewById(R.id.tvluuysuaxoatintuc);
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override

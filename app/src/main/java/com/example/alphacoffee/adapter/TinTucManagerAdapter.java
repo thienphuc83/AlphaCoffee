@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.alphacoffee.R;
 import com.example.alphacoffee.activity.NewspaperDetailActivity;
+import com.example.alphacoffee.activity.SuaXoaTinTucActivity;
 import com.example.alphacoffee.model.TinTuc;
 import com.squareup.picasso.Picasso;
 
@@ -71,7 +72,9 @@ public class TinTucManagerAdapter extends RecyclerView.Adapter<TinTucManagerAdap
             btnChiTiet.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(context, "Sửa", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, SuaXoaTinTucActivity.class);
+                    intent.putExtra("suaxoatintuc",tinTucArrayList.get(getPosition()));
+                    context.startActivity(intent);
                 }
             });
 

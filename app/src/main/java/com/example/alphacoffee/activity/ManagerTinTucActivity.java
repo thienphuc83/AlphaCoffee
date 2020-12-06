@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.alphacoffee.R;
 import com.example.alphacoffee.adapter.TinTucAdapter;
@@ -46,6 +48,39 @@ public class ManagerTinTucActivity extends AppCompatActivity {
 
         AnhXa();
 
+        GetDataTinTuc();
+
+        //cập nhật lại nếu có xóa hoặc thay đổi tintuc
+        mData.child("TinTuc").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                GetDataTinTuc();
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                GetDataTinTuc();
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void GetDataTinTuc() {
+        mangtintuc.clear();
         //lay tintuc
         mData.child("TinTuc").addChildEventListener(new ChildEventListener() {
             @Override
@@ -83,7 +118,6 @@ public class ManagerTinTucActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     private void AnhXa() {
