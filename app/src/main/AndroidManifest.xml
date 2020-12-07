@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeAPI23"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.SuaXoaCuaHangActivity"></activity>
+        <activity android:name=".activity.SuaXoaMenuActivity"></activity>
+        <activity android:name=".activity.ThemMenuActivity" />
+        <activity android:name=".activity.SuaXoaCuaHangActivity" />
         <activity android:name=".activity.ThemCuaHangActivity" />
         <activity android:name=".activity.SuaXoaTinTucActivity" />
         <activity android:name=".activity.ThemTinTucActivity" />

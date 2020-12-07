@@ -24,11 +24,11 @@ import java.util.Deque;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private TextView tvOrderNgay;
     private BottomNavigationView bottomNavigationView;
     Deque<Integer> integerDeque = new ArrayDeque<>(3);
     boolean flag = true;
     private LinearLayout layoutMenu;
+    private TextView tvOrderNgay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,11 +124,9 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void LoadFragment(Fragment fragment) {
-
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.framelayout, fragment,fragment.getClass().getSimpleName())
                 .commit();
-
     }
 
     @Override

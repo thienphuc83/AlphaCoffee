@@ -2,7 +2,14 @@ package com.example.alphacoffee.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
+import android.app.IntentService;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,7 +32,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 
 public class ExampleActivity extends AppCompatActivity {
-    //    TRANG EXAMPLE NÀY DÙNG ĐỂ TEST NHA QUÍ DỊ
 
     EditText edtTen,edtMota,edtHinh;
     Button btnThem,btnHuy;
@@ -45,7 +51,7 @@ public class ExampleActivity extends AppCompatActivity {
         btnThem = findViewById(R.id.btnThem);
         btnHuy = findViewById(R.id.btnHuy);
 
-        mdata = FirebaseDatabase.getInstance().getReference();
+//        mdata = FirebaseDatabase.getInstance().getReference();
 
 
         // thêm pass để tạo tài khoản nhân viên
@@ -66,34 +72,34 @@ public class ExampleActivity extends AppCompatActivity {
 //        });
 
 
-        btnThem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String ten = edtTen.getText().toString();
-                String hinh = edtHinh.getText().toString();
-                String mota = edtMota.getText().toString();
-
-
-                String tintucId = mdata.child("TinTuc").push().getKey();
-
-                TinTuc tinTuc = new TinTuc(tintucId,ten,hinh,mota);
-                mdata.child("TinTuc").child(tintucId).setValue(tinTuc).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(ExampleActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-            }
-        });
+//        btnThem.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String ten = edtTen.getText().toString();
+//                String hinh = edtHinh.getText().toString();
+//                String mota = edtMota.getText().toString();
+//
+//
+//                String tintucId = mdata.child("TinTuc").push().getKey();
+//
+//                TinTuc tinTuc = new TinTuc(tintucId,ten,hinh,mota);
+//                mdata.child("TinTuc").child(tintucId).setValue(tinTuc).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if (task.isSuccessful()){
+//                            Toast.makeText(ExampleActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
+//            }
+//        });
 
         btnHuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                edtTen.setText("");
-                edtMota.setText("");
-                edtHinh.setText("");
+//                edtTen.setText("");
+//                edtMota.setText("");
+//                edtHinh.setText("");
 //                mdata.child("PassTaoNhanVien").addValueEventListener(new ValueEventListener() {
 //                    @Override
 //                    public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -105,6 +111,24 @@ public class ExampleActivity extends AppCompatActivity {
 //
 //                    }
 //                });
+
+//                String message = "Thong bao ne!";
+//                NotificationCompat.Builder builder =   new NotificationCompat.Builder(ExampleActivity.this)
+//                        .setSmallIcon(R.drawable.ic_icon_coffee)
+//                        .setContentTitle("New notification")
+//                        .setAutoCancel(true);
+//                Intent intent = new Intent(ExampleActivity.this, ManagerMenuActivity.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                intent.putExtra("message", message);
+//
+//                PendingIntent pendingIntent =  PendingIntent.getActivity(ExampleActivity.this,0,intent,PendingIntent.FLAG_CANCEL_CURRENT);
+//                builder.setContentIntent(pendingIntent);
+//
+//                NotificationManager notificationManager = (NotificationManager)getSystemService(
+//                        Context.NOTIFICATION_SERVICE
+//                );
+//
+//                notificationManager.notify(0, builder.build());
             }
         });
 
