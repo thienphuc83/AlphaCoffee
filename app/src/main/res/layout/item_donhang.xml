@@ -23,7 +23,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tvsttorder"
+                    android:id="@+id/tvsttdonhang"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/custom_border_img"
@@ -34,7 +34,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvtencuahangorder"
+                    android:id="@+id/tvtencuahangdonhang"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -43,9 +43,17 @@
                     android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
-
             <TextView
-                android:id="@+id/tvtrangthaiorder"
+                android:id="@+id/tvtenkhachhangdonhang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Tên khách hàng"
+                android:textColor="@color/colorBlack"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvtrangthaidonhang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -55,7 +63,7 @@
                 android:textStyle="italic" />
 
             <TextView
-                android:id="@+id/tvngaytaoorder"
+                android:id="@+id/tvngaytaodonhang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ngày tạo"
@@ -68,6 +76,8 @@
             android:layout_height="1dp"
             android:layout_marginTop="5dp"
             android:background="@color/colorSilver" />
+
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -87,7 +97,7 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/tvtongtienorder"
+                android:id="@+id/tvtongtiendonhang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -96,28 +106,6 @@
                 android:textColor="@color/colorTheme"
                 android:textSize="12sp"
                 android:textStyle="bold" />
-        </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorSilver" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp">
-
-            <Button
-                android:id="@+id/btnorder"
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/custom_click_btn_chitietbill"
-                android:text="Order"
-                android:textAllCaps="false"
-                android:textColor="@color/colorBlack"
-                android:textSize="10sp" />
         </RelativeLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
