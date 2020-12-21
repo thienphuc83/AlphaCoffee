@@ -33,6 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class FragmentDoUong extends Fragment {
     View view;
@@ -53,12 +54,6 @@ public class FragmentDoUong extends Fragment {
         mData = FirebaseDatabase.getInstance().getReference();
         
         AnhXa();
-
-        mangDoUong =new ArrayList<>();
-        doUongAdapter = new ProductAdapter(getContext(),mangDoUong);
-        GridLayoutManager layoutManager= new GridLayoutManager(getContext(),2);
-        rvDoUong.setLayoutManager(layoutManager);
-        rvDoUong.setAdapter(doUongAdapter);
 
         LoadData();
 
@@ -132,6 +127,7 @@ public class FragmentDoUong extends Fragment {
                             sanPham.getLike(),
                             sanPham.getType(),
                             sanPham.getImageURL()));
+                    Collections.reverse(mangDoUong);
                     doUongAdapter.notifyDataSetChanged();
                 }
             }
@@ -161,5 +157,12 @@ public class FragmentDoUong extends Fragment {
     private void AnhXa() {
         rvDoUong = view.findViewById(R.id.rvdouong);
         edtTimDoUong = view.findViewById(R.id.edttimkiemdouong);
+
+        mangDoUong =new ArrayList<>();
+        Collections.reverse(mangDoUong);
+        doUongAdapter = new ProductAdapter(getContext(),mangDoUong);
+        GridLayoutManager layoutManager= new GridLayoutManager(getContext(),2);
+        rvDoUong.setLayoutManager(layoutManager);
+        rvDoUong.setAdapter(doUongAdapter);
     }
 }

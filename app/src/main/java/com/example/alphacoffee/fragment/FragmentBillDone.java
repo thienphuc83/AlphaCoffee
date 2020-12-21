@@ -59,7 +59,11 @@ public class FragmentBillDone extends Fragment {
 
         mangbilldone = new ArrayList<>();
         billHistoryAdapter = new BillHistoryAdapter(getContext(),R.layout.item_bill,mangbilldone);
-        rvBillHistoryDone.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        rvBillHistoryDone.setLayoutManager(linearLayoutManager);
         rvBillHistoryDone.setAdapter(billHistoryAdapter);
 
         //lấy data user

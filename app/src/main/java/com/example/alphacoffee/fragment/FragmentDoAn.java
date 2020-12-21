@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class FragmentDoAn extends Fragment {
 
@@ -46,12 +47,6 @@ public class FragmentDoAn extends Fragment {
         mData = FirebaseDatabase.getInstance().getReference();
 
         AnhXa();
-
-        mangDoAn =new ArrayList<>();
-        doAnAdapter = new ProductAdapter(getContext(),mangDoAn);
-        GridLayoutManager layoutManager= new GridLayoutManager(getContext(),2);
-        rvDoAn.setLayoutManager(layoutManager);
-        rvDoAn.setAdapter(doAnAdapter);
 
         LoadData();
 
@@ -124,6 +119,7 @@ public class FragmentDoAn extends Fragment {
                             sanPham.getLike(),
                             sanPham.getType(),
                             sanPham.getImageURL()));
+                    Collections.reverse(mangDoAn);
                     doAnAdapter.notifyDataSetChanged();
                 }
             }
@@ -153,5 +149,13 @@ public class FragmentDoAn extends Fragment {
     private void AnhXa() {
         rvDoAn= view.findViewById(R.id.rvdoan);
         edtTimDoAn= view.findViewById(R.id.edttimkiemdoan);
+
+        mangDoAn =new ArrayList<>();
+        Collections.reverse(mangDoAn);
+        doAnAdapter = new ProductAdapter(getContext(),mangDoAn);
+        GridLayoutManager layoutManager= new GridLayoutManager(getContext(),2);
+        rvDoAn.setLayoutManager(layoutManager);
+        rvDoAn.setAdapter(doAnAdapter);
+
     }
 }

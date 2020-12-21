@@ -61,7 +61,11 @@ public class FragmentOrderDangXuLy extends Fragment {
 
         mangoderdangxuly = new ArrayList<>();
         orderDangXuLyAdapter = new OrderHistoryAdapter(getContext(), mangoderdangxuly);
-        rvOrderDangXuLy.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        rvOrderDangXuLy.setLayoutManager(linearLayoutManager);
         rvOrderDangXuLy.setAdapter(orderDangXuLyAdapter);
 
         LoadData();

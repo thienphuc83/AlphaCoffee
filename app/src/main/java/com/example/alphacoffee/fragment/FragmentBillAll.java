@@ -63,7 +63,11 @@ public class FragmentBillAll extends Fragment {
 
         mangbillall = new ArrayList<>();
         billHistoryAdapter = new BillHistoryAdapter(getContext(),R.layout.item_bill,mangbillall);
-        rvBillHistoryAll.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        rvBillHistoryAll.setLayoutManager(linearLayoutManager);
         rvBillHistoryAll.setAdapter(billHistoryAdapter);
 
         //lấy data user

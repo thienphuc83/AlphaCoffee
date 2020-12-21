@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ManagerDonHangActivity extends AppCompatActivity {
 
@@ -49,7 +50,7 @@ public class ManagerDonHangActivity extends AppCompatActivity {
         mData.child("Bill").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                GetData();
+
             }
 
             @Override
@@ -145,6 +146,8 @@ public class ManagerDonHangActivity extends AppCompatActivity {
         donHangAdapter = new DonHangAdapter(this, mangdonhang);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
         rvDonHang.setLayoutManager(linearLayoutManager);
         rvDonHang.setAdapter(donHangAdapter);
     }

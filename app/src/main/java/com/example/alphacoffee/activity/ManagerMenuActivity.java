@@ -25,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ManagerMenuActivity extends AppCompatActivity {
 
@@ -116,6 +117,7 @@ public class ManagerMenuActivity extends AppCompatActivity {
                             sanPham.getLike(),
                             sanPham.getType(),
                             sanPham.getImageURL()));
+                    Collections.reverse(mangdouong);
                     douongAdapter.notifyDataSetChanged();
                 }
 
@@ -158,16 +160,20 @@ public class ManagerMenuActivity extends AppCompatActivity {
         tvTitle.setTypeface(typeface);
 
         mangdoan = new ArrayList<>();
-        mangdouong = new ArrayList<>();
         doanAdapter = new MenuAdapter(this, mangdoan);
-        douongAdapter = new MenuAdapter(this, mangdouong);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
         rvDoAn.setLayoutManager(linearLayoutManager);
+        rvDoAn.setAdapter(doanAdapter);
+
+        mangdouong = new ArrayList<>();
+        Collections.reverse(mangdouong);
+        douongAdapter = new MenuAdapter(this, mangdouong);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         rvDoUong.setLayoutManager(gridLayoutManager);
         rvDoUong.setAdapter(douongAdapter);
-        rvDoAn.setAdapter(doanAdapter);
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override

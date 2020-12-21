@@ -61,7 +61,11 @@ public class FragmentOrderDone extends Fragment {
 
         mangoderdone = new ArrayList<>();
         orderDoneAdapter = new OrderHistoryAdapter(getContext(),mangoderdone);
-        rvOrderDone.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        rvOrderDone.setLayoutManager(linearLayoutManager);
         rvOrderDone.setAdapter(orderDoneAdapter);
 
         LoadData();

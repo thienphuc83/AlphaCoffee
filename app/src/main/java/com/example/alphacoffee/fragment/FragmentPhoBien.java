@@ -34,14 +34,14 @@ public class FragmentPhoBien extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view  = inflater.inflate(R.layout.fragment_phobien, container, false);
+        view = inflater.inflate(R.layout.fragment_phobien, container, false);
         mData = FirebaseDatabase.getInstance().getReference();
 
         AnhXa();
 
-        mangPhoBien =new ArrayList<>();
-        phoBienAdapter = new ProductAdapter(getContext(),mangPhoBien);
-        GridLayoutManager layoutManager= new GridLayoutManager(getContext(),2);
+        mangPhoBien = new ArrayList<>();
+        phoBienAdapter = new ProductAdapter(getContext(), mangPhoBien);
+        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
         rvPhoBien.setLayoutManager(layoutManager);
         rvPhoBien.setAdapter(phoBienAdapter);
 
@@ -57,8 +57,9 @@ public class FragmentPhoBien extends Fragment {
                 SanPham sanPham = snapshot.getValue(SanPham.class);
 //                Log.d("AAA", sanPham.getName());
                 assert sanPham != null;
-                String like= sanPham.getLike();
-                if (!like.equals("default")){
+                String like = sanPham.getLike();
+                int like1 = Integer.parseInt(like.trim());
+                if (!like.equals("default") && like1 > 10) {
                     mangPhoBien.add(new SanPham(
                             sanPham.getProductId(),
                             sanPham.getName(),

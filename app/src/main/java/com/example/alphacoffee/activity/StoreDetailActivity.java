@@ -39,6 +39,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 
@@ -233,6 +234,8 @@ public class StoreDetailActivity extends AppCompatActivity {
         commentAdapter= new CommentAdapter(StoreDetailActivity.this,R.layout.item_comment,mangcmt);
         LinearLayoutManager layoutManager = new LinearLayoutManager(StoreDetailActivity.this);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
         rvBinhLuanStoreDetail.setLayoutManager(layoutManager);
         rvBinhLuanStoreDetail.setAdapter(commentAdapter);
 

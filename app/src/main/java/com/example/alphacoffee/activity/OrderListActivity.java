@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -79,6 +80,8 @@ public class OrderListActivity extends AppCompatActivity {
         orderAdapter = new OrderAdapter(this,mangorder);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
         rvOrderList.setLayoutManager(layoutManager);
         rvOrderList.setAdapter(orderAdapter);
 

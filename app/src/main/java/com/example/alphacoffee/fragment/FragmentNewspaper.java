@@ -37,6 +37,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -120,6 +121,8 @@ public class FragmentNewspaper extends Fragment {
                         tinTuc.getTenTinTuc(),
                         tinTuc.getNoiDung(),
                         tinTuc.getHinhAnh()));
+
+                Collections.reverse(mangtintuc);
                 tinTucAdapter.notifyDataSetChanged();
 
 
@@ -196,6 +199,7 @@ public class FragmentNewspaper extends Fragment {
 
         //load data tintuc
         mangtintuc = new ArrayList<>();
+        Collections.reverse(mangtintuc);
         tinTucAdapter = new TinTucAdapter(getContext(), mangtintuc);
 //        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
 //        layoutManager.setOrientation(RecyclerView.HORIZONTAL);

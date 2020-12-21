@@ -26,6 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ManagerCuaHangActivity extends AppCompatActivity {
 
@@ -133,6 +134,8 @@ public class ManagerCuaHangActivity extends AppCompatActivity {
         cuaHangManagerAdapter = new CuaHangManagerAdapter(this, mangcuahang);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
         rvCuaHang.setLayoutManager(layoutManager);
         rvCuaHang.setAdapter(cuaHangManagerAdapter);
 

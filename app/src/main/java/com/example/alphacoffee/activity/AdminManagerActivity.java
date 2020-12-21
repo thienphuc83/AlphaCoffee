@@ -36,6 +36,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class AdminManagerActivity extends AppCompatActivity {
 
@@ -121,7 +122,6 @@ public class AdminManagerActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     private void PassTaoNV() {
@@ -174,6 +174,8 @@ public class AdminManagerActivity extends AppCompatActivity {
         nhanVienAdapter = new NhanVienAdapter(this, mangnhanvien);
         LinearLayoutManager linearLayout= new LinearLayoutManager(this);
         linearLayout.setOrientation(RecyclerView.HORIZONTAL);
+        linearLayout.setReverseLayout(true);
+        linearLayout.setStackFromEnd(true);
         rvNhanVien.setLayoutManager(linearLayout);
         rvNhanVien.setAdapter(nhanVienAdapter);
 
@@ -182,6 +184,8 @@ public class AdminManagerActivity extends AppCompatActivity {
         khachHangAdapter = new KhachHangAdapter(this, mangkhachhang);
         LinearLayoutManager linearLayout1= new LinearLayoutManager(this);
         linearLayout1.setOrientation(RecyclerView.VERTICAL);
+        linearLayout.setReverseLayout(true);
+        linearLayout.setStackFromEnd(true);
         rvKhachHang.setLayoutManager(linearLayout1);
         rvKhachHang.setAdapter(khachHangAdapter);
 

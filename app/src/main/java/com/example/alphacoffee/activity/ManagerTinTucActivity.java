@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ManagerTinTucActivity extends AppCompatActivity {
 
@@ -92,6 +93,8 @@ public class ManagerTinTucActivity extends AppCompatActivity {
                         tinTuc.getTenTinTuc(),
                         tinTuc.getNoiDung(),
                         tinTuc.getHinhAnh()));
+
+                Collections.reverse(mangtintuc);
                 tinTucAdapter.notifyDataSetChanged();
 
 
@@ -133,6 +136,7 @@ public class ManagerTinTucActivity extends AppCompatActivity {
 
         //load data tintuc
         mangtintuc = new ArrayList<>();
+        Collections.reverse(mangtintuc);
         tinTucAdapter = new TinTucManagerAdapter(this, mangtintuc);
 //        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
 //        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
