@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -366,8 +367,8 @@ public class BillActivity extends AppCompatActivity {
                 builder.setCancelable(false); // bấm ngoài vùng
                 //set layout cho dialog
                 View view = LayoutInflater.from(BillActivity.this).inflate(R.layout.dialog_thanhtoan, null);
-                TextView tvTienMat = view.findViewById(R.id.tvthanhtoanbangtienmat);
-                TextView tvMoMo = view.findViewById(R.id.tvthanhtoanbangmomo);
+                LinearLayout tvTienMat = view.findViewById(R.id.layoutthanhtoanbangtienmat);
+                LinearLayout tvMoMo = view.findViewById(R.id.layoutthanhtoanbangmomo);
                 ImageView imgClose = view.findViewById(R.id.imgclosethanhtoanbill);
 
                 //mở dialog

@@ -20,9 +20,7 @@
         <activity android:name=".activity.ThemCuaHangActivity" />
         <activity android:name=".activity.SuaXoaTinTucActivity" />
         <activity android:name=".activity.ThemTinTucActivity" />
-        <activity
-            android:name=".activity.AccountDetailActivity"
-            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
+        <activity android:name=".activity.AccountDetailActivity" />
         <activity android:name=".activity.ManagerDonHangActivity" />
         <activity android:name=".activity.ManagerTinTucActivity" />
         <activity android:name=".activity.ManagerCuaHangActivity" />

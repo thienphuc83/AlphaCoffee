@@ -16,7 +16,7 @@
             android:gravity="top">
 
             <ImageView
-                android:id="@+id/imgclosethanhtoanbill"
+                android:id="@+id/imgcloseeditmotanv"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_alignParentRight="true"
@@ -28,14 +28,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
-            android:text="Phương phức thanh toán"
+            android:text="Mô tả nhân viên"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <LinearLayout
-            android:id="@+id/layoutthanhtoanbangtienmat"
+            android:id="@+id/layoutfulltime"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/custom_click_item_account"
@@ -46,12 +46,12 @@
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:padding="15dp"
-                android:src="@drawable/ic_money" />
+                android:src="@drawable/ic_fulltime" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Thanh toán bằng tiền mặt"
+                android:text="Full time"
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
         </LinearLayout>
@@ -63,7 +63,7 @@
             android:visibility="gone" />
 
         <LinearLayout
-            android:id="@+id/layoutthanhtoanbangmomo"
+            android:id="@+id/layoutpasttime"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/custom_click_item_account"
@@ -74,16 +74,43 @@
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:padding="15dp"
-                android:src="@drawable/ic_money" />
+                android:src="@drawable/ic_parttime" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Thanh toán bằng ví điện tử"
-                android:textColor="@color/colorSilver"
+                android:text="Past time"
+                android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorSilver"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/layoutoff"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/custom_click_item_account"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:padding="15dp"
+                android:src="@drawable/ic_off" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nghỉ làm"
+                android:textColor="@color/colorBlack"
+                android:textSize="15sp" />
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

@@ -64,13 +64,27 @@ public class AdminManagerActivity extends AppCompatActivity {
 
         PassTaoNV();
 
+        GetData();
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        GetData();
+    }
+
+    private void GetData() {
+        mangkhachhang.clear();
+        mangnhanvien.clear();
         // lấy data của nhân viên và khách hàng
         mData.child("Users").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 user = snapshot.getValue(User.class);
                 String loai = user.getType();
-                if (loai.equals("Nhân viên")){
+                if (loai.equals("Nhân viên")) {
                     mangnhanvien.add(new User(
                             user.getUserId(),
                             user.getName(),
@@ -84,7 +98,7 @@ public class AdminManagerActivity extends AppCompatActivity {
                             user.getImageURL()));
                     nhanVienAdapter.notifyDataSetChanged();
                 }
-                if (loai.equals("Khách hàng")){
+                if (loai.equals("Khách hàng")) {
                     Log.d("AAA", user.getName());
                     mangkhachhang.add(new User(
                             user.getUserId(),
@@ -145,7 +159,7 @@ public class AdminManagerActivity extends AppCompatActivity {
                 mData.child("PassTaoNhanVien").setValue(passtaonv).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             Toast.makeText(AdminManagerActivity.this, "Tạo pass mới thành công!", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -172,7 +186,7 @@ public class AdminManagerActivity extends AppCompatActivity {
         //nhân viên
         mangnhanvien = new ArrayList<>();
         nhanVienAdapter = new NhanVienAdapter(this, mangnhanvien);
-        LinearLayoutManager linearLayout= new LinearLayoutManager(this);
+        LinearLayoutManager linearLayout = new LinearLayoutManager(this);
         linearLayout.setOrientation(RecyclerView.HORIZONTAL);
         linearLayout.setReverseLayout(true);
         linearLayout.setStackFromEnd(true);
@@ -182,7 +196,7 @@ public class AdminManagerActivity extends AppCompatActivity {
         //khách hàng
         mangkhachhang = new ArrayList<>();
         khachHangAdapter = new KhachHangAdapter(this, mangkhachhang);
-        LinearLayoutManager linearLayout1= new LinearLayoutManager(this);
+        LinearLayoutManager linearLayout1 = new LinearLayoutManager(this);
         linearLayout1.setOrientation(RecyclerView.VERTICAL);
         linearLayout.setReverseLayout(true);
         linearLayout.setStackFromEnd(true);
@@ -219,7 +233,7 @@ public class AdminManagerActivity extends AppCompatActivity {
                 alertDialog.show();
 
                 //set font tvlogan
-                Typeface typeface= Typeface.createFromAsset(getAssets(),"fonts/NABILA.TTF");
+                Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/NABILA.TTF");
                 tvTitle.setTypeface(typeface);
 
                 imgClose.setOnClickListener(new View.OnClickListener() {
@@ -231,28 +245,28 @@ public class AdminManagerActivity extends AppCompatActivity {
                 layoutMenu.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(AdminManagerActivity.this, ManagerMenuActivity.class ));
+                        startActivity(new Intent(AdminManagerActivity.this, ManagerMenuActivity.class));
                         alertDialog.dismiss();
                     }
                 });
                 layoutCuaHang.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(AdminManagerActivity.this, ManagerCuaHangActivity.class ));
+                        startActivity(new Intent(AdminManagerActivity.this, ManagerCuaHangActivity.class));
                         alertDialog.dismiss();
                     }
                 });
                 layoutTinTuc.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(AdminManagerActivity.this, ManagerTinTucActivity.class ));
+                        startActivity(new Intent(AdminManagerActivity.this, ManagerTinTucActivity.class));
                         alertDialog.dismiss();
                     }
                 });
                 layoutDonHang.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(AdminManagerActivity.this, ManagerDonHangActivity.class ));
+                        startActivity(new Intent(AdminManagerActivity.this, ManagerDonHangActivity.class));
                         alertDialog.dismiss();
                     }
                 });
