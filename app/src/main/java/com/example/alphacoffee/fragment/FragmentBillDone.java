@@ -1,6 +1,9 @@
 package com.example.alphacoffee.fragment;
 
 import android.annotation.SuppressLint;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +13,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -65,6 +71,15 @@ public class FragmentBillDone extends Fragment {
         linearLayoutManager.setStackFromEnd(true);
         rvBillHistoryDone.setLayoutManager(linearLayoutManager);
         rvBillHistoryDone.setAdapter(billHistoryAdapter);
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel notificationChannel = new NotificationChannel("my notifi", "my notifi", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getActivity().getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(notificationChannel);
+
+        }
+
 
         //lấy data user
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -127,7 +142,17 @@ public class FragmentBillDone extends Fragment {
                 if (idKHdangxem.equals(idKHbillthaydoi)){
                     if (  trangthaibillthaydoi.equals("Hoàn thành")){
 //                        Toast.makeText(getContext(), "Có 1 đơn đã hoàn thành,bật thông báo tại đây!", Toast.LENGTH_SHORT).show();
+
                         // bật thông báo ngay đây
+                        NotificationCompat.Builder builder= new NotificationCompat.Builder(getContext(),"my notifi");
+                        builder.setContentTitle("The Alpha Coffee");
+                        builder.setContentText("Đơn hàng đã xong!");
+                        builder.setSmallIcon(R.drawable.ic_icon_coffee);
+                        builder.setAutoCancel(true);
+                        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getContext());
+                        notificationManagerCompat.notify(1, builder.build());
+
+
                         LoadData();
                     }else {
                         LoadData();

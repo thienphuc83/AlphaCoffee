@@ -2,6 +2,7 @@ package com.example.alphacoffee.activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,6 +40,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import info.hoang8f.widget.FButton;
 
@@ -100,76 +104,83 @@ public class OrderActivity extends AppCompatActivity {
 
         GetDataSanPhamOrder();
 
-        LaySTTChoOrder();
+//        LaySTTChoOrder();
 
         //nhận order
         layoutNhanOrder.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
-                // bắt xem nhân viên đã nhập số thứ tự cho đơn hàng hay chưa.
-                if (STT.equals("")){
-                    Toast.makeText(OrderActivity.this, "Nhập số thứ tự cho đơn hàng!", Toast.LENGTH_SHORT).show();
-                }else {
-                    // insert thêm stt, idnv, tennv, trạng thái cho bill
-                    HashMap<String, Object> hashMap = new HashMap<>();
-                    hashMap.put("soThuTu", STT);
-                    hashMap.put("idNV", user.getUserId());
-                    hashMap.put("tenNV", user.getName());
-                    hashMap.put("trangThai", "Đang xử lý");
 
-                    mData.child("Bill").child(bill.getIdBill()).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()){
-                                Toast.makeText(OrderActivity.this, "Đã nhận order!", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(OrderActivity.this, OrderHistoryActivity.class));
-                                finish();
-                            }
+                int min = 0;
+                int max = 10000;
+                int random = ThreadLocalRandom.current().nextInt(min, max);
+                tvSTTOrder.setText(STT);
+                STT = String.valueOf(random);
+
+
+                // insert thêm stt, idnv, tennv, trạng thái cho bill
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("soThuTu", STT);
+                hashMap.put("idNV", user.getUserId());
+                hashMap.put("tenNV", user.getName());
+                hashMap.put("trangThai", "Đang xử lý");
+
+                mData.child("Bill").child(bill.getIdBill()).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(OrderActivity.this, "Đã nhận order!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(OrderActivity.this, OrderHistoryActivity.class));
+                            finish();
                         }
-                    });
-                }
-            }
-        });
-
-    }
-
-    private void LaySTTChoOrder() {
-        tvSTTOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // khởi tạo dialog
-                AlertDialog.Builder builder = new AlertDialog.Builder(OrderActivity.this);
-                builder.setCancelable(false);
-                //set layout cho dialog
-                View view = LayoutInflater.from(OrderActivity.this).inflate(R.layout.dialog_stt_order, null);
-                ImageView imgClose = view.findViewById(R.id.imgclosesttorder);
-                final EditText edtSTT = view.findViewById(R.id.edtsttorder);
-                Button btnXong = view.findViewById(R.id.btnsttorder);
-
-                //mở dialog
-                builder.setView(view);
-                final AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-
-                imgClose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertDialog.dismiss();
-                    }
-                });
-
-                btnXong.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        STT = edtSTT.getText().toString().trim();
-                        tvSTTOrder.setText(STT);
-                        alertDialog.dismiss();
                     }
                 });
 
             }
         });
+
     }
+
+//    private void LaySTTChoOrder() {
+//        tvSTTOrder.setOnClickListener(new View.OnClickListener() {
+//            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+//            @Override
+//            public void onClick(View v) {
+////                // khởi tạo dialog
+////                AlertDialog.Builder builder = new AlertDialog.Builder(OrderActivity.this);
+////                builder.setCancelable(false);
+////                //set layout cho dialog
+////                View view = LayoutInflater.from(OrderActivity.this).inflate(R.layout.dialog_stt_order, null);
+////                ImageView imgClose = view.findViewById(R.id.imgclosesttorder);
+////                final EditText edtSTT = view.findViewById(R.id.edtsttorder);
+////                Button btnXong = view.findViewById(R.id.btnsttorder);
+////
+////                //mở dialog
+////                builder.setView(view);
+////                final AlertDialog alertDialog = builder.create();
+////                alertDialog.show();
+////
+////                imgClose.setOnClickListener(new View.OnClickListener() {
+////                    @Override
+////                    public void onClick(View v) {
+////                        alertDialog.dismiss();
+////                    }
+////                });
+////
+////                btnXong.setOnClickListener(new View.OnClickListener() {
+////                    @Override
+////                    public void onClick(View v) {
+////                        STT = edtSTT.getText().toString().trim();
+////                        tvSTTOrder.setText(STT);
+////                        alertDialog.dismiss();
+////                    }
+////                });
+//
+//
+//            }
+//        });
+//    }
 
     private void AnhXa() {
         imgBackOrder = findViewById(R.id.imgbackoder);
@@ -222,12 +233,10 @@ public class OrderActivity extends AppCompatActivity {
         tvTenKHOrder.setText(bill.getTenKH());
 
 
-
         // custom giá
         long tongtien = bill.getTongtien();
-        DecimalFormat decimalFormat =new DecimalFormat("###,###,###");
-        tvTongTienOrder.setText(decimalFormat.format(tongtien)+" đ");
-
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+        tvTongTienOrder.setText(decimalFormat.format(tongtien) + " đ");
 
 
     }
